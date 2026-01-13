@@ -1,0 +1,24 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Police reports collection
+    match /policeReports/{reportId} {
+      // Anyone can read reports
+      allow read: if true;
+      
+      // Anyone can create a report (anonymous reporting allowed)
+      allow create: if request.resource.data.lat is number
+                    && request.resource.data.lng is number
+                    && request.resource.data.timestamp is timestamp
+                    && request.resource.data.confirmations == 1;
+      
+      // Anyone can update confirmations (voting)
+      allow update: if request.resource.data.confirmations > resource.data.confirmations
+                    && request.resource.data.lat == resource.data.lat
+                    && request.resource.data.lng == resource.data.lng;
+      
+      // Only admin can delete (handled by Cloud Functions for auto-expiry)
+      allow delete: if false;
+    }
+  }
+}
