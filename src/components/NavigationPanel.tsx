@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { getDirections, formatDistance, formatDuration, isDirectionsAvailable } from '../services/DirectionsService';
-import type { RouteInfo, RouteStep } from '../services/DirectionsService';
+import type { RouteInfo } from '../services/DirectionsService';
 import { useGpsStore } from '../stores/gpsStore';
 
 interface NavigationPanelProps {

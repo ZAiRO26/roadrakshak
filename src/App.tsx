@@ -96,11 +96,6 @@ function App() {
     setLoading(false);
   };
 
-  // Handle route calculation
-  const handleRouteCalculated = (geometry: GeoJSON.LineString | null) => {
-    setRouteGeometry(geometry);
-  };
-
   return (
     <div className="app">
       {/* Loading screen */}
