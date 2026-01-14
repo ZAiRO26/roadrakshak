@@ -5,10 +5,13 @@ import { useGpsStore } from '../stores/gpsStore';
 import { useAppStore } from '../stores/appStore';
 import { useSmoothPosition } from '../hooks/useSmoothPosition';
 import { getAllOfficialCameras, mergeCamerasWithPriority } from '../services/CameraLoader';
-import { getUserCamerasAsNodes } from '../services/OverrideService';
+import { getUserCamerasAsNodes, deleteUserCamera, resetOfficialCamera, hasOverride } from '../services/OverrideService';
 import type { CameraNode } from '../types/camera';
 import { CAMERA_CORRECTED_EVENT } from './SnapToMeButton';
 import { USER_CAMERA_ADDED_EVENT } from './AddCameraButton';
+
+// Event for camera deletion
+export const CAMERA_DELETED_EVENT = 'camera-deleted';
 
 export interface MapControls {
     zoomIn: () => void;
@@ -221,7 +224,19 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
             el.title = `👤 USER: ${camera.name}`;
 
             el.onclick = () => {
-                alert(`👤 USER CAMERA\n\n📍 ${camera.name}\n📋 Type: ${camera.type === 'RED_LIGHT_CAM' ? 'Red Light Camera' : 'Speed Camera'}`);
+                const limitText = camera.limit ? `${camera.limit} km/h` : 'No limit';
+                const confirmed = window.confirm(
+                    `👤 USER CAMERA\n\n` +
+                    `📍 ${camera.name}\n` +
+                    `🏎️ Limit: ${limitText}\n` +
+                    `📋 Type: ${camera.type === 'RED_LIGHT_CAM' ? 'Red Light' : 'Speed'}\n\n` +
+                    `🗑️ Click OK to DELETE this camera`
+                );
+                if (confirmed) {
+                    deleteUserCamera(camera.id);
+                    setCameraRefreshTrigger(prev => prev + 1);
+                    window.dispatchEvent(new CustomEvent(CAMERA_DELETED_EVENT));
+                }
             };
 
             const marker = olaMapsRef.current!.addMarker({
@@ -290,11 +305,32 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
             el.innerHTML = camera.type === 'RED_LIGHT_CAM' ? '🚦' : '📷';
 
             const limitText = camera.limit ? `Limit: ${camera.limit} km/h` : 'No speed limit';
-            el.title = `⚠️ OFFICIAL: ${camera.name}\n${limitText}`;
+            const isFixed = hasOverride(camera.id);
+            el.title = `⚠️ OFFICIAL: ${camera.name}\n${limitText}${isFixed ? ' (📍 Fixed)' : ''}`;
 
             // Add click handler for popup
             el.onclick = () => {
-                alert(`⚠️ OFFICIAL CAMERA\n\n📍 ${camera.name}\n🏎️ ${limitText}\n📋 Type: ${camera.type === 'RED_LIGHT_CAM' ? 'Red Light Camera' : 'Speed Camera'}`);
+                if (isFixed) {
+                    const resetConfirmed = window.confirm(
+                        `⚠️ OFFICIAL CAMERA\n\n` +
+                        `📍 ${camera.name}\n` +
+                        `🏎️ ${limitText}\n` +
+                        `📋 Type: ${camera.type === 'RED_LIGHT_CAM' ? 'Red Light' : 'Speed'}\n\n` +
+                        `📍 This camera has been FIXED by you.\n` +
+                        `↩️ Click OK to RESET to original position`
+                    );
+                    if (resetConfirmed) {
+                        resetOfficialCamera(camera.id);
+                        setCameraRefreshTrigger(prev => prev + 1);
+                    }
+                } else {
+                    alert(
+                        `⚠️ OFFICIAL CAMERA\n\n` +
+                        `📍 ${camera.name}\n` +
+                        `🏎️ ${limitText}\n` +
+                        `📋 Type: ${camera.type === 'RED_LIGHT_CAM' ? 'Red Light' : 'Speed'}`
+                    );
+                }
             };
 
             const marker = olaMapsRef.current!.addMarker({

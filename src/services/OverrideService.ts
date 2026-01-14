@@ -95,6 +95,22 @@ export function deleteCorrection(cameraId: string): void {
 }
 
 /**
+ * Reset an official camera to its original position
+ * (Same as deleteCorrection but with clear naming)
+ */
+export function resetOfficialCamera(cameraId: string): void {
+    deleteCorrection(cameraId);
+    console.log(`[OverrideService] Reset camera ${cameraId} to original position`);
+}
+
+/**
+ * Check if an official camera has been overridden
+ */
+export function hasOverride(cameraId: string): boolean {
+    return getOverride(cameraId) !== null;
+}
+
+/**
  * Get count of overrides
  */
 export function getOverrideCount(): number {
@@ -315,6 +331,8 @@ export default {
     saveCorrection,
     getOverride,
     deleteCorrection,
+    resetOfficialCamera,
+    hasOverride,
     getOverrideCount,
     // User cameras (additions)
     addNewCamera,
