@@ -99,40 +99,45 @@ body {
   font-size: 48px;
   font-weight: 700;
   line-height: 1;
-  color: var(--text-primary);
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .speed-unit {
-  font-size: 14px;
-  color: var(--text-secondary);
+  font-size: 16px;
+  color: #e2e8f0;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  font-weight: 600;
 }
 
 .speed-limit-badge {
-  padding: 8px 16px;
-  border-radius: 20px;
-  background: rgba(30, 41, 59, 0.9);
-  backdrop-filter: blur(10px);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 18px;
+  border-radius: 24px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  border: 2px solid var(--color-success);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .road-name {
-  font-size: 12px;
-  color: var(--text-primary);
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: 500;
   text-align: center;
-  max-width: 240px;
+  max-width: 260px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 8px 16px;
-  background: rgba(30, 41, 59, 0.9);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 18px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* Mobile responsive adjustments */
@@ -369,15 +374,16 @@ body {
   z-index: 1000;
 }
 
-/* GPS accuracy indicator */
+/* GPS accuracy indicator - positioned bottom-left, away from search */
 .accuracy-dot {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   position: fixed;
-  top: 24px;
-  left: 80px;
-  z-index: 1000;
+  bottom: 24px;
+  left: 24px;
+  z-index: 999;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .accuracy-dot.good {

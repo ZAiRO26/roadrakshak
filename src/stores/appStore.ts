@@ -99,7 +99,7 @@ export const useAppStore = create<AppState>()(
             setWakeLockActive: (active) => set({ wakeLockActive: active }),
         }),
         {
-            name: 'roadrakshak-settings',
+            name: 'zairo-maps-settings',
             partialize: (state) => ({
                 theme: state.theme,
                 isMuted: state.isMuted,

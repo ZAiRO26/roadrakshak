@@ -7,11 +7,11 @@ export function LoadingScreen() {
 
     return (
         <div className="loading-overlay">
-            <div style={{ fontSize: '48px' }}>🛡️</div>
+            <div style={{ fontSize: '48px' }}>🗺️</div>
             <div className="loading-spinner" />
-            <div style={{ fontSize: '24px', fontWeight: 'bold' }}>RoadRakshak</div>
+            <div style={{ fontSize: '24px', fontWeight: 'bold' }}>Zairo Maps</div>
             <div style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>
-                Initializing GPS & Map...
+                Navigate Smarter
             </div>
         </div>
     );
