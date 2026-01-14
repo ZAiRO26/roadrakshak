@@ -5,8 +5,10 @@ import { useGpsStore } from '../stores/gpsStore';
 import { useAppStore } from '../stores/appStore';
 import { useSmoothPosition } from '../hooks/useSmoothPosition';
 import { getAllOfficialCameras, mergeCamerasWithPriority } from '../services/CameraLoader';
+import { getUserCamerasAsNodes } from '../services/OverrideService';
 import type { CameraNode } from '../types/camera';
 import { CAMERA_CORRECTED_EVENT } from './SnapToMeButton';
+import { USER_CAMERA_ADDED_EVENT } from './AddCameraButton';
 
 export interface MapControls {
     zoomIn: () => void;
@@ -35,6 +37,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
     const userMarkerRef = useRef<any>(null);
     const cameraMarkersRef = useRef<any[]>([]);
     const officialCameraMarkersRef = useRef<any[]>([]);
+    const userCameraMarkersRef = useRef<any[]>([]);
     const policeMarkersRef = useRef<any[]>([]);
     const initializingRef = useRef(false);
 
@@ -188,17 +191,49 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
         }
     }, [rawLat, rawLng, isMapLoaded, updateUserMarker]);
 
-    // Listen for camera correction events to refresh markers instantly
+    // Listen for camera events to refresh markers instantly
     useEffect(() => {
-        const handleCameraCorrection = () => {
+        const handleRefresh = () => {
             setCameraRefreshTrigger(prev => prev + 1);
         };
 
-        window.addEventListener(CAMERA_CORRECTED_EVENT, handleCameraCorrection);
+        window.addEventListener(CAMERA_CORRECTED_EVENT, handleRefresh);
+        window.addEventListener(USER_CAMERA_ADDED_EVENT, handleRefresh);
         return () => {
-            window.removeEventListener(CAMERA_CORRECTED_EVENT, handleCameraCorrection);
+            window.removeEventListener(CAMERA_CORRECTED_EVENT, handleRefresh);
+            window.removeEventListener(USER_CAMERA_ADDED_EVENT, handleRefresh);
         };
     }, []);
+
+    // User Camera markers (purple - user added)
+    useEffect(() => {
+        if (!mapRef.current || !isMapLoaded || !olaMapsRef.current) return;
+
+        userCameraMarkersRef.current.forEach(marker => marker.remove());
+        userCameraMarkersRef.current = [];
+
+        const userCameras = getUserCamerasAsNodes();
+
+        userCameras.forEach(camera => {
+            const el = document.createElement('div');
+            el.className = 'camera-marker camera-user';
+            el.innerHTML = camera.type === 'RED_LIGHT_CAM' ? '🚦' : '📷';
+            el.title = `👤 USER: ${camera.name}`;
+
+            el.onclick = () => {
+                alert(`👤 USER CAMERA\n\n📍 ${camera.name}\n📋 Type: ${camera.type === 'RED_LIGHT_CAM' ? 'Red Light Camera' : 'Speed Camera'}`);
+            };
+
+            const marker = olaMapsRef.current!.addMarker({
+                element: el,
+                anchor: 'center',
+            })
+                .setLngLat([camera.lng, camera.lat])
+                .addTo(mapRef.current);
+
+            userCameraMarkersRef.current.push(marker);
+        });
+    }, [isMapLoaded, cameraRefreshTrigger]);
 
     // OSM Camera markers (blue - lower priority)
     useEffect(() => {
@@ -407,6 +442,12 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
         }
         .camera-official.red-light {
           filter: drop-shadow(0 3px 10px rgba(251, 191, 36, 0.9));
+        }
+        /* User cameras - purple highlight */
+        .camera-user {
+          filter: drop-shadow(0 3px 10px rgba(139, 92, 246, 0.9)) brightness(1.1);
+          z-index: 50;
+          font-size: 26px;
         }
       `}</style>
         </>

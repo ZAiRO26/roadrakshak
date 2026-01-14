@@ -11,6 +11,7 @@ import { AccuracyIndicator } from './components/AccuracyIndicator';
 import { NavigationMode } from './components/NavigationMode';
 import { MapControls } from './components/MapControls';
 import { SnapToMeButton } from './components/SnapToMeButton';
+import { AddCameraButton } from './components/AddCameraButton';
 import { useGPS } from './hooks/useGPS';
 import { useWakeLock } from './hooks/useWakeLock';
 import { useSpeedLimit } from './hooks/useSpeedLimit';
@@ -167,8 +168,11 @@ function App() {
       {/* Alert banner */}
       <AlertBanner />
 
-      {/* Snap to Me - data tuner button (only visible near cameras) */}
+      {/* Snap Fix - data tuner button (only visible near cameras) */}
       <SnapToMeButton />
+
+      {/* Add Camera FAB - always visible */}
+      <AddCameraButton />
 
       {/* GPS accuracy indicator */}
       <div className="theme-toggle">
