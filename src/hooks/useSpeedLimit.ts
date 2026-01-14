@@ -2,11 +2,14 @@ import { useEffect, useRef, useCallback } from 'react';
 import { useGpsStore } from '../stores/gpsStore';
 import { useAppStore } from '../stores/appStore';
 import { calculateDistance } from './useGPS';
+import { shouldAcceptSpeedLimit, type ValidationParams } from '../services/LogicEngine';
 
 // Cache for speed limit to avoid excessive API calls
 interface SpeedLimitCache {
     limit: number;
     roadName: string;
+    roadType?: string;
+    roadHeading?: number;
     lat: number;
     lng: number;
     timestamp: number;
@@ -18,6 +21,7 @@ const MIN_DISTANCE_THRESHOLD = 50; // 50 meters before new API call
 export function useSpeedLimit() {
     const cacheRef = useRef<SpeedLimitCache | null>(null);
     const lastCheckPositionRef = useRef<{ lat: number; lng: number } | null>(null);
+    const lastValidLimitRef = useRef<{ limit: number; roadName: string } | null>(null);
 
     const { latitude, longitude } = useGpsStore();
     const { currentSpeedLimit, currentRoadName, setSpeedLimit } = useAppStore();
@@ -35,19 +39,54 @@ export function useSpeedLimit() {
         }
 
         try {
-            // TODO: Replace with actual Ola Maps API call when API key is available
-            // For now, return mock data based on location patterns
-            const mockLimit = getMockSpeedLimit(lat, lng);
+            // Fetch speed limit from OpenStreetMap via Nominatim reverse geocoding
+            const osmData = await fetchOSMSpeedLimit(lat, lng);
 
+            // Get current car state for validation
+            const carHeading = useGpsStore.getState().heading;
+            const carSpeed = useGpsStore.getState().speed;
+
+            // Validate with LogicEngine before accepting
+            const validationParams: ValidationParams = {
+                carHeading,
+                carSpeed,
+                roadHeading: osmData.roadHeading,
+                roadType: osmData.roadType,
+                roadName: osmData.roadName,
+            };
+
+            const validation = shouldAcceptSpeedLimit(validationParams);
+
+            if (!validation.isValid) {
+                console.log('[useSpeedLimit] Rejected limit, using fallback:', validation.reason);
+
+                // Use last valid limit as fallback
+                if (lastValidLimitRef.current) {
+                    return {
+                        ...lastValidLimitRef.current,
+                        lat,
+                        lng,
+                        timestamp: Date.now(),
+                    };
+                }
+
+                // No fallback available - use a safe default
+                return null;
+            }
+
+            // Validation passed - accept this speed limit
             const result: SpeedLimitCache = {
-                limit: mockLimit.limit,
-                roadName: mockLimit.roadName,
+                limit: osmData.limit,
+                roadName: osmData.roadName,
+                roadType: osmData.roadType,
+                roadHeading: osmData.roadHeading,
                 lat,
                 lng,
                 timestamp: Date.now(),
             };
 
             cacheRef.current = result;
+            lastValidLimitRef.current = { limit: result.limit, roadName: result.roadName };
             setSpeedLimit(result.limit, result.roadName);
 
             return result;
@@ -92,24 +131,133 @@ export function useSpeedLimit() {
     };
 }
 
-// Mock speed limit function - will be replaced with actual Ola API
-function getMockSpeedLimit(lat: number, lng: number): { limit: number; roadName: string } {
+/**
+ * Fetch speed limit and road info from OpenStreetMap
+ */
+async function fetchOSMSpeedLimit(lat: number, lng: number): Promise<{
+    limit: number;
+    roadName: string;
+    roadType?: string;
+    roadHeading?: number;
+}> {
+    try {
+        // Use Nominatim for reverse geocoding
+        const response = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&zoom=18&addressdetails=1`,
+            {
+                headers: {
+                    'User-Agent': 'ZairoMaps/1.0 (contact@example.com)',
+                },
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(`Nominatim error: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Extract road info
+        const roadName = data.address?.road ||
+            data.address?.highway ||
+            data.display_name?.split(',')[0] ||
+            'Unknown Road';
+
+        const roadType = data.type || data.class || undefined;
+
+        // Determine speed limit based on road type and name
+        const limit = inferSpeedLimit(roadName, roadType);
+
+        return {
+            limit,
+            roadName,
+            roadType,
+            roadHeading: undefined, // Nominatim doesn't provide heading
+        };
+    } catch (error) {
+        console.error('OSM fetch failed:', error);
+        // Return fallback based on mock logic
+        return getMockSpeedLimit(lat, lng);
+    }
+}
+
+/**
+ * Infer speed limit from road characteristics
+ */
+function inferSpeedLimit(roadName: string, roadType: string | undefined): number {
+    const nameLower = roadName.toLowerCase();
+    const typeLower = (roadType || '').toLowerCase();
+
+    // Expressways / National Highways
+    if (nameLower.includes('expressway') ||
+        nameLower.includes('nh-') ||
+        nameLower.includes('national highway') ||
+        typeLower.includes('motorway')) {
+        return 100;
+    }
+
+    // State Highways
+    if (nameLower.includes('sh-') ||
+        nameLower.includes('state highway') ||
+        typeLower.includes('trunk')) {
+        return 80;
+    }
+
+    // Main roads / Ring roads
+    if (nameLower.includes('ring road') ||
+        nameLower.includes('outer ring') ||
+        nameLower.includes('inner ring') ||
+        typeLower.includes('primary')) {
+        return 60;
+    }
+
+    // Major city roads
+    if (nameLower.includes('marg') ||
+        nameLower.includes('road') ||
+        typeLower.includes('secondary') ||
+        typeLower.includes('tertiary')) {
+        return 50;
+    }
+
+    // Service roads
+    if (nameLower.includes('service') ||
+        typeLower.includes('service')) {
+        return 30;
+    }
+
+    // Residential
+    if (typeLower.includes('residential') ||
+        typeLower.includes('living_street')) {
+        return 30;
+    }
+
+    // Default city speed
+    return 40;
+}
+
+/**
+ * Mock speed limit function - fallback when API fails
+ */
+function getMockSpeedLimit(lat: number, lng: number): {
+    limit: number;
+    roadName: string;
+    roadType?: string;
+    roadHeading?: number;
+} {
     // Delhi coordinates range approximately: 28.4-28.9 lat, 76.8-77.4 lng
     const isInDelhi = lat >= 28.4 && lat <= 28.9 && lng >= 76.8 && lng <= 77.4;
 
     if (isInDelhi) {
-        // Simulate different road types based on coordinate patterns
         const roadIndex = Math.floor((lat * 100 + lng * 100) % 5);
         const roads = [
-            { limit: 80, roadName: 'NH-48 (Delhi-Gurugram Expressway)' },
-            { limit: 60, roadName: 'Ring Road' },
-            { limit: 50, roadName: 'Outer Ring Road' },
-            { limit: 40, roadName: 'Mathura Road' },
-            { limit: 30, roadName: 'Local Road' },
+            { limit: 80, roadName: 'NH-48 (Delhi-Gurugram Expressway)', roadType: 'trunk' },
+            { limit: 60, roadName: 'Ring Road', roadType: 'primary' },
+            { limit: 50, roadName: 'Outer Ring Road', roadType: 'secondary' },
+            { limit: 40, roadName: 'Mathura Road', roadType: 'tertiary' },
+            { limit: 30, roadName: 'Local Road', roadType: 'residential' },
         ];
         return roads[roadIndex];
     }
 
-    // Default for other areas
-    return { limit: 50, roadName: 'State Highway' };
+    return { limit: 50, roadName: 'State Highway', roadType: 'secondary' };
 }

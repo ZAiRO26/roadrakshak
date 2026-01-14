@@ -2,6 +2,7 @@ import { useEffect, useCallback, useRef } from 'react';
 import { useGpsStore } from '../stores/gpsStore';
 import { useAppStore } from '../stores/appStore';
 import { calculateDistance } from './useGPS';
+import { isCameraFacingUser } from '../services/LogicEngine';
 
 const CAMERA_ALERT_DISTANCE = 500; // meters
 const POLICE_ALERT_DISTANCE = 1000; // meters
@@ -115,10 +116,16 @@ export function useAlerts() {
                 return;
             }
 
-            // Check cameras
+            // Check cameras (with direction filter)
             for (const camera of cameras) {
                 const distance = calculateDistance(latitude, longitude, camera.lat, camera.lng);
                 if (distance < CAMERA_ALERT_DISTANCE) {
+                    // Direction filter: Skip if camera faces opposite direction
+                    if (!isCameraFacingUser(useGpsStore.getState().heading, camera.direction)) {
+                        console.log(`[useAlerts] Skipping camera ${camera.id} - facing opposite direction`);
+                        continue;
+                    }
+
                     const alertId = `camera-${camera.id}`;
                     if (lastAlertRef.current !== alertId) {
                         const cameraMessage = `Speed camera ahead in ${Math.round(distance)} meters`;

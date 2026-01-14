@@ -3,6 +3,7 @@ import { OlaMaps } from 'olamaps-web-sdk';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useGpsStore } from '../stores/gpsStore';
 import { useAppStore } from '../stores/appStore';
+import { useSmoothPosition } from '../hooks/useSmoothPosition';
 
 export interface MapControls {
     zoomIn: () => void;
@@ -34,7 +35,13 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
     const initializingRef = useRef(false);
 
     const [isMapLoaded, setIsMapLoaded] = useState(false);
-    const { latitude, longitude, heading } = useGpsStore();
+
+    // Use smooth position for animated marker (fixes jumping dot)
+    const { latitude, longitude, heading } = useSmoothPosition();
+
+    // Raw GPS for map centering (immediate response needed)
+    const { latitude: rawLat, longitude: rawLng } = useGpsStore();
+
     const { theme, cameras, policeReports, setLoading } = useAppStore();
 
     // Initialize Ola Maps ONCE using SDK v2 async pattern
@@ -166,16 +173,16 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
         }
     }, [latitude, longitude, heading, isMapLoaded]);
 
-    // Follow user position
+    // Follow user position (use raw GPS for centering, smooth for marker)
     useEffect(() => {
-        if (mapRef.current && latitude !== null && longitude !== null && isMapLoaded) {
+        if (mapRef.current && rawLat !== null && rawLng !== null && isMapLoaded) {
             updateUserMarker();
             mapRef.current.easeTo({
-                center: [longitude, latitude],
+                center: [rawLng, rawLat],
                 duration: 500,
             });
         }
-    }, [latitude, longitude, isMapLoaded, updateUserMarker]);
+    }, [rawLat, rawLng, isMapLoaded, updateUserMarker]);
 
     // Camera markers
     useEffect(() => {
