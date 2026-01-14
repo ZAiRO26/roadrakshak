@@ -5,9 +5,13 @@ import { calculateDistance } from './useGPS';
 import { isCameraFacingUser } from '../services/LogicEngine';
 import { getNearbyCameras } from '../services/CameraLoader';
 
-const CAMERA_ALERT_DISTANCE = 500; // meters
+const CAMERA_ALERT_DISTANCE = 500; // meters - for OSM cameras
 const POLICE_ALERT_DISTANCE = 1000; // meters
 const CHECK_INTERVAL = 1000; // 1 second
+
+// WIDE NET ALERTING - compensates for landmark-level data (100-300m inaccuracy)
+const OFFICIAL_YELLOW_DISTANCE = 800; // meters - "Camera reported in this area"
+const OFFICIAL_RED_DISTANCE = 300; // meters - "Check Speed Now"
 
 export function useAlerts() {
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -117,23 +121,44 @@ export function useAlerts() {
                 return;
             }
 
-            // PRIORITY 1: Check OFFICIAL cameras first (verified data)
+            // PRIORITY 1: Check OFFICIAL cameras with WIDE NET ALERTING
+            // (compensates for landmark-level data accuracy)
             const officialCameras = getNearbyCameras(latitude, longitude, 2, ['OFFICIAL']);
             for (const camera of officialCameras) {
                 const distance = calculateDistance(latitude, longitude, camera.lat, camera.lng);
-                if (distance < CAMERA_ALERT_DISTANCE) {
-                    const alertId = `official-${camera.id}`;
+                const cameraType = camera.type === 'RED_LIGHT_CAM' ? 'Red light camera' : 'Speed camera';
+                const limitInfo = camera.limit ? ` - Limit: ${camera.limit} km/h` : '';
+
+                // 🔴 RED ALERT: < 300m - "Check Speed Now"
+                if (distance < OFFICIAL_RED_DISTANCE) {
+                    const alertId = `official-red-${camera.id}`;
                     if (lastAlertRef.current !== alertId) {
-                        const limitInfo = camera.limit ? ` - Limit: ${camera.limit} km/h` : '';
-                        const cameraType = camera.type === 'RED_LIGHT_CAM' ? 'Red light camera' : 'Speed camera';
-                        const cameraMessage = `⚠️ OFFICIAL ${cameraType} ahead in ${Math.round(distance)} meters${limitInfo}`;
+                        const cameraMessage = `🔴 CHECK SPEED NOW! ${cameraType} ahead${limitInfo}`;
                         setActiveAlert({
                             id: alertId,
                             type: 'camera',
                             message: cameraMessage,
                             distance: Math.round(distance),
                         });
-                        playAlert('camera', `Warning! Official ${cameraType} ahead in ${Math.round(distance)} meters${camera.limit ? `. Speed limit ${camera.limit} kilometers per hour` : ''}`);
+                        playAlert('camera', `Check speed now! ${camera.limit ? `Speed limit ${camera.limit} kilometers per hour` : 'Camera ahead'}`);
+                        lastAlertRef.current = alertId;
+                        cooldownRef.current = now;
+                    }
+                    return;
+                }
+
+                // 🟡 YELLOW ALERT: < 800m - "Camera reported in this area"
+                if (distance < OFFICIAL_YELLOW_DISTANCE) {
+                    const alertId = `official-yellow-${camera.id}`;
+                    if (lastAlertRef.current !== alertId) {
+                        const cameraMessage = `🟡 ${cameraType} reported in this area${limitInfo}`;
+                        setActiveAlert({
+                            id: alertId,
+                            type: 'camera',
+                            message: cameraMessage,
+                            distance: Math.round(distance),
+                        });
+                        playAlert('camera', `Camera reported in this area${camera.limit ? `. Speed limit ${camera.limit} kilometers per hour` : ''}`);
                         lastAlertRef.current = alertId;
                         cooldownRef.current = now;
                     }
