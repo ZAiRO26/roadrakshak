@@ -1,6 +1,7 @@
 /**
  * useSmoothPosition.ts - Smooth GPS position interpolation for marker animation
  * Prevents "jumping dot" by animating between GPS updates
+ * Includes throttling to prevent excessive re-renders
  */
 
 import { useState, useEffect, useRef, useCallback } from 'react';
@@ -15,9 +16,11 @@ interface SmoothPosition {
 }
 
 const ANIMATION_DURATION = 500; // ms - time to glide from old to new position
+const MIN_POSITION_CHANGE = 0.00001; // ~1 meter - ignore smaller changes (reduces noise)
+const UPDATE_THROTTLE_MS = 100; // Throttle updates to max 10 per second
 
 export function useSmoothPosition(): SmoothPosition {
-    const { latitude, longitude, heading, speed } = useGpsStore();
+    const { latitude, longitude, heading, speed, isStationary } = useGpsStore();
 
     // Smooth animated position
     const [smoothLat, setSmoothLat] = useState<number | null>(null);
@@ -30,6 +33,7 @@ export function useSmoothPosition(): SmoothPosition {
     const targetPositionRef = useRef<{ lat: number; lng: number } | null>(null);
     const animationFrameRef = useRef<number | null>(null);
     const animationStartRef = useRef<number>(0);
+    const lastUpdateRef = useRef<number>(0);
 
     // Last reliable heading (locked when speed < 5 km/h)
     const lastReliableHeadingRef = useRef<number | null>(null);
@@ -66,9 +70,17 @@ export function useSmoothPosition(): SmoothPosition {
         }
     }, []);
 
-    // Handle new GPS position
+    // Handle new GPS position with throttling
     useEffect(() => {
         if (latitude === null || longitude === null) return;
+
+        const now = Date.now();
+
+        // Throttle updates to prevent performance issues
+        if (now - lastUpdateRef.current < UPDATE_THROTTLE_MS) {
+            return;
+        }
+        lastUpdateRef.current = now;
 
         const newTarget = { lat: latitude, lng: longitude };
 
@@ -78,6 +90,15 @@ export function useSmoothPosition(): SmoothPosition {
             targetPositionRef.current = newTarget;
             setSmoothLat(latitude);
             setSmoothLng(longitude);
+            return;
+        }
+
+        // Check if position changed significantly
+        const latDiff = Math.abs(latitude - prevPositionRef.current.lat);
+        const lngDiff = Math.abs(longitude - prevPositionRef.current.lng);
+
+        // If stationary or change is too small, don't update (reduces jitter)
+        if (isStationary || (latDiff < MIN_POSITION_CHANGE && lngDiff < MIN_POSITION_CHANGE)) {
             return;
         }
 
@@ -101,7 +122,7 @@ export function useSmoothPosition(): SmoothPosition {
                 cancelAnimationFrame(animationFrameRef.current);
             }
         };
-    }, [latitude, longitude, animatePosition, smoothLat, smoothLng]);
+    }, [latitude, longitude, animatePosition, smoothLat, smoothLng, isStationary]);
 
     // Handle heading with bearing lock at low speeds
     useEffect(() => {
