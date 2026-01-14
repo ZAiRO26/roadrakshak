@@ -64,10 +64,9 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
         });
         olaMapsRef.current = olaMaps;
 
-        // Use Ola Maps built-in dark style
-        // Available styles: bolt-dark, default-dark-standard, eclipse-dark-lite, etc.
-        // User's custom "olamap dark" style is not accessible via public API
-        const styleUrl = `https://api.olamaps.io/tiles/vector/v1/styles/bolt-dark/style.json`;
+        // Use Ola Maps built-in dark style with labels
+        // default-dark-standard includes POI labels unlike bolt-dark
+        const styleUrl = `https://api.olamaps.io/tiles/vector/v1/styles/default-dark-standard/style.json`;
 
         // Async initialization as per SDK v2 docs
         const initMap = async () => {
@@ -131,8 +130,8 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
     // Handle theme change separately (don't reinitialize map)
     useEffect(() => {
         if (!mapRef.current || !isMapLoaded) return;
-
-        const styleName = theme === 'dark' ? 'bolt-dark' : 'default-light-standard';
+        // Use default-dark-standard for dark theme (includes labels)
+        const styleName = theme === 'dark' ? 'default-dark-standard' : 'default-light-standard';
         const styleUrl = `https://api.olamaps.io/tiles/vector/v1/styles/${styleName}/style.json?api_key=${API_KEY}`;
 
         try {
