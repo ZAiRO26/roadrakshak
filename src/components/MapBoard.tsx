@@ -4,8 +4,16 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { useGpsStore } from '../stores/gpsStore';
 import { useAppStore } from '../stores/appStore';
 
+export interface MapControls {
+    zoomIn: () => void;
+    zoomOut: () => void;
+    recenterToUser: () => void;
+    flyTo: (lat: number, lng: number, zoom?: number) => void;
+}
+
 interface MapBoardProps {
     onMapReady?: (map: any) => void;
+    onMapControlsReady?: (controls: MapControls) => void;
     routeGeometry?: GeoJSON.LineString | null;
 }
 
@@ -16,7 +24,7 @@ const DEFAULT_ZOOM = 12;
 // Get API key once at module level
 const API_KEY = import.meta.env.VITE_OLA_API_KEY || '';
 
-export function MapBoard({ onMapReady, routeGeometry }: MapBoardProps) {
+export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapBoardProps) {
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const mapRef = useRef<any>(null);
     const olaMapsRef = useRef<OlaMaps | null>(null);
@@ -71,6 +79,22 @@ export function MapBoard({ onMapReady, routeGeometry }: MapBoardProps) {
                     setIsMapLoaded(true);
                     setLoading(false);
                     onMapReady?.(map);
+
+                    // Expose map control methods
+                    onMapControlsReady?.({
+                        zoomIn: () => map.zoomIn(),
+                        zoomOut: () => map.zoomOut(),
+                        recenterToUser: () => {
+                            const lat = useGpsStore.getState().latitude;
+                            const lng = useGpsStore.getState().longitude;
+                            if (lat !== null && lng !== null) {
+                                map.flyTo({ center: [lng, lat], zoom: 15, duration: 1000 });
+                            }
+                        },
+                        flyTo: (lat: number, lng: number, zoom?: number) => {
+                            map.flyTo({ center: [lng, lat], zoom: zoom || 14, duration: 1000 });
+                        },
+                    });
                 });
 
                 map.on('error', (e: any) => {

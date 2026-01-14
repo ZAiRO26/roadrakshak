@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './index.css';
 import { MapBoard } from './components/MapBoard';
+import type { MapControls as MapControlMethods } from './components/MapBoard';
 import { Speedometer } from './components/Speedometer';
 import { Controls } from './components/Controls';
 import { ReportButton } from './components/ReportButton';
@@ -8,6 +9,8 @@ import { AlertBanner } from './components/AlertBanner';
 import { LoadingScreen } from './components/LoadingScreen';
 import { AccuracyIndicator } from './components/AccuracyIndicator';
 import { NavigationPanel } from './components/NavigationPanel';
+import { SearchBar } from './components/SearchBar';
+import { MapControls } from './components/MapControls';
 import { useGPS } from './hooks/useGPS';
 import { useWakeLock } from './hooks/useWakeLock';
 import { useSpeedLimit } from './hooks/useSpeedLimit';
@@ -20,6 +23,8 @@ function App() {
   const { theme, setCameras, setPoliceReports, setLoading } = useAppStore();
   const [routeGeometry, setRouteGeometry] = useState<GeoJSON.LineString | null>(null);
   const [showGpsWarning, setShowGpsWarning] = useState(false);
+  const [showNavPanel, setShowNavPanel] = useState(false);
+  const [mapControlMethods, setMapControlMethods] = useState<MapControlMethods | null>(null);
 
   // Initialize GPS tracking
   const { latitude, longitude, error: gpsError } = useGPS();
@@ -102,8 +107,27 @@ function App() {
       {/* Loading screen */}
       <LoadingScreen />
 
+      {/* Search bar at top */}
+      <SearchBar
+        onLocationSelect={(loc) => mapControlMethods?.flyTo(loc.lat, loc.lng)}
+        onDirectionsClick={() => setShowNavPanel(true)}
+      />
+
+      {/* Map controls - zoom +/- and recenter */}
+      {mapControlMethods && (
+        <MapControls
+          onZoomIn={() => mapControlMethods.zoomIn()}
+          onZoomOut={() => mapControlMethods.zoomOut()}
+          onRecenter={() => mapControlMethods.recenterToUser()}
+        />
+      )}
+
       {/* Main map with route */}
-      <MapBoard onMapReady={handleMapReady} routeGeometry={routeGeometry} />
+      <MapBoard
+        onMapReady={handleMapReady}
+        onMapControlsReady={setMapControlMethods}
+        routeGeometry={routeGeometry}
+      />
 
       {/* GPS Warning Banner (non-blocking) */}
       {showGpsWarning && gpsError && (
@@ -145,8 +169,13 @@ function App() {
       {/* Alert banner */}
       <AlertBanner />
 
-      {/* Navigation panel */}
-      <NavigationPanel onRouteCalculated={handleRouteCalculated} />
+      {/* Navigation panel - shown when directions button clicked */}
+      {showNavPanel && (
+        <NavigationPanel onRouteCalculated={(geo) => {
+          handleRouteCalculated(geo);
+          if (geo) setShowNavPanel(false);
+        }} />
+      )}
 
       {/* GPS accuracy indicator */}
       <div className="theme-toggle">

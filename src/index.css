@@ -27,7 +27,9 @@
   box-sizing: border-box;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -87,6 +89,7 @@ body {
   from {
     box-shadow: 0 8px 32px rgba(239, 68, 68, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
+
   to {
     box-shadow: 0 8px 48px rgba(239, 68, 68, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
@@ -216,6 +219,7 @@ body {
   from {
     transform: translateY(-100%);
   }
+
   to {
     transform: translateY(0);
   }
@@ -229,6 +233,45 @@ body {
 .alert-banner.speeding {
   background: linear-gradient(135deg, #ef4444, #dc2626);
   color: white;
+  animation: slideDown 0.3s ease, pulseRed 0.5s infinite alternate;
+}
+
+/* Red overlay flash for speeding */
+.alert-banner.speeding::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(239, 68, 68, 0.15);
+  pointer-events: none;
+  z-index: -1;
+  animation: redFlash 1s infinite;
+}
+
+@keyframes pulseRed {
+  from {
+    transform: scale(1);
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+  }
+
+  to {
+    transform: scale(1.02);
+    box-shadow: 0 4px 30px rgba(239, 68, 68, 0.6);
+  }
+}
+
+@keyframes redFlash {
+
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+
+  50% {
+    opacity: 0.25;
+  }
 }
 
 .alert-banner.police {
