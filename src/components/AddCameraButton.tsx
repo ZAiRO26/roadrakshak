@@ -1,11 +1,12 @@
 /**
- * AddCameraButton.tsx - FAB for adding new cameras with speed limit
- * Always visible, prompts for speed limit, adds a purple user camera
+ * AddCameraButton.tsx - FAB for adding new cameras with auto-sync speed limit
+ * Auto-fetches road speed limit from OSM API, allows user to edit
  */
 
 import { useState, useCallback } from 'react';
 import { useGpsStore } from '../stores/gpsStore';
 import { addNewCamera, getUserCameraCount } from '../services/OverrideService';
+import { fetchRoadLimit } from '../hooks/useSpeedLimit';
 
 // Event to trigger map marker refresh
 export const USER_CAMERA_ADDED_EVENT = 'user-camera-added';
@@ -13,20 +14,43 @@ export const USER_CAMERA_ADDED_EVENT = 'user-camera-added';
 export function AddCameraButton() {
     const { latitude, longitude } = useGpsStore();
     const [isAdding, setIsAdding] = useState(false);
+    const [isFetching, setIsFetching] = useState(false);
     const [showToast, setShowToast] = useState(false);
     const [toastMessage, setToastMessage] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [speedLimit, setSpeedLimit] = useState('60');
     const [cameraType, setCameraType] = useState<'SPEED_CAM' | 'RED_LIGHT_CAM'>('SPEED_CAM');
+    const [autoFetched, setAutoFetched] = useState(false);
 
-    const handleOpenModal = useCallback(() => {
+    const handleOpenModal = useCallback(async () => {
         if (latitude === null || longitude === null) {
             alert('GPS not available. Please enable location services.');
             return;
         }
+
+        // Show modal immediately with loading state
         setShowModal(true);
-        setSpeedLimit('60');
         setCameraType('SPEED_CAM');
+        setAutoFetched(false);
+        setIsFetching(true);
+        setSpeedLimit('...');
+
+        try {
+            // Auto-fetch road speed limit from API
+            const limit = await fetchRoadLimit(latitude, longitude);
+            if (limit !== null) {
+                setSpeedLimit(String(limit));
+                setAutoFetched(true);
+                console.log(`[AddCameraButton] Auto-filled speed limit: ${limit}`);
+            } else {
+                setSpeedLimit('60'); // Default fallback
+            }
+        } catch (error) {
+            console.error('[AddCameraButton] Failed to fetch speed limit:', error);
+            setSpeedLimit('60');
+        } finally {
+            setIsFetching(false);
+        }
     }, [latitude, longitude]);
 
     const handleAddCamera = useCallback(() => {
@@ -92,22 +116,33 @@ export function AddCameraButton() {
                         {/* Speed Limit Input (only for speed cameras) */}
                         {cameraType === 'SPEED_CAM' && (
                             <div className="speed-input-group">
-                                <label>Speed Limit (km/h)</label>
+                                <label>
+                                    Speed Limit (km/h)
+                                    {isFetching && <span className="fetching"> ⏳ Fetching...</span>}
+                                    {autoFetched && !isFetching && <span className="auto-filled"> ✓ Auto-filled</span>}
+                                </label>
                                 <input
                                     type="number"
                                     value={speedLimit}
-                                    onChange={e => setSpeedLimit(e.target.value)}
+                                    onChange={e => {
+                                        setSpeedLimit(e.target.value);
+                                        setAutoFetched(false);
+                                    }}
                                     placeholder="60"
                                     min="20"
                                     max="120"
-                                    autoFocus
+                                    disabled={isFetching}
                                 />
                                 <div className="quick-limits">
                                     {[40, 50, 60, 80, 100].map(limit => (
                                         <button
                                             key={limit}
                                             className={`quick-btn ${speedLimit === String(limit) ? 'active' : ''}`}
-                                            onClick={() => setSpeedLimit(String(limit))}
+                                            onClick={() => {
+                                                setSpeedLimit(String(limit));
+                                                setAutoFetched(false);
+                                            }}
+                                            disabled={isFetching}
                                         >
                                             {limit}
                                         </button>
@@ -121,7 +156,11 @@ export function AddCameraButton() {
                             <button className="cancel-btn" onClick={() => setShowModal(false)}>
                                 Cancel
                             </button>
-                            <button className="save-btn" onClick={handleAddCamera}>
+                            <button
+                                className="save-btn"
+                                onClick={handleAddCamera}
+                                disabled={isFetching}
+                            >
                                 📍 Add Camera
                             </button>
                         </div>
@@ -257,6 +296,16 @@ export function AddCameraButton() {
                     margin-bottom: 8px;
                 }
 
+                .speed-input-group .fetching {
+                    color: #f59e0b;
+                    font-size: 12px;
+                }
+
+                .speed-input-group .auto-filled {
+                    color: #10b981;
+                    font-size: 12px;
+                }
+
                 .speed-input-group input {
                     width: 100%;
                     padding: 14px;
@@ -272,6 +321,10 @@ export function AddCameraButton() {
 
                 .speed-input-group input:focus {
                     border-color: #8b5cf6;
+                }
+
+                .speed-input-group input:disabled {
+                    opacity: 0.5;
                 }
 
                 /* Quick Limits */
@@ -294,7 +347,7 @@ export function AddCameraButton() {
                     transition: all 0.15s;
                 }
 
-                .quick-btn:hover {
+                .quick-btn:hover:not(:disabled) {
                     background: rgba(139, 92, 246, 0.2);
                     border-color: #8b5cf6;
                 }
@@ -303,6 +356,11 @@ export function AddCameraButton() {
                     background: #8b5cf6;
                     border-color: #8b5cf6;
                     color: white;
+                }
+
+                .quick-btn:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
                 }
 
                 /* Action Buttons */
@@ -332,7 +390,12 @@ export function AddCameraButton() {
                     color: white;
                 }
 
-                .cancel-btn:hover, .save-btn:hover {
+                .save-btn:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+
+                .cancel-btn:hover, .save-btn:hover:not(:disabled) {
                     transform: scale(1.02);
                 }
 

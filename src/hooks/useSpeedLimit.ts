@@ -261,3 +261,19 @@ function getMockSpeedLimit(lat: number, lng: number): {
 
     return { limit: 50, roadName: 'State Highway', roadType: 'secondary' };
 }
+
+/**
+ * Fetch road speed limit for a specific location
+ * Used for auto-filling speed limit when adding new cameras
+ * @returns The speed limit in km/h or null if unavailable
+ */
+export async function fetchRoadLimit(lat: number, lng: number): Promise<number | null> {
+    try {
+        const result = await fetchOSMSpeedLimit(lat, lng);
+        console.log(`[fetchRoadLimit] Got speed limit ${result.limit} for (${lat}, ${lng}) on ${result.roadName}`);
+        return result.limit;
+    } catch (error) {
+        console.error('[fetchRoadLimit] Failed to fetch:', error);
+        return null;
+    }
+}

@@ -127,7 +127,10 @@ export function useAlerts() {
             for (const camera of officialCameras) {
                 const distance = calculateDistance(latitude, longitude, camera.lat, camera.lng);
                 const cameraType = camera.type === 'RED_LIGHT_CAM' ? 'Red light camera' : 'Speed camera';
-                const limitInfo = camera.limit ? ` - Limit: ${camera.limit} km/h` : '';
+
+                // LAZY SYNC: Use camera's limit, or fall back to current road's speed limit
+                const effectiveLimit = camera.limit ?? currentSpeedLimit;
+                const limitInfo = effectiveLimit ? ` - Limit: ${effectiveLimit} km/h` : '';
 
                 // 🔴 RED ALERT: < 300m - "Check Speed Now"
                 if (distance < OFFICIAL_RED_DISTANCE) {
@@ -140,7 +143,7 @@ export function useAlerts() {
                             message: cameraMessage,
                             distance: Math.round(distance),
                         });
-                        playAlert('camera', `Check speed now! ${camera.limit ? `Speed limit ${camera.limit} kilometers per hour` : 'Camera ahead'}`);
+                        playAlert('camera', `Check speed now! ${effectiveLimit ? `Speed limit ${effectiveLimit} kilometers per hour` : 'Camera ahead'}`);
                         lastAlertRef.current = alertId;
                         cooldownRef.current = now;
                     }
@@ -158,7 +161,7 @@ export function useAlerts() {
                             message: cameraMessage,
                             distance: Math.round(distance),
                         });
-                        playAlert('camera', `Camera reported in this area${camera.limit ? `. Speed limit ${camera.limit} kilometers per hour` : ''}`);
+                        playAlert('camera', `Camera reported in this area${effectiveLimit ? `. Speed limit ${effectiveLimit} kilometers per hour` : ''}`);
                         lastAlertRef.current = alertId;
                         cooldownRef.current = now;
                     }
