@@ -33,7 +33,7 @@ export function useAlerts() {
         };
     }, []);
 
-    const playAlert = useCallback((type: 'camera' | 'police' | 'speeding') => {
+    const playAlert = useCallback((type: 'camera' | 'police' | 'speeding', message?: string) => {
         if (isMuted || !audioRef.current) return;
 
         // Different frequencies for different alerts
@@ -63,6 +63,29 @@ export function useAlerts() {
         } catch (e) {
             console.warn('Could not play alert sound:', e);
         }
+
+        // Text-to-Speech announcement
+        if (message && 'speechSynthesis' in window) {
+            try {
+                // Cancel any ongoing speech
+                window.speechSynthesis.cancel();
+
+                const utterance = new SpeechSynthesisUtterance(message);
+                utterance.rate = 1.1; // Slightly faster
+                utterance.pitch = 1.0;
+                utterance.volume = 0.8;
+
+                // Try to use a Hindi voice if available, fallback to default
+                const voices = window.speechSynthesis.getVoices();
+                const hindiVoice = voices.find(v => v.lang.includes('hi') || v.lang.includes('IN'));
+                const englishVoice = voices.find(v => v.lang.includes('en'));
+                utterance.voice = hindiVoice || englishVoice || null;
+
+                window.speechSynthesis.speak(utterance);
+            } catch (e) {
+                console.warn('Text-to-Speech not available:', e);
+            }
+        }
     }, [isMuted]);
 
     // Check for alerts periodically
@@ -79,12 +102,13 @@ export function useAlerts() {
             if (currentSpeedLimit && speed > currentSpeedLimit) {
                 const alertId = 'speeding';
                 if (lastAlertRef.current !== alertId) {
+                    const speedingMessage = `Slow down! Speed limit is ${currentSpeedLimit} kilometers per hour`;
                     setActiveAlert({
                         id: alertId,
                         type: 'speeding',
-                        message: `Slow down! Speed limit is ${currentSpeedLimit} km/h`,
+                        message: speedingMessage,
                     });
-                    playAlert('speeding');
+                    playAlert('speeding', speedingMessage);
                     lastAlertRef.current = alertId;
                     cooldownRef.current = now;
                 }
@@ -97,13 +121,14 @@ export function useAlerts() {
                 if (distance < CAMERA_ALERT_DISTANCE) {
                     const alertId = `camera-${camera.id}`;
                     if (lastAlertRef.current !== alertId) {
+                        const cameraMessage = `Speed camera ahead in ${Math.round(distance)} meters`;
                         setActiveAlert({
                             id: alertId,
                             type: 'camera',
-                            message: `Speed camera ahead - ${Math.round(distance)}m`,
+                            message: cameraMessage,
                             distance: Math.round(distance),
                         });
-                        playAlert('camera');
+                        playAlert('camera', cameraMessage);
                         lastAlertRef.current = alertId;
                         cooldownRef.current = now;
                     }
@@ -117,13 +142,14 @@ export function useAlerts() {
                 if (distance < POLICE_ALERT_DISTANCE) {
                     const alertId = `police-${report.id}`;
                     if (lastAlertRef.current !== alertId) {
+                        const policeMessage = `Police checkpoint ahead in ${Math.round(distance)} meters`;
                         setActiveAlert({
                             id: alertId,
                             type: 'police',
-                            message: `Police checkpoint ahead - ${Math.round(distance)}m`,
+                            message: policeMessage,
                             distance: Math.round(distance),
                         });
-                        playAlert('police');
+                        playAlert('police', policeMessage);
                         lastAlertRef.current = alertId;
                         cooldownRef.current = now;
                     }
