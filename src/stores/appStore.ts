@@ -53,6 +53,10 @@ interface AppState {
     setLoading: (loading: boolean) => void;
     wakeLockActive: boolean;
     setWakeLockActive: (active: boolean) => void;
+
+    // Background mode (experimental)
+    backgroundModeEnabled: boolean;
+    setBackgroundModeEnabled: (enabled: boolean) => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -97,12 +101,17 @@ export const useAppStore = create<AppState>()(
             setLoading: (loading) => set({ isLoading: loading }),
             wakeLockActive: false,
             setWakeLockActive: (active) => set({ wakeLockActive: active }),
+
+            // Background mode
+            backgroundModeEnabled: false,
+            setBackgroundModeEnabled: (enabled) => set({ backgroundModeEnabled: enabled }),
         }),
         {
             name: 'zairo-maps-settings',
             partialize: (state) => ({
                 theme: state.theme,
                 isMuted: state.isMuted,
+                backgroundModeEnabled: state.backgroundModeEnabled,
             }),
         }
     )

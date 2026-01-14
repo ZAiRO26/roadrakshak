@@ -1,9 +1,17 @@
 import { useAppStore } from '../stores/appStore';
 import { useWakeLock } from '../hooks/useWakeLock';
+import { useBackgroundMode } from '../hooks/useBackgroundMode';
 
 export function Controls() {
     const { theme, toggleTheme, isMuted, toggleMute } = useAppStore();
-    const { shouldBeLocked, toggleWakeLock, showToast, toastMessage } = useWakeLock();
+    const { shouldBeLocked, toggleWakeLock, showToast: wakeLockToast, toastMessage: wakeLockMessage } = useWakeLock();
+    const {
+        backgroundModeEnabled,
+        isActive: bgActive,
+        toggleBackgroundMode,
+        showToast: bgToast,
+        toastMessage: bgMessage
+    } = useBackgroundMode();
 
     return (
         <>
@@ -37,17 +45,37 @@ export function Controls() {
                 >
                     {shouldBeLocked ? '🔒' : '🔓'}
                 </button>
+
+                {/* Background mode toggle */}
+                <button
+                    className={`control-btn ${backgroundModeEnabled ? 'active' : ''} ${bgActive ? 'pulsing' : ''}`}
+                    onClick={toggleBackgroundMode}
+                    title={backgroundModeEnabled
+                        ? (bgActive ? 'Background mode ACTIVE (running)' : 'Background mode ON (waiting for driving)')
+                        : 'Background mode OFF (enable for locked screen tracking)'
+                    }
+                    aria-label="Toggle background mode"
+                >
+                    {backgroundModeEnabled ? (bgActive ? '📡' : '🔋') : '⚡'}
+                </button>
             </div>
 
             {/* Wake Lock Toast */}
-            {showToast && (
-                <div className="wake-lock-toast">
-                    {toastMessage}
+            {wakeLockToast && (
+                <div className="control-toast">
+                    {wakeLockMessage}
+                </div>
+            )}
+
+            {/* Background Mode Toast */}
+            {bgToast && (
+                <div className="control-toast bg-toast">
+                    {bgMessage}
                 </div>
             )}
 
             <style>{`
-                .wake-lock-toast {
+                .control-toast {
                     position: fixed;
                     top: 80px;
                     left: 50%;
@@ -63,6 +91,23 @@ export function Controls() {
                     
                     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
                     animation: slideDown 0.3s ease;
+                }
+
+                .control-toast.bg-toast {
+                    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                }
+                
+                .control-btn.pulsing {
+                    animation: bgPulse 2s ease-in-out infinite;
+                }
+                
+                @keyframes bgPulse {
+                    0%, 100% { 
+                        box-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
+                    }
+                    50% { 
+                        box-shadow: 0 2px 20px rgba(16, 185, 129, 0.7);
+                    }
                 }
                 
                 @keyframes slideDown {
