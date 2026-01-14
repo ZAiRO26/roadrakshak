@@ -1,6 +1,6 @@
 /**
- * AddCameraButton.tsx - FAB for adding new cameras to personal database
- * Always visible, adds a purple user camera at current GPS
+ * AddCameraButton.tsx - FAB for adding new cameras with speed limit
+ * Always visible, prompts for speed limit, adds a purple user camera
  */
 
 import { useState, useCallback } from 'react';
@@ -14,77 +14,125 @@ export function AddCameraButton() {
     const { latitude, longitude } = useGpsStore();
     const [isAdding, setIsAdding] = useState(false);
     const [showToast, setShowToast] = useState(false);
+    const [toastMessage, setToastMessage] = useState('');
+    const [showModal, setShowModal] = useState(false);
+    const [speedLimit, setSpeedLimit] = useState('60');
     const [cameraType, setCameraType] = useState<'SPEED_CAM' | 'RED_LIGHT_CAM'>('SPEED_CAM');
-    const [showTypeMenu, setShowTypeMenu] = useState(false);
 
-    const handleAddCamera = useCallback((type: 'SPEED_CAM' | 'RED_LIGHT_CAM') => {
+    const handleOpenModal = useCallback(() => {
         if (latitude === null || longitude === null) {
             alert('GPS not available. Please enable location services.');
             return;
         }
+        setShowModal(true);
+        setSpeedLimit('60');
+        setCameraType('SPEED_CAM');
+    }, [latitude, longitude]);
+
+    const handleAddCamera = useCallback(() => {
+        if (latitude === null || longitude === null) return;
 
         setIsAdding(true);
-        setCameraType(type);
-        setShowTypeMenu(false);
+        setShowModal(false);
 
-        // Add the camera
-        const id = addNewCamera(latitude, longitude, type);
-        console.log(`[AddCameraButton] Added camera ${id}`);
+        const limit = cameraType === 'RED_LIGHT_CAM' ? null : parseInt(speedLimit) || null;
+
+        // Add the camera with speed limit
+        const id = addNewCamera(latitude, longitude, limit, cameraType);
+        console.log(`[AddCameraButton] Added camera ${id} with limit ${limit}`);
 
         // Dispatch event to refresh map markers
         window.dispatchEvent(new CustomEvent(USER_CAMERA_ADDED_EVENT, {
-            detail: { id, lat: latitude, lng: longitude, type }
+            detail: { id, lat: latitude, lng: longitude, type: cameraType, limit }
         }));
 
         setIsAdding(false);
+
+        // Show toast
+        const limitText = limit ? `${limit} km/h` : 'No limit';
+        setToastMessage(`📷 Camera Added!\n${cameraType === 'RED_LIGHT_CAM' ? '🚦 Red Light' : `🏎️ ${limitText}`}`);
         setShowToast(true);
         setTimeout(() => setShowToast(false), 3000);
-    }, [latitude, longitude]);
-
-    const handleClick = useCallback(() => {
-        setShowTypeMenu(!showTypeMenu);
-    }, [showTypeMenu]);
+    }, [latitude, longitude, speedLimit, cameraType]);
 
     return (
         <>
             {/* Main FAB Button */}
             <button
                 className="add-camera-fab"
-                onClick={handleClick}
+                onClick={handleOpenModal}
                 disabled={isAdding || latitude === null}
-                title="Add new camera to personal database"
+                title="Report new camera"
             >
                 {isAdding ? '⏳' : '📷+'}
             </button>
 
-            {/* Type selection menu */}
-            {showTypeMenu && (
-                <div className="camera-type-menu">
-                    <button
-                        className="type-option speed"
-                        onClick={() => handleAddCamera('SPEED_CAM')}
-                    >
-                        📷 Speed Camera
-                    </button>
-                    <button
-                        className="type-option redlight"
-                        onClick={() => handleAddCamera('RED_LIGHT_CAM')}
-                    >
-                        🚦 Red Light Camera
-                    </button>
-                    <button
-                        className="type-option cancel"
-                        onClick={() => setShowTypeMenu(false)}
-                    >
-                        ✕ Cancel
-                    </button>
+            {/* Speed Limit Modal */}
+            {showModal && (
+                <div className="speed-modal-overlay" onClick={() => setShowModal(false)}>
+                    <div className="speed-modal" onClick={e => e.stopPropagation()}>
+                        <h3>📷 Add New Camera</h3>
+
+                        {/* Camera Type Toggle */}
+                        <div className="type-toggle">
+                            <button
+                                className={`toggle-btn ${cameraType === 'SPEED_CAM' ? 'active' : ''}`}
+                                onClick={() => setCameraType('SPEED_CAM')}
+                            >
+                                📷 Speed Camera
+                            </button>
+                            <button
+                                className={`toggle-btn ${cameraType === 'RED_LIGHT_CAM' ? 'active' : ''}`}
+                                onClick={() => setCameraType('RED_LIGHT_CAM')}
+                            >
+                                🚦 Red Light
+                            </button>
+                        </div>
+
+                        {/* Speed Limit Input (only for speed cameras) */}
+                        {cameraType === 'SPEED_CAM' && (
+                            <div className="speed-input-group">
+                                <label>Speed Limit (km/h)</label>
+                                <input
+                                    type="number"
+                                    value={speedLimit}
+                                    onChange={e => setSpeedLimit(e.target.value)}
+                                    placeholder="60"
+                                    min="20"
+                                    max="120"
+                                    autoFocus
+                                />
+                                <div className="quick-limits">
+                                    {[40, 50, 60, 80, 100].map(limit => (
+                                        <button
+                                            key={limit}
+                                            className={`quick-btn ${speedLimit === String(limit) ? 'active' : ''}`}
+                                            onClick={() => setSpeedLimit(String(limit))}
+                                        >
+                                            {limit}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Action Buttons */}
+                        <div className="modal-actions">
+                            <button className="cancel-btn" onClick={() => setShowModal(false)}>
+                                Cancel
+                            </button>
+                            <button className="save-btn" onClick={handleAddCamera}>
+                                📍 Add Camera
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
 
             {/* Toast notification */}
             {showToast && (
                 <div className="add-camera-toast">
-                    📷 {cameraType === 'RED_LIGHT_CAM' ? 'Red Light' : 'Speed'} Camera Added!
+                    {toastMessage}
                     <br />
                     <span className="toast-sub">Total: {getUserCameraCount()} personal cameras</span>
                 </div>
@@ -126,53 +174,38 @@ export function AddCameraButton() {
                     cursor: not-allowed;
                 }
 
-                .camera-type-menu {
+                /* Modal Overlay */
+                .speed-modal-overlay {
                     position: fixed;
-                    bottom: 250px;
-                    right: 20px;
-                    z-index: 1001;
-                    
+                    inset: 0;
+                    background: rgba(0, 0, 0, 0.7);
+                    z-index: 2000;
                     display: flex;
-                    flex-direction: column;
-                    gap: 8px;
-                    
-                    animation: slideUp 0.2s ease;
+                    align-items: center;
+                    justify-content: center;
+                    animation: fadeIn 0.2s ease;
                 }
-                
-                .type-option {
-                    padding: 12px 20px;
-                    border: none;
-                    border-radius: 12px;
-                    font-size: 14px;
-                    font-weight: 600;
-                    cursor: pointer;
-                    color: white;
-                    text-align: left;
-                    
-                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                    transition: transform 0.15s;
+
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
                 }
-                
-                .type-option:hover {
-                    transform: translateX(-5px);
+
+                /* Modal */
+                .speed-modal {
+                    background: linear-gradient(135deg, #1e1e2e 0%, #2d2d3d 100%);
+                    padding: 24px;
+                    border-radius: 20px;
+                    width: 320px;
+                    max-width: 90%;
+                    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+                    animation: slideUp 0.3s ease;
                 }
-                
-                .type-option.speed {
-                    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-                }
-                
-                .type-option.redlight {
-                    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-                }
-                
-                .type-option.cancel {
-                    background: rgba(100, 100, 100, 0.9);
-                }
-                
+
                 @keyframes slideUp {
                     from {
                         opacity: 0;
-                        transform: translateY(20px);
+                        transform: translateY(30px);
                     }
                     to {
                         opacity: 1;
@@ -180,6 +213,130 @@ export function AddCameraButton() {
                     }
                 }
 
+                .speed-modal h3 {
+                    color: white;
+                    margin: 0 0 20px;
+                    font-size: 18px;
+                    text-align: center;
+                }
+
+                /* Type Toggle */
+                .type-toggle {
+                    display: flex;
+                    gap: 8px;
+                    margin-bottom: 20px;
+                }
+
+                .toggle-btn {
+                    flex: 1;
+                    padding: 12px 8px;
+                    border: 2px solid rgba(255, 255, 255, 0.2);
+                    border-radius: 12px;
+                    background: transparent;
+                    color: rgba(255, 255, 255, 0.7);
+                    font-size: 13px;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                }
+
+                .toggle-btn.active {
+                    border-color: #8b5cf6;
+                    background: rgba(139, 92, 246, 0.2);
+                    color: white;
+                }
+
+                /* Speed Input */
+                .speed-input-group {
+                    margin-bottom: 20px;
+                }
+
+                .speed-input-group label {
+                    display: block;
+                    color: rgba(255, 255, 255, 0.7);
+                    font-size: 14px;
+                    margin-bottom: 8px;
+                }
+
+                .speed-input-group input {
+                    width: 100%;
+                    padding: 14px;
+                    border: 2px solid rgba(255, 255, 255, 0.2);
+                    border-radius: 12px;
+                    background: rgba(255, 255, 255, 0.1);
+                    color: white;
+                    font-size: 24px;
+                    font-weight: 700;
+                    text-align: center;
+                    outline: none;
+                }
+
+                .speed-input-group input:focus {
+                    border-color: #8b5cf6;
+                }
+
+                /* Quick Limits */
+                .quick-limits {
+                    display: flex;
+                    gap: 6px;
+                    margin-top: 12px;
+                }
+
+                .quick-btn {
+                    flex: 1;
+                    padding: 10px 4px;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    border-radius: 8px;
+                    background: transparent;
+                    color: rgba(255, 255, 255, 0.7);
+                    font-size: 14px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.15s;
+                }
+
+                .quick-btn:hover {
+                    background: rgba(139, 92, 246, 0.2);
+                    border-color: #8b5cf6;
+                }
+
+                .quick-btn.active {
+                    background: #8b5cf6;
+                    border-color: #8b5cf6;
+                    color: white;
+                }
+
+                /* Action Buttons */
+                .modal-actions {
+                    display: flex;
+                    gap: 12px;
+                }
+
+                .cancel-btn, .save-btn {
+                    flex: 1;
+                    padding: 14px;
+                    border: none;
+                    border-radius: 12px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: transform 0.15s;
+                }
+
+                .cancel-btn {
+                    background: rgba(255, 255, 255, 0.1);
+                    color: rgba(255, 255, 255, 0.7);
+                }
+
+                .save-btn {
+                    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+                    color: white;
+                }
+
+                .cancel-btn:hover, .save-btn:hover {
+                    transform: scale(1.02);
+                }
+
+                /* Toast */
                 .add-camera-toast {
                     position: fixed;
                     top: 80px;
@@ -193,6 +350,7 @@ export function AddCameraButton() {
                     font-weight: 600;
                     border-radius: 12px;
                     text-align: center;
+                    white-space: pre-line;
                     
                     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
                     animation: slideDown 0.3s ease;

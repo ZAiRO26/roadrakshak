@@ -25,6 +25,7 @@ interface UserCamera {
     lat: number;
     lng: number;
     type: 'SPEED_CAM' | 'RED_LIGHT_CAM';
+    limit: number | null;
     timestamp: number;
     name?: string;
 }
@@ -127,11 +128,12 @@ function setUserCameras(cameras: UserCamera[]): void {
 }
 
 /**
- * Add a new user camera at current GPS location
+ * Add a new user camera at current GPS location with speed limit
  */
 export function addNewCamera(
     lat: number,
     lng: number,
+    speedLimit: number | null = null,
     type: 'SPEED_CAM' | 'RED_LIGHT_CAM' = 'SPEED_CAM',
     name?: string
 ): string {
@@ -143,12 +145,13 @@ export function addNewCamera(
         lat,
         lng,
         type,
+        limit: speedLimit,
         timestamp: Date.now(),
         name: name || `User Camera ${cameras.length + 1}`,
     });
 
     setUserCameras(cameras);
-    console.log(`[OverrideService] Added new camera ${id}: (${lat}, ${lng})`);
+    console.log(`[OverrideService] Added new camera ${id}: (${lat}, ${lng}), limit: ${speedLimit}`);
     return id;
 }
 
@@ -196,6 +199,7 @@ function convertUserCamera(cam: UserCamera): CameraNode {
         lat: cam.lat,
         lng: cam.lng,
         type: cam.type,
+        limit: cam.limit,
         source: 'USER',
         name: cam.name || 'User Camera',
     };
