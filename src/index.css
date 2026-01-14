@@ -122,12 +122,66 @@ body {
 
 .road-name {
   font-size: 12px;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-align: center;
-  max-width: 200px;
+  max-width: 240px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 8px 16px;
+  background: rgba(30, 41, 59, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 480px) {
+  .speed-display {
+    width: 110px;
+    height: 110px;
+  }
+
+  .speed-value {
+    font-size: 36px;
+  }
+
+  .speed-unit {
+    font-size: 12px;
+  }
+
+  .speedometer {
+    bottom: 80px;
+  }
+
+  .speed-limit-badge {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .road-name {
+    font-size: 11px;
+    max-width: 200px;
+    padding: 6px 12px;
+  }
+
+  .report-btn {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+    bottom: 24px;
+    right: 16px;
+  }
+
+  .controls {
+    top: 16px;
+    right: 16px;
+  }
+
+  .control-btn {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 /* Control buttons */

@@ -1,49 +1,54 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    
-    <!-- PWA Meta Tags -->
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#3b82f6" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="RoadRakshak" />
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="RoadRakshak - Real-time driver assistance app for India. Avoid speeding fines, detect speed cameras, and get traffic enforcement alerts." />
-    <meta name="keywords" content="speed camera, traffic challan, driving app, India, GPS speed, road safety" />
-    <meta name="author" content="RoadRakshak" />
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="RoadRakshak - Drive Safe, Drive Smart" />
-    <meta property="og:description" content="Real-time speed camera alerts and traffic enforcement detection for Indian roads." />
-    <meta property="og:type" content="website" />
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
-    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
-    
-    <!-- Preconnect to map tile servers -->
-    <link rel="preconnect" href="https://a.basemaps.cartocdn.com" />
-    <link rel="preconnect" href="https://b.basemaps.cartocdn.com" />
-    
-    <title>RoadRakshak - Drive Safe, Drive Smart</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    
-    <!-- Register Service Worker -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/service-worker.js')
-            .then(reg => console.log('SW registered:', reg.scope))
-            .catch(err => console.error('SW registration failed:', err));
-        });
-      }
-    </script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!-- PWA Meta Tags -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#3b82f6" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Zairo Maps" />
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Zairo Maps - Smart navigation with speed camera alerts, turn-by-turn directions, and traffic enforcement detection for Indian roads." />
+  <meta name="keywords"
+    content="navigation, maps, speed camera, traffic challan, driving app, India, GPS, turn-by-turn, directions" />
+  <meta name="author" content="Zairo" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Zairo Maps - Navigate Smarter" />
+  <meta property="og:description"
+    content="Smart navigation with speed camera alerts and turn-by-turn directions for Indian roads." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+  <!-- Preconnect to map tile servers -->
+  <link rel="preconnect" href="https://api.olamaps.io" />
+
+  <title>Zairo Maps - Navigate Smarter</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+
+  <!-- Register Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('SW registered:', reg.scope))
+          .catch(err => console.error('SW registration failed:', err));
+      });
+    }
+  </script>
+</body>
+
 </html>

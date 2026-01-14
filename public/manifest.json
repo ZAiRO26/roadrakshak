@@ -1,7 +1,7 @@
 {
-    "name": "RoadRakshak",
-    "short_name": "RoadRakshak",
-    "description": "Real-time driver assistance app for India - avoid speeding fines and detect enforcement cameras",
+    "name": "Zairo Maps",
+    "short_name": "Zairo Maps",
+    "description": "Smart navigation with speed camera alerts, turn-by-turn directions, and traffic enforcement detection for Indian roads",
     "start_url": "/",
     "display": "standalone",
     "orientation": "portrait",
@@ -23,7 +23,8 @@
     ],
     "categories": [
         "navigation",
-        "travel"
+        "travel",
+        "maps"
     ],
     "lang": "en-IN",
     "dir": "ltr",
