@@ -8,8 +8,7 @@ import { ReportButton } from './components/ReportButton';
 import { AlertBanner } from './components/AlertBanner';
 import { LoadingScreen } from './components/LoadingScreen';
 import { AccuracyIndicator } from './components/AccuracyIndicator';
-import { NavigationPanel } from './components/NavigationPanel';
-import { SearchBar } from './components/SearchBar';
+import { NavigationMode } from './components/NavigationMode';
 import { MapControls } from './components/MapControls';
 import { useGPS } from './hooks/useGPS';
 import { useWakeLock } from './hooks/useWakeLock';
@@ -23,7 +22,7 @@ function App() {
   const { theme, setCameras, setPoliceReports, setLoading } = useAppStore();
   const [routeGeometry, setRouteGeometry] = useState<GeoJSON.LineString | null>(null);
   const [showGpsWarning, setShowGpsWarning] = useState(false);
-  const [showNavPanel, setShowNavPanel] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
   const [mapControlMethods, setMapControlMethods] = useState<MapControlMethods | null>(null);
 
   // Initialize GPS tracking
@@ -107,10 +106,13 @@ function App() {
       {/* Loading screen */}
       <LoadingScreen />
 
-      {/* Search bar at top */}
-      <SearchBar
-        onLocationSelect={(loc) => mapControlMethods?.flyTo(loc.lat, loc.lng)}
-        onDirectionsClick={() => setShowNavPanel(true)}
+      {/* Navigation mode - search, directions, and turn-by-turn */}
+      <NavigationMode
+        onRouteCalculated={setRouteGeometry}
+        onNavigationStart={() => setIsNavigating(true)}
+        onNavigationEnd={() => setIsNavigating(false)}
+        isNavigating={isNavigating}
+        flyToLocation={(lat, lng) => mapControlMethods?.flyTo(lat, lng)}
       />
 
       {/* Map controls - zoom +/- and recenter */}
@@ -169,13 +171,7 @@ function App() {
       {/* Alert banner */}
       <AlertBanner />
 
-      {/* Navigation panel - shown when directions button clicked */}
-      {showNavPanel && (
-        <NavigationPanel onRouteCalculated={(geo) => {
-          handleRouteCalculated(geo);
-          if (geo) setShowNavPanel(false);
-        }} />
-      )}
+
 
       {/* GPS accuracy indicator */}
       <div className="theme-toggle">
