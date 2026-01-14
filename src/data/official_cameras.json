@@ -979,5 +979,230 @@
         "speed_limit": null,
         "lat": 28.6290,
         "lng": 77.2430
+    },
+    {
+        "id": "blr_items_01",
+        "city": "Bangalore",
+        "name": "Airport Road - Elevated Corridor (Hebbal)",
+        "type": "SPEED_CAM",
+        "speed_limit": 80,
+        "lat": 13.0610,
+        "lng": 77.5950
+    },
+    {
+        "id": "blr_items_02",
+        "city": "Bangalore",
+        "name": "Airport Road - Yelahanka Air Force Station",
+        "type": "SPEED_CAM",
+        "speed_limit": 80,
+        "lat": 13.1340,
+        "lng": 77.6100
+    },
+    {
+        "id": "blr_items_03",
+        "city": "Bangalore",
+        "name": "Airport Road - Sadahalli Gate",
+        "type": "SPEED_CAM",
+        "speed_limit": 80,
+        "lat": 13.1980,
+        "lng": 77.6850
+    },
+    {
+        "id": "blr_items_04",
+        "city": "Bangalore",
+        "name": "Madiwala Machideva Road",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 12.9220,
+        "lng": 77.6200
+    },
+    {
+        "id": "blr_items_05",
+        "city": "Bangalore",
+        "name": "HAL Old Airport Road",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 12.9590,
+        "lng": 77.6650
+    },
+    {
+        "id": "blr_items_06",
+        "city": "Bangalore",
+        "name": "MG Road (Mahatma Gandhi Road)",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 12.9750,
+        "lng": 77.6100
+    },
+    {
+        "id": "blr_items_07",
+        "city": "Bangalore",
+        "name": "Richmond Road",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 12.9650,
+        "lng": 77.6050
+    },
+    {
+        "id": "blr_items_08",
+        "city": "Bangalore",
+        "name": "Trinity Circle / Church Road",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 12.9730,
+        "lng": 77.6200
+    },
+    {
+        "id": "blr_items_09",
+        "city": "Bangalore",
+        "name": "Brigade Road Junction",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 12.9700,
+        "lng": 77.6080
+    },
+    {
+        "id": "blr_items_10",
+        "city": "Bangalore",
+        "name": "Swamy Vivekananda Road (Indiranagar)",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 12.9800,
+        "lng": 77.6350
+    },
+    {
+        "id": "blr_items_11",
+        "city": "Bangalore",
+        "name": "Tumkur Road (Peenya Elevated)",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 13.0300,
+        "lng": 77.5200
+    },
+    {
+        "id": "blr_items_12",
+        "city": "Bangalore",
+        "name": "Mysore Road (Kengeri)",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 12.9200,
+        "lng": 77.4900
+    },
+    {
+        "id": "blr_items_13",
+        "city": "Bangalore",
+        "name": "NICE Peripheral Ring Road (E-City)",
+        "type": "SPEED_CAM",
+        "speed_limit": 80,
+        "lat": 12.8500,
+        "lng": 77.6600
+    },
+    {
+        "id": "blr_items_14",
+        "city": "Bangalore",
+        "name": "Kasturba Road (Cubbon Park)",
+        "type": "SPEED_CAM",
+        "speed_limit": 40,
+        "lat": 12.9760,
+        "lng": 77.5960
+    },
+    {
+        "id": "blr_items_15",
+        "city": "Bangalore",
+        "name": "Palace Road (Mount Carmel)",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 12.9900,
+        "lng": 77.5880
+    },
+    {
+        "id": "blr_items_16",
+        "city": "Bangalore",
+        "name": "Koramangala Wipro Park Junction",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 12.9350,
+        "lng": 77.6300
+    },
+    {
+        "id": "blr_items_17",
+        "city": "Bangalore",
+        "name": "Jayanagar 4th Block Bus Stop",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 12.9250,
+        "lng": 77.5850
+    },
+    {
+        "id": "blr_items_18",
+        "city": "Bangalore",
+        "name": "Electronic City Flyover",
+        "type": "SPEED_CAM",
+        "speed_limit": 80,
+        "lat": 12.8750,
+        "lng": 77.6450
+    },
+    {
+        "id": "blr_express_01",
+        "city": "Bangalore",
+        "name": "Blr-Mysore Exp: Kaniminike Toll",
+        "type": "SPEED_CAM",
+        "speed_limit": 100,
+        "lat": 12.8800,
+        "lng": 77.4500
+    },
+    {
+        "id": "blr_express_02",
+        "city": "Bangalore",
+        "name": "Blr-Mysore Exp: Bidadi Bypass",
+        "type": "SPEED_CAM",
+        "speed_limit": 100,
+        "lat": 12.8000,
+        "lng": 77.3800
+    },
+    {
+        "id": "blr_express_03",
+        "city": "Bangalore",
+        "name": "Blr-Mysore Exp: Ramanagara Bypass",
+        "type": "SPEED_CAM",
+        "speed_limit": 100,
+        "lat": 12.7200,
+        "lng": 77.2800
+    },
+    {
+        "id": "blr_express_04",
+        "city": "Bangalore",
+        "name": "Blr-Mysore Exp: Channapatna Bypass",
+        "type": "SPEED_CAM",
+        "speed_limit": 100,
+        "lat": 12.6500,
+        "lng": 77.2000
+    },
+    {
+        "id": "blr_express_05",
+        "city": "Bangalore",
+        "name": "Blr-Mysore Exp: Maddur Bypass",
+        "type": "SPEED_CAM",
+        "speed_limit": 100,
+        "lat": 12.5800,
+        "lng": 77.0500
+    },
+    {
+        "id": "blr_express_06",
+        "city": "Bangalore",
+        "name": "Blr-Mysore Exp: Mandya Bypass",
+        "type": "SPEED_CAM",
+        "speed_limit": 100,
+        "lat": 12.5200,
+        "lng": 76.9000
+    },
+    {
+        "id": "blr_express_07",
+        "city": "Bangalore",
+        "name": "Blr-Mysore Exp: Gananguru Toll",
+        "type": "SPEED_CAM",
+        "speed_limit": 100,
+        "lat": 12.4500,
+        "lng": 76.7500
     }
 ]
