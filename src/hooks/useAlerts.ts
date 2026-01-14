@@ -3,6 +3,7 @@ import { useGpsStore } from '../stores/gpsStore';
 import { useAppStore } from '../stores/appStore';
 import { calculateDistance } from './useGPS';
 import { isCameraFacingUser } from '../services/LogicEngine';
+import { getNearbyCameras } from '../services/CameraLoader';
 
 const CAMERA_ALERT_DISTANCE = 500; // meters
 const POLICE_ALERT_DISTANCE = 1000; // meters
@@ -116,13 +117,45 @@ export function useAlerts() {
                 return;
             }
 
-            // Check cameras (with direction filter)
+            // PRIORITY 1: Check OFFICIAL cameras first (verified data)
+            const officialCameras = getNearbyCameras(latitude, longitude, 2, ['OFFICIAL']);
+            for (const camera of officialCameras) {
+                const distance = calculateDistance(latitude, longitude, camera.lat, camera.lng);
+                if (distance < CAMERA_ALERT_DISTANCE) {
+                    const alertId = `official-${camera.id}`;
+                    if (lastAlertRef.current !== alertId) {
+                        const limitInfo = camera.limit ? ` - Limit: ${camera.limit} km/h` : '';
+                        const cameraType = camera.type === 'RED_LIGHT_CAM' ? 'Red light camera' : 'Speed camera';
+                        const cameraMessage = `⚠️ OFFICIAL ${cameraType} ahead in ${Math.round(distance)} meters${limitInfo}`;
+                        setActiveAlert({
+                            id: alertId,
+                            type: 'camera',
+                            message: cameraMessage,
+                            distance: Math.round(distance),
+                        });
+                        playAlert('camera', `Warning! Official ${cameraType} ahead in ${Math.round(distance)} meters${camera.limit ? `. Speed limit ${camera.limit} kilometers per hour` : ''}`);
+                        lastAlertRef.current = alertId;
+                        cooldownRef.current = now;
+                    }
+                    return;
+                }
+            }
+
+            // PRIORITY 2: Check OSM cameras (community data, with direction filter)
             for (const camera of cameras) {
                 const distance = calculateDistance(latitude, longitude, camera.lat, camera.lng);
                 if (distance < CAMERA_ALERT_DISTANCE) {
                     // Direction filter: Skip if camera faces opposite direction
                     if (!isCameraFacingUser(useGpsStore.getState().heading, camera.direction)) {
                         console.log(`[useAlerts] Skipping camera ${camera.id} - facing opposite direction`);
+                        continue;
+                    }
+
+                    // Skip if an official camera is within 50m (already covered)
+                    const hasNearbyOfficial = officialCameras.some(official =>
+                        calculateDistance(camera.lat, camera.lng, official.lat, official.lng) < 50
+                    );
+                    if (hasNearbyOfficial) {
                         continue;
                     }
 

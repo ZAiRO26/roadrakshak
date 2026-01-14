@@ -1,0 +1,983 @@
+[
+    {
+        "id": "del_osvd_01",
+        "city": "Delhi",
+        "name": "NH-24 near Yamuna Bridge",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.6135,
+        "lng": 77.2590
+    },
+    {
+        "id": "del_osvd_02",
+        "city": "Delhi",
+        "name": "Outer Ring Road near Geeta Colony",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.6538,
+        "lng": 77.2665
+    },
+    {
+        "id": "del_osvd_03",
+        "city": "Delhi",
+        "name": "Outer Ring Road near Rajghat DTC Depot",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.6415,
+        "lng": 77.2510
+    },
+    {
+        "id": "del_osvd_04",
+        "city": "Delhi",
+        "name": "Ring Road near Burari Flyover",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.7291,
+        "lng": 77.2091
+    },
+    {
+        "id": "del_osvd_05",
+        "city": "Delhi",
+        "name": "Ring Road near Mukarba Chowk",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.7362,
+        "lng": 77.1594
+    },
+    {
+        "id": "del_osvd_06",
+        "city": "Delhi",
+        "name": "Ring Road near Wazirabad",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.7185,
+        "lng": 77.2285
+    },
+    {
+        "id": "del_osvd_07",
+        "city": "Delhi",
+        "name": "Dev Prakash Shastri Marg",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6320,
+        "lng": 77.1550
+    },
+    {
+        "id": "del_osvd_08",
+        "city": "Delhi",
+        "name": "Ring Road near Delhi Cantt Metro",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5861,
+        "lng": 77.1360
+    },
+    {
+        "id": "del_osvd_09",
+        "city": "Delhi",
+        "name": "Dwarka Link Road near Palam Flyover",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5770,
+        "lng": 77.0855
+    },
+    {
+        "id": "del_osvd_10",
+        "city": "Delhi",
+        "name": "MG Road near Arjangarh",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.4808,
+        "lng": 77.1205
+    },
+    {
+        "id": "del_osvd_11",
+        "city": "Delhi",
+        "name": "Aruna Asif Ali Road near Neela Hauz",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5355,
+        "lng": 77.1630
+    },
+    {
+        "id": "del_osvd_12",
+        "city": "Delhi",
+        "name": "Aruna Asif Ali Road near IIMC",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5410,
+        "lng": 77.1655
+    },
+    {
+        "id": "del_osvd_13",
+        "city": "Delhi",
+        "name": "Nelson Mandela Road (JNU Back)",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5367,
+        "lng": 77.1590
+    },
+    {
+        "id": "del_osvd_14",
+        "city": "Delhi",
+        "name": "Barapullah Flyover near Sewa Nagar",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.5815,
+        "lng": 77.2380
+    },
+    {
+        "id": "del_osvd_15",
+        "city": "Delhi",
+        "name": "IGI Road near Customs Office",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.5560,
+        "lng": 77.1000
+    },
+    {
+        "id": "del_osvd_16",
+        "city": "Delhi",
+        "name": "Noida Link Road Mayur Vihar Ph-1",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.6045,
+        "lng": 77.2950
+    },
+    {
+        "id": "del_osvd_17",
+        "city": "Delhi",
+        "name": "DND Flyway (Noida to Delhi)",
+        "type": "SPEED_CAM",
+        "speed_limit": 70,
+        "lat": 28.5830,
+        "lng": 77.2885
+    },
+    {
+        "id": "del_osvd_18",
+        "city": "Delhi",
+        "name": "NH-1 Singhu Border",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.8350,
+        "lng": 77.1090
+    },
+    {
+        "id": "del_osvd_19",
+        "city": "Delhi",
+        "name": "NH-1 Siraspur Gurudwara",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.7750,
+        "lng": 77.1350
+    },
+    {
+        "id": "del_osvd_20",
+        "city": "Delhi",
+        "name": "NH-1 Punjabi Dhaba",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.7900,
+        "lng": 77.1280
+    },
+    {
+        "id": "del_osvd_21",
+        "city": "Delhi",
+        "name": "NH-10 (Rohtak Road) Tikri Metro Station",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6830,
+        "lng": 76.9630
+    },
+    {
+        "id": "del_osvd_22",
+        "city": "Delhi",
+        "name": "Near Sec-21 Dwarka Metro Station",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5520,
+        "lng": 77.0580
+    },
+    {
+        "id": "del_osvd_23",
+        "city": "Delhi",
+        "name": "Road No. 208, Dwarka Lords Apartments",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5840,
+        "lng": 77.0650
+    },
+    {
+        "id": "del_osvd_24",
+        "city": "Delhi",
+        "name": "Shankar Road to Talkatora Round",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6290,
+        "lng": 77.1850
+    },
+    {
+        "id": "del_osvd_25",
+        "city": "Delhi",
+        "name": "Akshardham Metro Station",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.6180,
+        "lng": 77.2790
+    },
+    {
+        "id": "del_osvd_26",
+        "city": "Delhi",
+        "name": "Josip Broz Tito Marg",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5530,
+        "lng": 77.2340
+    },
+    {
+        "id": "del_osvd_27",
+        "city": "Delhi",
+        "name": "Mehrauli-Mahipalpur Road",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5390,
+        "lng": 77.1350
+    },
+    {
+        "id": "del_osvd_28",
+        "city": "Delhi",
+        "name": "Bawana Road near Delhi Jal Board",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.7900,
+        "lng": 77.0950
+    },
+    {
+        "id": "del_osvd_29",
+        "city": "Delhi",
+        "name": "Kanjhawala Road near Bharat Petrol Pump",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.7250,
+        "lng": 77.0600
+    },
+    {
+        "id": "del_osvd_30",
+        "city": "Delhi",
+        "name": "Kanjhawala Road",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.7300,
+        "lng": 77.0550
+    },
+    {
+        "id": "del_osvd_31",
+        "city": "Delhi",
+        "name": "Rohini near Heliport",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.7500,
+        "lng": 77.0900
+    },
+    {
+        "id": "del_osvd_32",
+        "city": "Delhi",
+        "name": "NH 10 Rohtak Road Mundka",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6810,
+        "lng": 77.0350
+    },
+    {
+        "id": "del_osvd_33",
+        "city": "Delhi",
+        "name": "Urban Extension Road Bijwasan",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5450,
+        "lng": 77.0500
+    },
+    {
+        "id": "del_osvd_34",
+        "city": "Delhi",
+        "name": "Central Road Dwarka near Int School",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5750,
+        "lng": 77.0550
+    },
+    {
+        "id": "del_osvd_35",
+        "city": "Delhi",
+        "name": "Dwarka Road No 201 near Heritage Tower",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5900,
+        "lng": 77.0500
+    },
+    {
+        "id": "del_osvd_36",
+        "city": "Delhi",
+        "name": "Outer Ring Road near Bhera Enclave",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.6650,
+        "lng": 77.0950
+    },
+    {
+        "id": "del_osvd_37",
+        "city": "Delhi",
+        "name": "Chhawala Road near Garib Das Mandir",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5600,
+        "lng": 76.9950
+    },
+    {
+        "id": "del_osvd_38",
+        "city": "Delhi",
+        "name": "Ring Road Shakurpur Metro Station",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6900,
+        "lng": 77.1500
+    },
+    {
+        "id": "del_osvd_39",
+        "city": "Delhi",
+        "name": "Metro Pillar No 202 Rohtak Road",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6750,
+        "lng": 77.1100
+    },
+    {
+        "id": "del_osvd_40",
+        "city": "Delhi",
+        "name": "Dwarka Sector 9 Road SBI Sector 20",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5700,
+        "lng": 77.0600
+    },
+    {
+        "id": "del_osvd_41",
+        "city": "Delhi",
+        "name": "Prembari Pul - Shalimar Bagh",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.7050,
+        "lng": 77.1650
+    },
+    {
+        "id": "del_osvd_42",
+        "city": "Delhi",
+        "name": "Mahipalpur Bypass",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.5470,
+        "lng": 77.1230
+    },
+    {
+        "id": "del_osvd_43",
+        "city": "Delhi",
+        "name": "Ring Road near Millennium Bus Depot",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.5950,
+        "lng": 77.2550
+    },
+    {
+        "id": "del_osvd_44",
+        "city": "Delhi",
+        "name": "Rajouri Garden Ring Road",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6490,
+        "lng": 77.1210
+    },
+    {
+        "id": "del_osvd_45",
+        "city": "Delhi",
+        "name": "MG Road Sultanpur Metro Station",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.4980,
+        "lng": 77.1600
+    },
+    {
+        "id": "del_osvd_46",
+        "city": "Delhi",
+        "name": "Trauma Centre to IP College T Point",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6850,
+        "lng": 77.2200
+    },
+    {
+        "id": "del_osvd_47",
+        "city": "Delhi",
+        "name": "Majlis Park Metro Station",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.7180,
+        "lng": 77.1750
+    },
+    {
+        "id": "del_osvd_48",
+        "city": "Delhi",
+        "name": "Ring Road ISBT to Wazirabad",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6850,
+        "lng": 77.2300
+    },
+    {
+        "id": "del_osvd_49",
+        "city": "Delhi",
+        "name": "NH-24 West Vinod Nagar",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.6250,
+        "lng": 77.3050
+    },
+    {
+        "id": "del_osvd_50",
+        "city": "Delhi",
+        "name": "NH-24 near CNG Pump Ghazipur",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.6280,
+        "lng": 77.3150
+    },
+    {
+        "id": "del_osvd_51",
+        "city": "Delhi",
+        "name": "NH-24 near DCP East Office",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.6200,
+        "lng": 77.2950
+    },
+    {
+        "id": "del_osvd_52",
+        "city": "Delhi",
+        "name": "NH-24 near Pandav Nagar Foot Bridge",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.6180,
+        "lng": 77.2880
+    },
+    {
+        "id": "del_osvd_53",
+        "city": "Delhi",
+        "name": "Vande Matram Marg Nanaksar Chowk",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6320,
+        "lng": 77.1720
+    },
+    {
+        "id": "del_osvd_54",
+        "city": "Delhi",
+        "name": "Vande Matram Marg Army School",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6250,
+        "lng": 77.1700
+    },
+    {
+        "id": "del_osvd_55",
+        "city": "Delhi",
+        "name": "Mathura Road Harkesh Nagar",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.5350,
+        "lng": 77.2800
+    },
+    {
+        "id": "del_osvd_56",
+        "city": "Delhi",
+        "name": "Mathura Road near Audi Showroom",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.5250,
+        "lng": 77.2900
+    },
+    {
+        "id": "del_osvd_57",
+        "city": "Delhi",
+        "name": "Dr Karni Singh Shooting Range MB Road",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.4980,
+        "lng": 77.2650
+    },
+    {
+        "id": "del_osvd_58",
+        "city": "Delhi",
+        "name": "Signature Bridge",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.7300,
+        "lng": 77.2240
+    },
+    {
+        "id": "del_osvd_59",
+        "city": "Delhi",
+        "name": "Shahdara Flyover Mansarovar Park",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6850,
+        "lng": 77.2950
+    },
+    {
+        "id": "del_osvd_60",
+        "city": "Delhi",
+        "name": "NH-48 Mahipalpur Bypass",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.5480,
+        "lng": 77.1240
+    },
+    {
+        "id": "del_osvd_61",
+        "city": "Delhi",
+        "name": "NH-48 Shiv Murti",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 28.5380,
+        "lng": 77.1050
+    },
+    {
+        "id": "del_osvd_62",
+        "city": "Delhi",
+        "name": "Near Anand Vihar ISBT",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6450,
+        "lng": 77.3150
+    },
+    {
+        "id": "del_osvd_63",
+        "city": "Delhi",
+        "name": "Jeevan Mala Hospital Rohtak Road",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6550,
+        "lng": 77.1850
+    },
+    {
+        "id": "del_osvd_64",
+        "city": "Delhi",
+        "name": "Keshopur Mandi Vikas Kunj",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.6400,
+        "lng": 77.0850
+    },
+    {
+        "id": "del_osvd_65",
+        "city": "Delhi",
+        "name": "Rohini Jail Sector 16",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.7350,
+        "lng": 77.1250
+    },
+    {
+        "id": "del_osvd_66",
+        "city": "Delhi",
+        "name": "Kali Mata Mandir Deepali Chowk",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 28.7000,
+        "lng": 77.1150
+    },
+    {
+        "id": "del_rlvd_01",
+        "city": "Delhi",
+        "name": "Kingsway Camp Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6985,
+        "lng": 77.2065
+    },
+    {
+        "id": "del_rlvd_02",
+        "city": "Delhi",
+        "name": "Chirag Delhi Flyover Crossing",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5415,
+        "lng": 77.2245
+    },
+    {
+        "id": "del_rlvd_03",
+        "city": "Delhi",
+        "name": "Punjabi Bagh-Moti Nagar Ring Road",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6620,
+        "lng": 77.1380
+    },
+    {
+        "id": "del_rlvd_04",
+        "city": "Delhi",
+        "name": "IIT Gate Crossing",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5450,
+        "lng": 77.1925
+    },
+    {
+        "id": "del_rlvd_05",
+        "city": "Delhi",
+        "name": "CDR Chowk Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5030,
+        "lng": 77.1720
+    },
+    {
+        "id": "del_rlvd_06",
+        "city": "Delhi",
+        "name": "Lodhi Road Dayal Singh College",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5900,
+        "lng": 77.2340
+    },
+    {
+        "id": "del_rlvd_07",
+        "city": "Delhi",
+        "name": "Aurbindo Chowk Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5680,
+        "lng": 77.2070
+    },
+    {
+        "id": "del_rlvd_08",
+        "city": "Delhi",
+        "name": "Sector 1 Red Light Dwarka",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6025,
+        "lng": 77.0760
+    },
+    {
+        "id": "del_rlvd_09",
+        "city": "Delhi",
+        "name": "Lado Sarai T Point",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5235,
+        "lng": 77.1950
+    },
+    {
+        "id": "del_rlvd_10",
+        "city": "Delhi",
+        "name": "Jail Road Lajwanti Chowk",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6235,
+        "lng": 77.1120
+    },
+    {
+        "id": "del_rlvd_11",
+        "city": "Delhi",
+        "name": "Chhata Rail Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6560,
+        "lng": 77.2410
+    },
+    {
+        "id": "del_rlvd_12",
+        "city": "Delhi",
+        "name": "Rajesh Pilot Marg Prithviraj Road",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6020,
+        "lng": 77.2210
+    },
+    {
+        "id": "del_rlvd_13",
+        "city": "Delhi",
+        "name": "Kirbi Palace Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6010,
+        "lng": 77.1350
+    },
+    {
+        "id": "del_rlvd_14",
+        "city": "Delhi",
+        "name": "NSG Red Light Signal",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5490,
+        "lng": 77.1150
+    },
+    {
+        "id": "del_rlvd_15",
+        "city": "Delhi",
+        "name": "Gulabi Bagh Tri Nagar Crossing",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6700,
+        "lng": 77.1850
+    },
+    {
+        "id": "del_rlvd_16",
+        "city": "Delhi",
+        "name": "IP College Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6850,
+        "lng": 77.2200
+    },
+    {
+        "id": "del_rlvd_17",
+        "city": "Delhi",
+        "name": "Sector 4-12 Crossing Dwarka",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5950,
+        "lng": 77.0450
+    },
+    {
+        "id": "del_rlvd_18",
+        "city": "Delhi",
+        "name": "NSIT Red Light Dwarka",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6040,
+        "lng": 77.0350
+    },
+    {
+        "id": "del_rlvd_19",
+        "city": "Delhi",
+        "name": "Okhla Crown Plaza",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5450,
+        "lng": 77.2750
+    },
+    {
+        "id": "del_rlvd_20",
+        "city": "Delhi",
+        "name": "Rajouri Garden Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6490,
+        "lng": 77.1210
+    },
+    {
+        "id": "del_rlvd_21",
+        "city": "Delhi",
+        "name": "Pacific Mall Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6450,
+        "lng": 77.1050
+    },
+    {
+        "id": "del_rlvd_22",
+        "city": "Delhi",
+        "name": "K D Chowk Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6950,
+        "lng": 77.1550
+    },
+    {
+        "id": "del_rlvd_23",
+        "city": "Delhi",
+        "name": "Chandgiram Akhara Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6750,
+        "lng": 77.2250
+    },
+    {
+        "id": "del_rlvd_24",
+        "city": "Delhi",
+        "name": "Vishwavidyalaya Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6950,
+        "lng": 77.2150
+    },
+    {
+        "id": "del_rlvd_25",
+        "city": "Delhi",
+        "name": "Peeragarhi Chowk",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6795,
+        "lng": 77.0910
+    },
+    {
+        "id": "del_rlvd_26",
+        "city": "Delhi",
+        "name": "Britannia Chowk Ring Road",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6885,
+        "lng": 77.1520
+    },
+    {
+        "id": "del_rlvd_27",
+        "city": "Delhi",
+        "name": "Azadpur Chowk",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.7065,
+        "lng": 77.1755
+    },
+    {
+        "id": "del_rlvd_28",
+        "city": "Delhi",
+        "name": "Mukarba Chowk nr Jahangirpuri Metro",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.7360,
+        "lng": 77.1650
+    },
+    {
+        "id": "del_rlvd_29",
+        "city": "Delhi",
+        "name": "Burari Chowk",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.7450,
+        "lng": 77.1950
+    },
+    {
+        "id": "del_rlvd_30",
+        "city": "Delhi",
+        "name": "Uttam Nagar T Point",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6250,
+        "lng": 77.0650
+    },
+    {
+        "id": "del_rlvd_31",
+        "city": "Delhi",
+        "name": "Moti Bagh Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5802,
+        "lng": 77.1705
+    },
+    {
+        "id": "del_rlvd_32",
+        "city": "Delhi",
+        "name": "Bhikaji Cama Place Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5694,
+        "lng": 77.1868
+    },
+    {
+        "id": "del_rlvd_33",
+        "city": "Delhi",
+        "name": "Nauroji Nagar Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5710,
+        "lng": 77.1950
+    },
+    {
+        "id": "del_rlvd_34",
+        "city": "Delhi",
+        "name": "Andrews Ganj Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5670,
+        "lng": 77.2345
+    },
+    {
+        "id": "del_rlvd_35",
+        "city": "Delhi",
+        "name": "Moolchand Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5640,
+        "lng": 77.2340
+    },
+    {
+        "id": "del_rlvd_36",
+        "city": "Delhi",
+        "name": "Lal Sai Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6210,
+        "lng": 77.0950
+    },
+    {
+        "id": "del_rlvd_37",
+        "city": "Delhi",
+        "name": "Cpt Gaur Lajpat Nagar Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5691,
+        "lng": 77.2435
+    },
+    {
+        "id": "del_rlvd_38",
+        "city": "Delhi",
+        "name": "Sriniwaspuri Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5620,
+        "lng": 77.2580
+    },
+    {
+        "id": "del_rlvd_39",
+        "city": "Delhi",
+        "name": "Mayapuri Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6360,
+        "lng": 77.1280
+    },
+    {
+        "id": "del_rlvd_40",
+        "city": "Delhi",
+        "name": "Panchsheel Flyover Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5440,
+        "lng": 77.2150
+    },
+    {
+        "id": "del_rlvd_41",
+        "city": "Delhi",
+        "name": "Naraina T Point Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6275,
+        "lng": 77.1395
+    },
+    {
+        "id": "del_rlvd_42",
+        "city": "Delhi",
+        "name": "RTR Flyover Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.5650,
+        "lng": 77.1650
+    },
+    {
+        "id": "del_rlvd_43",
+        "city": "Delhi",
+        "name": "RC Aggarwal Chowk ITO Red Light",
+        "type": "RED_LIGHT_CAM",
+        "speed_limit": null,
+        "lat": 28.6290,
+        "lng": 77.2430
+    }
+]

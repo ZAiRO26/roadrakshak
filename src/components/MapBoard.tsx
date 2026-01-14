@@ -4,6 +4,8 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { useGpsStore } from '../stores/gpsStore';
 import { useAppStore } from '../stores/appStore';
 import { useSmoothPosition } from '../hooks/useSmoothPosition';
+import { getAllOfficialCameras, mergeCamerasWithPriority } from '../services/CameraLoader';
+import type { CameraNode } from '../types/camera';
 
 export interface MapControls {
     zoomIn: () => void;
@@ -31,6 +33,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
     const olaMapsRef = useRef<OlaMaps | null>(null);
     const userMarkerRef = useRef<any>(null);
     const cameraMarkersRef = useRef<any[]>([]);
+    const officialCameraMarkersRef = useRef<any[]>([]);
     const policeMarkersRef = useRef<any[]>([]);
     const initializingRef = useRef(false);
 
@@ -183,18 +186,33 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
         }
     }, [rawLat, rawLng, isMapLoaded, updateUserMarker]);
 
-    // Camera markers
+    // OSM Camera markers (blue - lower priority)
     useEffect(() => {
         if (!mapRef.current || !isMapLoaded || !olaMapsRef.current) return;
 
         cameraMarkersRef.current.forEach(marker => marker.remove());
         cameraMarkersRef.current = [];
 
-        cameras.forEach(camera => {
+        // Convert OSM cameras to CameraNode format for merging
+        const osmCameras: CameraNode[] = cameras.map((cam, idx) => ({
+            id: `osm_${idx}`,
+            lat: cam.lat,
+            lng: cam.lng,
+            type: 'SPEED_CAM' as const,
+            source: 'OSM' as const,
+            direction: cam.direction,
+        }));
+
+        // Merge with official cameras (official takes priority)
+        const officialCameras = getAllOfficialCameras();
+        const mergedOsmCameras = mergeCamerasWithPriority(officialCameras, osmCameras)
+            .filter(c => c.source === 'OSM');
+
+        mergedOsmCameras.forEach(camera => {
             const el = document.createElement('div');
-            el.className = 'camera-marker';
+            el.className = 'camera-marker camera-osm';
             el.innerHTML = '📷';
-            el.title = 'Speed Camera';
+            el.title = 'Speed Camera (OSM)';
 
             const marker = olaMapsRef.current!.addMarker({
                 element: el,
@@ -206,6 +224,39 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
             cameraMarkersRef.current.push(marker);
         });
     }, [cameras, isMapLoaded]);
+
+    // Official Camera markers (red - highest priority, rendered on top)
+    useEffect(() => {
+        if (!mapRef.current || !isMapLoaded || !olaMapsRef.current) return;
+
+        officialCameraMarkersRef.current.forEach(marker => marker.remove());
+        officialCameraMarkersRef.current = [];
+
+        const officialCameras = getAllOfficialCameras();
+
+        officialCameras.forEach(camera => {
+            const el = document.createElement('div');
+            el.className = `camera-marker camera-official ${camera.type === 'RED_LIGHT_CAM' ? 'red-light' : 'speed'}`;
+            el.innerHTML = camera.type === 'RED_LIGHT_CAM' ? '🚦' : '📷';
+
+            const limitText = camera.limit ? `Limit: ${camera.limit} km/h` : 'No speed limit';
+            el.title = `⚠️ OFFICIAL: ${camera.name}\n${limitText}`;
+
+            // Add click handler for popup
+            el.onclick = () => {
+                alert(`⚠️ OFFICIAL CAMERA\n\n📍 ${camera.name}\n🏎️ ${limitText}\n📋 Type: ${camera.type === 'RED_LIGHT_CAM' ? 'Red Light Camera' : 'Speed Camera'}`);
+            };
+
+            const marker = olaMapsRef.current!.addMarker({
+                element: el,
+                anchor: 'center',
+            })
+                .setLngLat([camera.lng, camera.lat])
+                .addTo(mapRef.current);
+
+            officialCameraMarkersRef.current.push(marker);
+        });
+    }, [isMapLoaded]);
 
     // Police markers
     useEffect(() => {
@@ -320,9 +371,27 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
           font-size: 24px;
           cursor: pointer;
           filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+          transition: transform 0.15s ease;
         }
         .camera-marker:hover, .police-marker:hover {
-          transform: scale(1.2);
+          transform: scale(1.3);
+        }
+        /* OSM cameras - blue tint */
+        .camera-osm {
+          filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.5)) hue-rotate(200deg);
+          z-index: 10;
+        }
+        /* Official cameras - red highlight, on top */
+        .camera-official {
+          filter: drop-shadow(0 2px 8px rgba(239, 68, 68, 0.8));
+          z-index: 100;
+          font-size: 28px;
+        }
+        .camera-official.speed {
+          filter: drop-shadow(0 3px 10px rgba(239, 68, 68, 0.9)) brightness(1.1);
+        }
+        .camera-official.red-light {
+          filter: drop-shadow(0 3px 10px rgba(251, 191, 36, 0.9));
         }
       `}</style>
         </>
