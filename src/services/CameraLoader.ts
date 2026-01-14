@@ -1,14 +1,48 @@
 /**
  * CameraLoader.ts - Unified camera data loader
  * Loads official cameras and provides radius-based filtering
+ * Supports user corrections via IndexedDB
  */
 
 import * as turf from '@turf/turf';
 import type { CameraNode, OfficialCameraRaw } from '../types/camera';
 import officialCamerasData from '../data/official_cameras.json';
+import { getAllCorrections, saveCameraCorrection, type CameraCorrection } from './CameraCorrectionsStore';
 
 // Type assertion for imported JSON
 const officialCameras = officialCamerasData as OfficialCameraRaw[];
+
+// Cache for corrections (loaded from IndexedDB)
+let correctionsCache: Map<string, CameraCorrection> = new Map();
+
+/**
+ * Load corrections from IndexedDB into memory cache
+ */
+export async function loadCorrections(): Promise<void> {
+    try {
+        const corrections = await getAllCorrections();
+        correctionsCache.clear();
+        corrections.forEach(c => correctionsCache.set(c.cameraId, c));
+        console.log(`[CameraLoader] Loaded ${corrections.length} corrections from IndexedDB`);
+    } catch (e) {
+        console.warn('[CameraLoader] Failed to load corrections:', e);
+    }
+}
+
+/**
+ * Apply correction to a camera if one exists
+ */
+function applyCorrectionToCamera(camera: CameraNode): CameraNode {
+    const correction = correctionsCache.get(camera.id);
+    if (correction) {
+        return {
+            ...camera,
+            lat: correction.correctedLat,
+            lng: correction.correctedLng,
+        };
+    }
+    return camera;
+}
 
 /**
  * Convert raw official camera data to unified CameraNode format
@@ -28,9 +62,12 @@ function convertOfficialCamera(raw: OfficialCameraRaw): CameraNode {
 
 /**
  * Get all official cameras (converted to CameraNode format)
+ * Applies user corrections from IndexedDB if available
  */
 export function getAllOfficialCameras(): CameraNode[] {
-    return officialCameras.map(convertOfficialCamera);
+    return officialCameras
+        .map(convertOfficialCamera)
+        .map(applyCorrectionToCamera);
 }
 
 /**
@@ -141,10 +178,88 @@ export function getCameraStats() {
     };
 }
 
+/**
+ * Correct a camera's location using user's current GPS position
+ * Saves to IndexedDB and updates the in-memory cache
+ */
+export async function correctCameraLocation(
+    cameraId: string,
+    userLat: number,
+    userLng: number
+): Promise<{ success: boolean; camera?: CameraNode }> {
+    // Find the original camera
+    const originalCamera = officialCameras
+        .map(convertOfficialCamera)
+        .find(c => c.id === cameraId);
+
+    if (!originalCamera) {
+        console.error(`[CameraLoader] Camera ${cameraId} not found`);
+        return { success: false };
+    }
+
+    try {
+        // Save correction to IndexedDB
+        await saveCameraCorrection(
+            cameraId,
+            originalCamera.lat,
+            originalCamera.lng,
+            userLat,
+            userLng
+        );
+
+        // Update in-memory cache
+        correctionsCache.set(cameraId, {
+            cameraId,
+            originalLat: originalCamera.lat,
+            originalLng: originalCamera.lng,
+            correctedLat: userLat,
+            correctedLng: userLng,
+            timestamp: Date.now(),
+        });
+
+        console.log(`[CameraLoader] Corrected camera ${cameraId}: (${originalCamera.lat}, ${originalCamera.lng}) -> (${userLat}, ${userLng})`);
+
+        return {
+            success: true,
+            camera: {
+                ...originalCamera,
+                lat: userLat,
+                lng: userLng,
+            },
+        };
+    } catch (e) {
+        console.error('[CameraLoader] Failed to save correction:', e);
+        return { success: false };
+    }
+}
+
+/**
+ * Check if there's a correctable camera nearby (within 1km)
+ */
+export function getNearestCorrectableCamera(
+    userLat: number,
+    userLng: number
+): { camera: CameraNode; distanceM: number } | null {
+    const cameras = getNearbyCameras(userLat, userLng, 1, ['OFFICIAL']);
+
+    if (cameras.length === 0) return null;
+
+    const nearest = cameras[0];
+    const distanceKm = getDistanceKm(userLat, userLng, nearest.lat, nearest.lng);
+
+    return {
+        camera: nearest,
+        distanceM: Math.round(distanceKm * 1000),
+    };
+}
+
 export default {
     getAllOfficialCameras,
     getNearbyCameras,
     getClosestCamera,
     mergeCamerasWithPriority,
     getCameraStats,
+    loadCorrections,
+    correctCameraLocation,
+    getNearestCorrectableCamera,
 };
