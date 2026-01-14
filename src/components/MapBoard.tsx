@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import maplibregl from 'maplibre-gl';
+import { OlaMaps } from 'olamaps-web-sdk';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useGpsStore } from '../stores/gpsStore';
 import { useAppStore } from '../stores/appStore';
 
 interface MapBoardProps {
-    onMapReady?: (map: maplibregl.Map) => void;
+    onMapReady?: (map: any) => void;
     routeGeometry?: GeoJSON.LineString | null;
 }
 
@@ -13,83 +13,109 @@ interface MapBoardProps {
 const DEFAULT_CENTER: [number, number] = [77.2090, 28.6139];
 const DEFAULT_ZOOM = 12;
 
+// Get API key once at module level
+const API_KEY = import.meta.env.VITE_OLA_API_KEY || '';
+
 export function MapBoard({ onMapReady, routeGeometry }: MapBoardProps) {
     const mapContainerRef = useRef<HTMLDivElement>(null);
-    const mapRef = useRef<maplibregl.Map | null>(null);
-    const userMarkerRef = useRef<maplibregl.Marker | null>(null);
-    const cameraMarkersRef = useRef<maplibregl.Marker[]>([]);
-    const policeMarkersRef = useRef<maplibregl.Marker[]>([]);
+    const mapRef = useRef<any>(null);
+    const olaMapsRef = useRef<OlaMaps | null>(null);
+    const userMarkerRef = useRef<any>(null);
+    const cameraMarkersRef = useRef<any[]>([]);
+    const policeMarkersRef = useRef<any[]>([]);
+    const initializingRef = useRef(false);
 
     const [isMapLoaded, setIsMapLoaded] = useState(false);
     const { latitude, longitude, heading } = useGpsStore();
     const { theme, cameras, policeReports, setLoading } = useAppStore();
 
-    // Initialize map
+    // Initialize Ola Maps ONCE using SDK v2 async pattern
     useEffect(() => {
-        if (!mapContainerRef.current || mapRef.current) return;
+        // Guard against double initialization
+        if (!mapContainerRef.current || mapRef.current || initializingRef.current) return;
 
-        const apiKey = import.meta.env.VITE_OLA_API_KEY;
+        initializingRef.current = true;
 
-        const map = new maplibregl.Map({
-            container: mapContainerRef.current,
-            style: getMapStyle(theme),
-            center: DEFAULT_CENTER,
-            zoom: DEFAULT_ZOOM,
-            pitch: 0,
-            bearing: 0,
-            attributionControl: false,
-            // Transform ALL requests to add API key to Ola Maps endpoints
-            transformRequest: (url: string) => {
-                if (url.includes('olamaps.io') && apiKey) {
-                    // Replace any placeholder key patterns (key=0.0.1, key=0.1, key=0.4.0, etc.)
-                    let newUrl = url.replace(/[?&]key=[\d.]+/g, '');
-                    // Add the real API key
-                    if (newUrl.includes('?')) {
-                        newUrl = `${newUrl}&api_key=${apiKey}`;
-                    } else {
-                        newUrl = `${newUrl}?api_key=${apiKey}`;
-                    }
-                    return { url: newUrl };
-                }
-                return { url };
-            },
-        });
-
-        map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
-        map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left');
-
-        map.on('load', () => {
-            console.log('Map loaded successfully');
-            setIsMapLoaded(true);
+        if (!API_KEY) {
+            console.error('Ola Maps API key not found!');
             setLoading(false);
-            onMapReady?.(map);
-        });
+            initializingRef.current = false;
+            return;
+        }
 
-        map.on('error', (e) => {
-            console.error('Map error:', e);
+        // Initialize OlaMaps SDK once
+        const olaMaps = new OlaMaps({
+            apiKey: API_KEY,
         });
+        olaMapsRef.current = olaMaps;
 
-        mapRef.current = map;
+        // Use Ola Maps built-in dark style
+        // Available styles: bolt-dark, default-dark-standard, eclipse-dark-lite, etc.
+        // User's custom "olamap dark" style is not accessible via public API
+        const styleUrl = `https://api.olamaps.io/tiles/vector/v1/styles/bolt-dark/style.json`;
+
+        // Async initialization as per SDK v2 docs
+        const initMap = async () => {
+            try {
+                console.log('Initializing Ola Map with style:', styleUrl);
+
+                const map = await olaMaps.init({
+                    style: styleUrl,
+                    container: mapContainerRef.current!,
+                    center: DEFAULT_CENTER,
+                    zoom: DEFAULT_ZOOM,
+                });
+
+                map.on('load', () => {
+                    console.log('Ola Map loaded successfully with custom style');
+                    setIsMapLoaded(true);
+                    setLoading(false);
+                    onMapReady?.(map);
+                });
+
+                map.on('error', (e: any) => {
+                    console.error('Map error:', e);
+                });
+
+                mapRef.current = map;
+            } catch (error) {
+                console.error('Failed to initialize Ola Maps:', error);
+                setLoading(false);
+                initializingRef.current = false;
+            }
+        };
+
+        initMap();
 
         return () => {
-            map.remove();
-            mapRef.current = null;
+            if (mapRef.current) {
+                mapRef.current.remove();
+                mapRef.current = null;
+                initializingRef.current = false;
+            }
         };
-    }, [onMapReady, setLoading]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []); // Empty dependency array - initialize only once
 
-    // Update map style on theme change
+    // Handle theme change separately (don't reinitialize map)
     useEffect(() => {
-        if (mapRef.current && isMapLoaded) {
-            mapRef.current.setStyle(getMapStyle(theme));
+        if (!mapRef.current || !isMapLoaded) return;
+
+        const styleName = theme === 'dark' ? 'bolt-dark' : 'default-light-standard';
+        const styleUrl = `https://api.olamaps.io/tiles/vector/v1/styles/${styleName}/style.json?api_key=${API_KEY}`;
+
+        try {
+            mapRef.current.setStyle(styleUrl);
+        } catch (e) {
+            console.warn('Failed to change map style:', e);
         }
     }, [theme, isMapLoaded]);
 
     // Update user position marker
     const updateUserMarker = useCallback(() => {
-        if (!mapRef.current || !isMapLoaded || latitude === null || longitude === null) return;
+        if (!mapRef.current || !isMapLoaded || !olaMapsRef.current || latitude === null || longitude === null) return;
 
         if (!userMarkerRef.current) {
-            // Create user marker element
             const el = document.createElement('div');
             el.className = 'user-marker';
             el.innerHTML = `
@@ -97,25 +123,29 @@ export function MapBoard({ onMapReady, routeGeometry }: MapBoardProps) {
                 <div class="user-marker-dot"></div>
             `;
 
-            userMarkerRef.current = new maplibregl.Marker({ element: el, anchor: 'center' })
+            userMarkerRef.current = olaMapsRef.current.addMarker({
+                element: el,
+                anchor: 'center',
+                offset: [0, 0],
+            })
                 .setLngLat([longitude, latitude])
                 .addTo(mapRef.current);
         } else {
             userMarkerRef.current.setLngLat([longitude, latitude]);
         }
 
-        // Rotate marker based on heading
         if (heading !== null && userMarkerRef.current) {
             const markerEl = userMarkerRef.current.getElement();
-            markerEl.style.transform = `rotate(${heading}deg)`;
+            if (markerEl) {
+                markerEl.style.transform = `rotate(${heading}deg)`;
+            }
         }
     }, [latitude, longitude, heading, isMapLoaded]);
 
-    // AUTO-CENTER: Follow user position
+    // Follow user position
     useEffect(() => {
         if (mapRef.current && latitude !== null && longitude !== null && isMapLoaded) {
             updateUserMarker();
-            // Smooth pan to user location
             mapRef.current.easeTo({
                 center: [longitude, latitude],
                 duration: 500,
@@ -123,61 +153,62 @@ export function MapBoard({ onMapReady, routeGeometry }: MapBoardProps) {
         }
     }, [latitude, longitude, isMapLoaded, updateUserMarker]);
 
-    // Update camera markers
+    // Camera markers
     useEffect(() => {
-        if (!mapRef.current || !isMapLoaded) return;
+        if (!mapRef.current || !isMapLoaded || !olaMapsRef.current) return;
 
-        // Clear existing camera markers
         cameraMarkersRef.current.forEach(marker => marker.remove());
         cameraMarkersRef.current = [];
 
-        // Add new camera markers
         cameras.forEach(camera => {
             const el = document.createElement('div');
             el.className = 'camera-marker';
             el.innerHTML = '📷';
             el.title = 'Speed Camera';
 
-            const marker = new maplibregl.Marker({ element: el, anchor: 'center' })
+            const marker = olaMapsRef.current!.addMarker({
+                element: el,
+                anchor: 'center',
+            })
                 .setLngLat([camera.lng, camera.lat])
-                .addTo(mapRef.current!);
+                .addTo(mapRef.current);
 
             cameraMarkersRef.current.push(marker);
         });
     }, [cameras, isMapLoaded]);
 
-    // Update police markers
+    // Police markers
     useEffect(() => {
-        if (!mapRef.current || !isMapLoaded) return;
+        if (!mapRef.current || !isMapLoaded || !olaMapsRef.current) return;
 
-        // Clear existing police markers
         policeMarkersRef.current.forEach(marker => marker.remove());
         policeMarkersRef.current = [];
 
-        // Add new police markers
         policeReports.forEach(report => {
             const el = document.createElement('div');
             el.className = 'police-marker';
             el.innerHTML = '🚔';
             el.title = `Police checkpoint (${report.confirmations} confirmations)`;
 
-            const marker = new maplibregl.Marker({ element: el, anchor: 'center' })
+            const marker = olaMapsRef.current!.addMarker({
+                element: el,
+                anchor: 'center',
+            })
                 .setLngLat([report.lng, report.lat])
-                .addTo(mapRef.current!);
+                .addTo(mapRef.current);
 
             policeMarkersRef.current.push(marker);
         });
     }, [policeReports, isMapLoaded]);
 
-    // Display route if provided
+    // Display route
     useEffect(() => {
         if (!mapRef.current || !isMapLoaded || !routeGeometry) return;
 
         const map = mapRef.current;
 
-        // Add or update route layer
         if (map.getSource('route')) {
-            (map.getSource('route') as maplibregl.GeoJSONSource).setData({
+            map.getSource('route').setData({
                 type: 'Feature',
                 properties: {},
                 geometry: routeGeometry,
@@ -213,6 +244,7 @@ export function MapBoard({ onMapReady, routeGeometry }: MapBoardProps) {
         <>
             <div
                 ref={mapContainerRef}
+                id="ola-map-container"
                 style={{
                     width: '100%',
                     height: '100%',
@@ -265,22 +297,6 @@ export function MapBoard({ onMapReady, routeGeometry }: MapBoardProps) {
       `}</style>
         </>
     );
-}
-
-// Map styles - using OpenFreeMap (free, no API key needed)
-// Note: Ola Maps style.json has internal reference issues causing "Map error: gt"
-// OpenFreeMap works reliably and has global coverage
-function getMapStyle(theme: 'dark' | 'light'): string {
-    // OpenFreeMap styles that work reliably
-    // Available: liberty (colorful), bright, positron (light), fiord (dark-ish)
-    return theme === 'dark'
-        ? 'https://tiles.openfreemap.org/styles/dark'
-        : 'https://tiles.openfreemap.org/styles/positron';
-
-    // TODO: Re-enable Ola Maps when they fix their style.json internal references
-    // const apiKey = import.meta.env.VITE_OLA_API_KEY;
-    // const styleName = theme === 'dark' ? 'default-dark-standard' : 'default-light-standard';
-    // return `https://api.olamaps.io/tiles/vector/v1/styles/${styleName}/style.json?api_key=${apiKey}`;
 }
 
 export default MapBoard;
