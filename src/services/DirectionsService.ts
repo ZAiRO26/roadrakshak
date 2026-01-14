@@ -48,20 +48,20 @@ export async function getDirections(
             waypointsParam = `&waypoints=${waypoints.map(w => `${w.lat},${w.lng}`).join('|')}`;
         }
 
+        // Ola Directions API requires POST method
         const url = `${OLA_API_BASE}/routing/v1/directions?` +
             `origin=${origin.lat},${origin.lng}` +
             `&destination=${destination.lat},${destination.lng}` +
             waypointsParam +
-            `&mode=driving` +
-            `&alternatives=false` +
-            `&steps=true` +
-            `&overview=full` +
-            `&language=en` +
             `&api_key=${OLA_API_KEY}`;
 
+        console.log('Requesting directions:', { origin, destination, url: url.replace(OLA_API_KEY, 'REDACTED') });
+
         const response = await fetch(url, {
+            method: 'POST',
             headers: {
                 'Accept': 'application/json',
+                'Content-Type': 'application/json',
                 'X-Request-Id': crypto.randomUUID(),
             },
         });
@@ -69,7 +69,8 @@ export async function getDirections(
         if (!response.ok) {
             const errorText = await response.text();
             console.error('Directions API error:', response.status, errorText);
-            return null;
+            // Show a more descriptive error
+            throw new Error(`API returned ${response.status}: ${errorText.slice(0, 100)}`);
         }
 
         const data = await response.json();
