@@ -1,11 +1,16 @@
 /**
  * SnapToMeButton.tsx - Button to correct camera location using current GPS
  * Only visible when within 1km of an official camera
+ * Uses OverrideService for localStorage persistence
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useGpsStore } from '../stores/gpsStore';
-import { getNearestCorrectableCamera, correctCameraLocation, loadCorrections } from '../services/CameraLoader';
+import { getNearestCorrectableCamera } from '../services/CameraLoader';
+import { saveCorrection, getOverrideCount, copyMergedToClipboard } from '../services/OverrideService';
+
+// Event to trigger map marker refresh
+export const CAMERA_CORRECTED_EVENT = 'camera-location-corrected';
 
 export function SnapToMeButton() {
     const { latitude, longitude } = useGpsStore();
@@ -13,11 +18,13 @@ export function SnapToMeButton() {
     const [isUpdating, setIsUpdating] = useState(false);
     const [showToast, setShowToast] = useState(false);
     const [toastMessage, setToastMessage] = useState('');
+    const [toastType, setToastType] = useState<'success' | 'info'>('success');
+    const [overrideCount, setOverrideCount] = useState(0);
 
-    // Load corrections on mount
+    // Update override count
     useEffect(() => {
-        loadCorrections();
-    }, []);
+        setOverrideCount(getOverrideCount());
+    }, [showToast]); // Refresh count after each correction
 
     // Check for nearby camera every second
     useEffect(() => {
@@ -36,55 +43,78 @@ export function SnapToMeButton() {
         }
     }, [latitude, longitude]);
 
-    const handleSnapToMe = async () => {
+    const handleSnapToMe = useCallback(async () => {
         if (!nearbyCamera || latitude === null || longitude === null) return;
 
         setIsUpdating(true);
 
-        const result = await correctCameraLocation(nearbyCamera.id, latitude, longitude);
+        // Save correction to localStorage
+        saveCorrection(nearbyCamera.id, latitude, longitude);
+
+        // Dispatch event to refresh map markers
+        window.dispatchEvent(new CustomEvent(CAMERA_CORRECTED_EVENT, {
+            detail: { cameraId: nearbyCamera.id, lat: latitude, lng: longitude }
+        }));
 
         setIsUpdating(false);
 
-        if (result.success) {
-            setToastMessage(`📍 Camera location corrected!\n${nearbyCamera.name}`);
-            setShowToast(true);
-            setTimeout(() => setShowToast(false), 3000);
+        // Show success toast
+        setToastType('success');
+        setToastMessage(`📍 Camera location corrected!\n${nearbyCamera.name}`);
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 3000);
+    }, [nearbyCamera, latitude, longitude]);
 
-            // Force map to refresh markers
-            window.dispatchEvent(new CustomEvent('camera-corrected', {
-                detail: { cameraId: nearbyCamera.id, lat: latitude, lng: longitude }
-            }));
+    const handleExport = useCallback(async () => {
+        const success = await copyMergedToClipboard();
+
+        setToastType('info');
+        if (success) {
+            setToastMessage(`📋 ${overrideCount} corrections copied!\nPaste into official_cameras.json`);
         } else {
-            setToastMessage('❌ Failed to save correction');
-            setShowToast(true);
-            setTimeout(() => setShowToast(false), 3000);
+            setToastMessage('📋 Check console for data');
         }
-    };
-
-    // Don't render if no nearby camera
-    if (!nearbyCamera) return null;
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 4000);
+    }, [overrideCount]);
 
     return (
         <>
-            <button
-                className="snap-to-me-btn"
-                onClick={handleSnapToMe}
-                disabled={isUpdating}
-                title={`Update ${nearbyCamera.name} location to your current position`}
-            >
-                {isUpdating ? (
-                    <span className="updating">⏳</span>
-                ) : (
-                    <>
-                        <span className="icon">📍</span>
-                        <span className="text">UPDATE CAM</span>
-                    </>
-                )}
-                <span className="distance">{nearbyCamera.distanceM}m away</span>
-            </button>
+            {/* Snap to Me button - only visible near cameras */}
+            {nearbyCamera && (
+                <button
+                    className="snap-to-me-btn"
+                    onClick={handleSnapToMe}
+                    disabled={isUpdating}
+                    title={`Update ${nearbyCamera.name} location to your current position`}
+                >
+                    {isUpdating ? (
+                        <span className="updating">⏳</span>
+                    ) : (
+                        <>
+                            <span className="icon">📍</span>
+                            <span className="text">UPDATE CAM</span>
+                        </>
+                    )}
+                    <span className="distance">{nearbyCamera.distanceM}m away</span>
+                </button>
+            )}
 
+            {/* Export button - only visible when there are corrections */}
+            {overrideCount > 0 && (
+                <button
+                    className="export-btn"
+                    onClick={handleExport}
+                    title="Export all corrections to clipboard"
+                >
+                    <span className="icon">📤</span>
+                    <span className="text">EXPORT ({overrideCount})</span>
+                </button>
+            )}
+
+            {/* Toast notification */}
             {showToast && (
-                <div className="snap-toast">
+                <div className={`snap-toast ${toastType}`}>
                     {toastMessage}
                 </div>
             )}
@@ -112,6 +142,7 @@ export function SnapToMeButton() {
                     
                     box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
                     animation: pulse-button 2s infinite;
+                    transition: transform 0.15s;
                 }
                 
                 .snap-to-me-btn:hover:not(:disabled) {
@@ -156,7 +187,45 @@ export function SnapToMeButton() {
                     from { transform: rotate(0deg); }
                     to { transform: rotate(360deg); }
                 }
+
+                /* Export button */
+                .export-btn {
+                    position: fixed;
+                    bottom: 24px;
+                    left: 24px;
+                    z-index: 1000;
+                    
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    
+                    padding: 10px 16px;
+                    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+                    border: none;
+                    border-radius: 12px;
+                    color: white;
+                    font-weight: 600;
+                    font-size: 12px;
+                    cursor: pointer;
+                    
+                    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+                    transition: transform 0.15s, box-shadow 0.15s;
+                }
                 
+                .export-btn:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+                }
+                
+                .export-btn:active {
+                    transform: scale(0.95);
+                }
+                
+                .export-btn .icon {
+                    font-size: 16px;
+                }
+                
+                /* Toast notification */
                 .snap-toast {
                     position: fixed;
                     top: 80px;
@@ -165,7 +234,6 @@ export function SnapToMeButton() {
                     z-index: 2000;
                     
                     padding: 16px 24px;
-                    background: rgba(16, 185, 129, 0.95);
                     color: white;
                     font-weight: 600;
                     border-radius: 12px;
@@ -174,6 +242,14 @@ export function SnapToMeButton() {
                     
                     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
                     animation: slideDown 0.3s ease;
+                }
+                
+                .snap-toast.success {
+                    background: rgba(16, 185, 129, 0.95);
+                }
+                
+                .snap-toast.info {
+                    background: rgba(139, 92, 246, 0.95);
                 }
                 
                 @keyframes slideDown {

@@ -6,6 +6,7 @@ import { useAppStore } from '../stores/appStore';
 import { useSmoothPosition } from '../hooks/useSmoothPosition';
 import { getAllOfficialCameras, mergeCamerasWithPriority } from '../services/CameraLoader';
 import type { CameraNode } from '../types/camera';
+import { CAMERA_CORRECTED_EVENT } from './SnapToMeButton';
 
 export interface MapControls {
     zoomIn: () => void;
@@ -38,6 +39,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
     const initializingRef = useRef(false);
 
     const [isMapLoaded, setIsMapLoaded] = useState(false);
+    const [cameraRefreshTrigger, setCameraRefreshTrigger] = useState(0);
 
     // Use smooth position for animated marker (fixes jumping dot)
     const { latitude, longitude, heading } = useSmoothPosition();
@@ -186,6 +188,18 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
         }
     }, [rawLat, rawLng, isMapLoaded, updateUserMarker]);
 
+    // Listen for camera correction events to refresh markers instantly
+    useEffect(() => {
+        const handleCameraCorrection = () => {
+            setCameraRefreshTrigger(prev => prev + 1);
+        };
+
+        window.addEventListener(CAMERA_CORRECTED_EVENT, handleCameraCorrection);
+        return () => {
+            window.removeEventListener(CAMERA_CORRECTED_EVENT, handleCameraCorrection);
+        };
+    }, []);
+
     // OSM Camera markers (blue - lower priority)
     useEffect(() => {
         if (!mapRef.current || !isMapLoaded || !olaMapsRef.current) return;
@@ -226,6 +240,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
     }, [cameras, isMapLoaded]);
 
     // Official Camera markers (red - highest priority, rendered on top)
+    // Re-renders when cameraRefreshTrigger changes (after user correction)
     useEffect(() => {
         if (!mapRef.current || !isMapLoaded || !olaMapsRef.current) return;
 
@@ -256,7 +271,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
 
             officialCameraMarkersRef.current.push(marker);
         });
-    }, [isMapLoaded]);
+    }, [isMapLoaded, cameraRefreshTrigger]);
 
     // Police markers
     useEffect(() => {
