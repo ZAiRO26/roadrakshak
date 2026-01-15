@@ -1204,5 +1204,122 @@
         "speed_limit": 100,
         "lat": 12.4500,
         "lng": 76.7500
+    },
+    {
+        "id": "mum_tap_01",
+        "city": "Mumbai",
+        "name": "NH-48 Chinchoti (Vasai)",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 19.383543,
+        "lng": 72.897333
+    },
+    {
+        "id": "mum_tap_02",
+        "city": "Mumbai",
+        "name": "Ghodbunder Road (Gaimukh)",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 19.2850,
+        "lng": 72.9350
+    },
+    {
+        "id": "mum_tap_03",
+        "city": "Mumbai",
+        "name": "Bandra-Worli Sea Link (Mid-Span)",
+        "type": "SPEED_CAM",
+        "speed_limit": 80,
+        "lat": 19.0360,
+        "lng": 72.8180
+    },
+    {
+        "id": "mum_tap_04",
+        "city": "Mumbai",
+        "name": "Eastern Freeway (Sewri)",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 18.9950,
+        "lng": 72.8550
+    },
+    {
+        "id": "mum_tap_05",
+        "city": "Mumbai",
+        "name": "Indian Oil Junction (Govandi/Mankhurd)",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 19.0595,
+        "lng": 72.9150
+    },
+    {
+        "id": "mum_tap_06",
+        "city": "Mumbai",
+        "name": "Vashi Bridge (Descent Trap)",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 19.0650,
+        "lng": 72.9800
+    },
+    {
+        "id": "mum_tap_07",
+        "city": "Mumbai",
+        "name": "Sion-Panvel Hwy (Kharghar Bridge)",
+        "type": "SPEED_CAM",
+        "speed_limit": 60,
+        "lat": 19.0350,
+        "lng": 73.0650
+    },
+    {
+        "id": "mum_exp_01",
+        "city": "Mumbai",
+        "name": "Khalapur Toll Plaza (Speed Trap)",
+        "type": "SPEED_CAM",
+        "speed_limit": 100,
+        "lat": 18.8300,
+        "lng": 73.2850
+    },
+    {
+        "id": "mum_exp_02",
+        "city": "Mumbai",
+        "name": "Khandala Ghat (Amrutanjan Bridge)",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 18.7580,
+        "lng": 73.3650
+    },
+    {
+        "id": "mum_exp_03",
+        "city": "Mumbai",
+        "name": "Khandala Tunnel Entry",
+        "type": "SPEED_CAM",
+        "speed_limit": 50,
+        "lat": 18.7520,
+        "lng": 73.3750
+    },
+    {
+        "id": "mum_exp_04",
+        "city": "Mumbai",
+        "name": "Adoshi Tunnel",
+        "type": "SPEED_CAM",
+        "speed_limit": 80,
+        "lat": 18.7850,
+        "lng": 73.3250
+    },
+    {
+        "id": "mum_exp_05",
+        "city": "Pune",
+        "name": "Talegaon Toll Plaza",
+        "type": "SPEED_CAM",
+        "speed_limit": 100,
+        "lat": 18.6950,
+        "lng": 73.6650
+    },
+    {
+        "id": "mum_exp_06",
+        "city": "Pune",
+        "name": "Kamshet Tunnel",
+        "type": "SPEED_CAM",
+        "speed_limit": 80,
+        "lat": 18.7450,
+        "lng": 73.5350
     }
 ]
