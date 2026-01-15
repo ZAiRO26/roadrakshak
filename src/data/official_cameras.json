@@ -4066,5 +4066,4361 @@
         "speed_limit": 50,
         "lat": 12.7058917,
         "lng": 74.9051556
+    },
+    {
+        "id": "ker_ai_243",
+        "city": "Kasaragod",
+        "name": "AI Cam: Adhur",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.516592,
+        "lng": 75.132576
+    },
+    {
+        "id": "ker_ai_244",
+        "city": "Kasaragod",
+        "name": "AI Cam: Parappa",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.390023,
+        "lng": 75.253018
+    },
+    {
+        "id": "ker_ai_245",
+        "city": "Kasaragod",
+        "name": "AI Cam: Vellarikundu",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.355648,
+        "lng": 75.337775
+    },
+    {
+        "id": "ker_ai_246",
+        "city": "Kasaragod",
+        "name": "AI Cam: Rajapuram",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.433285,
+        "lng": 75.289737
+    },
+    {
+        "id": "ker_ai_247",
+        "city": "Kasaragod",
+        "name": "AI Cam: Badiadka",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 12.588955,
+        "lng": 75.07359
+    },
+    {
+        "id": "ker_ai_248",
+        "city": "Kasaragod",
+        "name": "AI Cam: Mulleria",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 12.551829,
+        "lng": 75.1169
+    },
+    {
+        "id": "ker_ai_249",
+        "city": "Kasaragod",
+        "name": "AI Cam: Uduma",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.433285,
+        "lng": 75.059737
+    },
+    {
+        "id": "ker_ai_250",
+        "city": "Kasaragod",
+        "name": "AI Cam: Chattanchal",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.46746,
+        "lng": 75.027003
+    },
+    {
+        "id": "ker_ai_251",
+        "city": "Kannur",
+        "name": "AI Cam: Pilathara",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.156543,
+        "lng": 75.26321
+    },
+    {
+        "id": "ker_ai_252",
+        "city": "Kannur",
+        "name": "AI Cam: Pariyaram Medical",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.123456,
+        "lng": 75.301234
+    },
+    {
+        "id": "ker_ai_253",
+        "city": "Kannur",
+        "name": "AI Cam: Taliparamba Highway",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.04193,
+        "lng": 75.355718
+    },
+    {
+        "id": "ker_ai_254",
+        "city": "Kannur",
+        "name": "AI Cam: Dharmasala",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.976543,
+        "lng": 75.389012
+    },
+    {
+        "id": "ker_ai_255",
+        "city": "Kannur",
+        "name": "AI Cam: Pappinisseri",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.945678,
+        "lng": 75.354321
+    },
+    {
+        "id": "ker_ai_256",
+        "city": "Kannur",
+        "name": "AI Cam: Valapattanam Bridge",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.912345,
+        "lng": 75.36789
+    },
+    {
+        "id": "ker_ai_257",
+        "city": "Kannur",
+        "name": "AI Cam: Puthiyatheru",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.915927,
+        "lng": 75.36036
+    },
+    {
+        "id": "ker_ai_258",
+        "city": "Kannur",
+        "name": "AI Cam: Caltex Junction",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.874567,
+        "lng": 75.371234
+    },
+    {
+        "id": "ker_ai_259",
+        "city": "Kannur",
+        "name": "AI Cam: Thana",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.882345,
+        "lng": 75.375678
+    },
+    {
+        "id": "ker_ai_260",
+        "city": "Kannur",
+        "name": "AI Cam: Chovva",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.871585,
+        "lng": 75.396342
+    },
+    {
+        "id": "ker_ai_261",
+        "city": "Kannur",
+        "name": "AI Cam: Edakkad",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.834567,
+        "lng": 75.432109
+    },
+    {
+        "id": "ker_ai_262",
+        "city": "Kannur",
+        "name": "AI Cam: Muzhappilangad",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 11.798765,
+        "lng": 75.456789
+    },
+    {
+        "id": "ker_ai_263",
+        "city": "Kannur",
+        "name": "AI Cam: Dharmadam",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.776543,
+        "lng": 75.471234
+    },
+    {
+        "id": "ker_ai_264",
+        "city": "Kannur",
+        "name": "AI Cam: Pinarayi",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.801234,
+        "lng": 75.512345
+    },
+    {
+        "id": "ker_ai_265",
+        "city": "Kannur",
+        "name": "AI Cam: Anjarakandy",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.880558,
+        "lng": 75.50655
+    },
+    {
+        "id": "ker_ai_266",
+        "city": "Kannur",
+        "name": "AI Cam: Chakkarakkal",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.889006,
+        "lng": 75.474955
+    },
+    {
+        "id": "ker_ai_267",
+        "city": "Kannur",
+        "name": "AI Cam: Mayyil",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.994117,
+        "lng": 75.449313
+    },
+    {
+        "id": "ker_ai_268",
+        "city": "Kannur",
+        "name": "AI Cam: Irikkur",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.991266,
+        "lng": 75.548675
+    },
+    {
+        "id": "ker_ai_269",
+        "city": "Kannur",
+        "name": "AI Cam: Sreekandapuram",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.044914,
+        "lng": 75.50673
+    },
+    {
+        "id": "ker_ai_270",
+        "city": "Kannur",
+        "name": "AI Cam: Payyavoor",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.060018,
+        "lng": 75.578067
+    },
+    {
+        "id": "ker_ai_271",
+        "city": "Kannur",
+        "name": "AI Cam: Ulikkal",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.037799,
+        "lng": 75.665455
+    },
+    {
+        "id": "ker_ai_272",
+        "city": "Kannur",
+        "name": "AI Cam: Vallithode",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.034871,
+        "lng": 75.713596
+    },
+    {
+        "id": "ker_ai_273",
+        "city": "Kannur",
+        "name": "AI Cam: Peravoor",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.896789,
+        "lng": 75.734567
+    },
+    {
+        "id": "ker_ai_274",
+        "city": "Kannur",
+        "name": "AI Cam: Kelakam",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.865432,
+        "lng": 75.801234
+    },
+    {
+        "id": "ker_ai_275",
+        "city": "Kannur",
+        "name": "AI Cam: Kottiyoor",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.876543,
+        "lng": 75.856789
+    },
+    {
+        "id": "ker_ai_276",
+        "city": "Wayanad",
+        "name": "AI Cam: Vythiri",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.553456,
+        "lng": 76.045678
+    },
+    {
+        "id": "ker_ai_277",
+        "city": "Wayanad",
+        "name": "AI Cam: Chundale",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.589012,
+        "lng": 76.06789
+    },
+    {
+        "id": "ker_ai_278",
+        "city": "Wayanad",
+        "name": "AI Cam: Kainatti",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.634705,
+        "lng": 76.088538
+    },
+    {
+        "id": "ker_ai_279",
+        "city": "Wayanad",
+        "name": "AI Cam: Muttil",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.641189,
+        "lng": 76.107401
+    },
+    {
+        "id": "ker_ai_280",
+        "city": "Wayanad",
+        "name": "AI Cam: Meenangadi",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.660197,
+        "lng": 76.163571
+    },
+    {
+        "id": "ker_ai_281",
+        "city": "Wayanad",
+        "name": "AI Cam: Krishnagiri",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.645678,
+        "lng": 76.198765
+    },
+    {
+        "id": "ker_ai_282",
+        "city": "Wayanad",
+        "name": "AI Cam: Beenachi",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.662345,
+        "lng": 76.234567
+    },
+    {
+        "id": "ker_ai_283",
+        "city": "Wayanad",
+        "name": "AI Cam: Vaduvanchal",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.559874,
+        "lng": 76.224266
+    },
+    {
+        "id": "ker_ai_284",
+        "city": "Wayanad",
+        "name": "AI Cam: Ambalavayal",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.623282,
+        "lng": 76.210988
+    },
+    {
+        "id": "ker_ai_285",
+        "city": "Wayanad",
+        "name": "AI Cam: Pulpally",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.794567,
+        "lng": 76.16789
+    },
+    {
+        "id": "ker_ai_286",
+        "city": "Wayanad",
+        "name": "AI Cam: Mullankolly",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 11.823456,
+        "lng": 76.198765
+    },
+    {
+        "id": "ker_ai_287",
+        "city": "Wayanad",
+        "name": "AI Cam: Kenichira",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.723769,
+        "lng": 76.150871
+    },
+    {
+        "id": "ker_ai_288",
+        "city": "Wayanad",
+        "name": "AI Cam: Nadavayal",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.739191,
+        "lng": 76.120942
+    },
+    {
+        "id": "ker_ai_289",
+        "city": "Wayanad",
+        "name": "AI Cam: Panamaram Bridge",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 11.741347,
+        "lng": 76.072054
+    },
+    {
+        "id": "ker_ai_290",
+        "city": "Wayanad",
+        "name": "AI Cam: Vellamunda",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.731847,
+        "lng": 75.951586
+    },
+    {
+        "id": "ker_ai_291",
+        "city": "Wayanad",
+        "name": "AI Cam: Tharuvana",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.738028,
+        "lng": 75.978072
+    },
+    {
+        "id": "ker_ai_292",
+        "city": "Wayanad",
+        "name": "AI Cam: 4th Mile Mananthavady",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.785678,
+        "lng": 76.012345
+    },
+    {
+        "id": "ker_ai_293",
+        "city": "Wayanad",
+        "name": "AI Cam: Kattikulam",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.842197,
+        "lng": 76.057265
+    },
+    {
+        "id": "ker_ai_294",
+        "city": "Wayanad",
+        "name": "AI Cam: Tholpetty",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.945678,
+        "lng": 76.06789
+    },
+    {
+        "id": "ker_ai_295",
+        "city": "Wayanad",
+        "name": "AI Cam: Boys Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.834567,
+        "lng": 75.945678
+    },
+    {
+        "id": "ker_ai_296",
+        "city": "Wayanad",
+        "name": "AI Cam: Periya",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.86789,
+        "lng": 75.889012
+    },
+    {
+        "id": "ker_ai_297",
+        "city": "Wayanad",
+        "name": "AI Cam: Padinjarathara",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.684064,
+        "lng": 75.974517
+    },
+    {
+        "id": "ker_ai_298",
+        "city": "Wayanad",
+        "name": "AI Cam: Pozhuthana",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 11.623456,
+        "lng": 76.012345
+    },
+    {
+        "id": "ker_ai_299",
+        "city": "Wayanad",
+        "name": "AI Cam: Pinangode",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.645678,
+        "lng": 76.034567
+    },
+    {
+        "id": "ker_ai_300",
+        "city": "Wayanad",
+        "name": "AI Cam: Kambalakkad",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.669998,
+        "lng": 76.079357
+    },
+    {
+        "id": "ker_ai_301",
+        "city": "Kozhikode",
+        "name": "AI Cam: Azhiyoor",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.698765,
+        "lng": 75.54321
+    },
+    {
+        "id": "ker_ai_302",
+        "city": "Kozhikode",
+        "name": "AI Cam: Onchiyam",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.66789,
+        "lng": 75.56789
+    },
+    {
+        "id": "ker_ai_303",
+        "city": "Kozhikode",
+        "name": "AI Cam: Chorode",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.634567,
+        "lng": 75.578901
+    },
+    {
+        "id": "ker_ai_304",
+        "city": "Kozhikode",
+        "name": "AI Cam: Kainatty Bypass",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.592345,
+        "lng": 75.601234
+    },
+    {
+        "id": "ker_ai_305",
+        "city": "Kozhikode",
+        "name": "AI Cam: Paloli Palam",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.545678,
+        "lng": 75.623456
+    },
+    {
+        "id": "ker_ai_306",
+        "city": "Kozhikode",
+        "name": "AI Cam: Iringal",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.534567,
+        "lng": 75.645678
+    },
+    {
+        "id": "ker_ai_307",
+        "city": "Kozhikode",
+        "name": "AI Cam: Moodadi",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.489012,
+        "lng": 75.689012
+    },
+    {
+        "id": "ker_ai_308",
+        "city": "Kozhikode",
+        "name": "AI Cam: Nandi Bazar",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.46789,
+        "lng": 75.712345
+    },
+    {
+        "id": "ker_ai_309",
+        "city": "Kozhikode",
+        "name": "AI Cam: Chengottukavu",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.412345,
+        "lng": 75.756789
+    },
+    {
+        "id": "ker_ai_310",
+        "city": "Kozhikode",
+        "name": "AI Cam: Vengalam",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.378901,
+        "lng": 75.734567
+    },
+    {
+        "id": "ker_ai_311",
+        "city": "Kozhikode",
+        "name": "AI Cam: West Hill",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.289012,
+        "lng": 75.765432
+    },
+    {
+        "id": "ker_ai_312",
+        "city": "Kozhikode",
+        "name": "AI Cam: Eranhipalam",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.26789,
+        "lng": 75.790123
+    },
+    {
+        "id": "ker_ai_313",
+        "city": "Kozhikode",
+        "name": "AI Cam: Malaparamba",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.278901,
+        "lng": 75.801234
+    },
+    {
+        "id": "ker_ai_314",
+        "city": "Kozhikode",
+        "name": "AI Cam: Thondayad",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.256789,
+        "lng": 75.812345
+    },
+    {
+        "id": "ker_ai_315",
+        "city": "Kozhikode",
+        "name": "AI Cam: HiLITE Mall Jn",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.245678,
+        "lng": 75.823456
+    },
+    {
+        "id": "ker_ai_316",
+        "city": "Kozhikode",
+        "name": "AI Cam: Pantheerankavu Bypass",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.230238,
+        "lng": 75.84634
+    },
+    {
+        "id": "ker_ai_317",
+        "city": "Kozhikode",
+        "name": "AI Cam: Feroke Petta",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.190123,
+        "lng": 75.845678
+    },
+    {
+        "id": "ker_ai_318",
+        "city": "Kozhikode",
+        "name": "AI Cam: Karuvanthiruthy",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.178901,
+        "lng": 75.823456
+    },
+    {
+        "id": "ker_ai_319",
+        "city": "Kozhikode",
+        "name": "AI Cam: Mavoor",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.256789,
+        "lng": 75.945678
+    },
+    {
+        "id": "ker_ai_320",
+        "city": "Kozhikode",
+        "name": "AI Cam: Kuttikkattoor",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.266683,
+        "lng": 75.884263
+    },
+    {
+        "id": "ker_ai_321",
+        "city": "Kozhikode",
+        "name": "AI Cam: Medical College Jn",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.274567,
+        "lng": 75.834567
+    },
+    {
+        "id": "ker_ai_322",
+        "city": "Kozhikode",
+        "name": "AI Cam: Kakkodi",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.312345,
+        "lng": 75.789012
+    },
+    {
+        "id": "ker_ai_323",
+        "city": "Kozhikode",
+        "name": "AI Cam: Balusseri Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.447831,
+        "lng": 75.825911
+    },
+    {
+        "id": "ker_ai_324",
+        "city": "Kozhikode",
+        "name": "AI Cam: Perambra",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.565378,
+        "lng": 75.755716
+    },
+    {
+        "id": "ker_ai_325",
+        "city": "Kozhikode",
+        "name": "AI Cam: Kuttiadi Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.651396,
+        "lng": 75.750197
+    },
+    {
+        "id": "ker_ai_326",
+        "city": "Kozhikode",
+        "name": "AI Cam: Thottilpalam",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.671655,
+        "lng": 75.770003
+    },
+    {
+        "id": "ker_ai_327",
+        "city": "Kozhikode",
+        "name": "AI Cam: Nadapuram Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.686288,
+        "lng": 75.65571
+    },
+    {
+        "id": "ker_ai_328",
+        "city": "Kozhikode",
+        "name": "AI Cam: Orkkatteri",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.654627,
+        "lng": 75.604525
+    },
+    {
+        "id": "ker_ai_329",
+        "city": "Kozhikode",
+        "name": "AI Cam: Edacheri",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.663788,
+        "lng": 75.622582
+    },
+    {
+        "id": "ker_ai_330",
+        "city": "Kozhikode",
+        "name": "AI Cam: Villiappally",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.62397,
+        "lng": 75.626928
+    },
+    {
+        "id": "ker_ai_331",
+        "city": "Malappuram",
+        "name": "AI Cam: Idimuzhikkal",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.168901,
+        "lng": 75.876543
+    },
+    {
+        "id": "ker_ai_332",
+        "city": "Malappuram",
+        "name": "AI Cam: Chelembra",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.156789,
+        "lng": 75.890123
+    },
+    {
+        "id": "ker_ai_333",
+        "city": "Malappuram",
+        "name": "AI Cam: Tenhipalam University",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.134567,
+        "lng": 75.895678
+    },
+    {
+        "id": "ker_ai_334",
+        "city": "Malappuram",
+        "name": "AI Cam: Chelari",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.112345,
+        "lng": 75.912345
+    },
+    {
+        "id": "ker_ai_335",
+        "city": "Malappuram",
+        "name": "AI Cam: Vengara",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 11.056789,
+        "lng": 75.987654
+    },
+    {
+        "id": "ker_ai_336",
+        "city": "Malappuram",
+        "name": "AI Cam: Parappanangadi Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.042392,
+        "lng": 75.861447
+    },
+    {
+        "id": "ker_ai_337",
+        "city": "Malappuram",
+        "name": "AI Cam: Tanur",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.97152,
+        "lng": 75.883061
+    },
+    {
+        "id": "ker_ai_338",
+        "city": "Malappuram",
+        "name": "AI Cam: Vailathur",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.945678,
+        "lng": 75.934567
+    },
+    {
+        "id": "ker_ai_339",
+        "city": "Malappuram",
+        "name": "AI Cam: Tirur Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.916645,
+        "lng": 75.91821
+    },
+    {
+        "id": "ker_ai_340",
+        "city": "Malappuram",
+        "name": "AI Cam: Chamravattom Jn",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.901234,
+        "lng": 75.934567
+    },
+    {
+        "id": "ker_ai_341",
+        "city": "Malappuram",
+        "name": "AI Cam: Kuttippuram",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.834567,
+        "lng": 76.023456
+    },
+    {
+        "id": "ker_ai_342",
+        "city": "Malappuram",
+        "name": "AI Cam: Valanchery",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.878901,
+        "lng": 76.071234
+    },
+    {
+        "id": "ker_ai_343",
+        "city": "Malappuram",
+        "name": "AI Cam: Ponnani",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.776543,
+        "lng": 75.923456
+    },
+    {
+        "id": "ker_ai_344",
+        "city": "Malappuram",
+        "name": "AI Cam: Edappal Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.80531,
+        "lng": 76.00798
+    },
+    {
+        "id": "ker_ai_345",
+        "city": "Malappuram",
+        "name": "AI Cam: Changaramkulam",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.736071,
+        "lng": 76.028617
+    },
+    {
+        "id": "ker_ai_346",
+        "city": "Malappuram",
+        "name": "AI Cam: Angadippuram",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 10.975859,
+        "lng": 76.212108
+    },
+    {
+        "id": "ker_ai_347",
+        "city": "Malappuram",
+        "name": "AI Cam: Perinthalmanna Bypass",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.981234,
+        "lng": 76.223456
+    },
+    {
+        "id": "ker_ai_348",
+        "city": "Malappuram",
+        "name": "AI Cam: Melattur",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.065432,
+        "lng": 76.278901
+    },
+    {
+        "id": "ker_ai_349",
+        "city": "Malappuram",
+        "name": "AI Cam: Pandikkad",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.103687,
+        "lng": 76.230095
+    },
+    {
+        "id": "ker_ai_350",
+        "city": "Malappuram",
+        "name": "AI Cam: Wandoor",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 11.198765,
+        "lng": 76.234567
+    },
+    {
+        "id": "ker_ai_351",
+        "city": "Malappuram",
+        "name": "AI Cam: Nilambur Town",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 11.276543,
+        "lng": 76.223456
+    },
+    {
+        "id": "ker_ai_352",
+        "city": "Malappuram",
+        "name": "AI Cam: Edakkara",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.345678,
+        "lng": 76.289012
+    },
+    {
+        "id": "ker_ai_353",
+        "city": "Malappuram",
+        "name": "AI Cam: Vazhikkadavu",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 11.389012,
+        "lng": 76.321234
+    },
+    {
+        "id": "ker_ai_354",
+        "city": "Malappuram",
+        "name": "AI Cam: Areekode",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.239719,
+        "lng": 76.046638
+    },
+    {
+        "id": "ker_ai_355",
+        "city": "Malappuram",
+        "name": "AI Cam: Edavanna",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.225082,
+        "lng": 76.146075
+    },
+    {
+        "id": "ker_ai_356",
+        "city": "Malappuram",
+        "name": "AI Cam: Manjeri Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.119711,
+        "lng": 76.112968
+    },
+    {
+        "id": "ker_ai_357",
+        "city": "Malappuram",
+        "name": "AI Cam: Anakkayam",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.087654,
+        "lng": 76.101234
+    },
+    {
+        "id": "ker_ai_358",
+        "city": "Malappuram",
+        "name": "AI Cam: Mongam",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 11.123456,
+        "lng": 76.034567
+    },
+    {
+        "id": "ker_ai_359",
+        "city": "Malappuram",
+        "name": "AI Cam: Kondotty Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.140534,
+        "lng": 75.976373
+    },
+    {
+        "id": "ker_ai_360",
+        "city": "Malappuram",
+        "name": "AI Cam: Ramanattukara Airport",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.165432,
+        "lng": 75.878901
+    },
+    {
+        "id": "ker_ai_361",
+        "city": "Palakkad",
+        "name": "AI Cam: Thrithala",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.798765,
+        "lng": 76.123456
+    },
+    {
+        "id": "ker_ai_362",
+        "city": "Palakkad",
+        "name": "AI Cam: Koottanad",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 10.823456,
+        "lng": 76.16789
+    },
+    {
+        "id": "ker_ai_363",
+        "city": "Palakkad",
+        "name": "AI Cam: Pattambi Bridge",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.809012,
+        "lng": 76.187302
+    },
+    {
+        "id": "ker_ai_364",
+        "city": "Palakkad",
+        "name": "AI Cam: Shoranur",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.765432,
+        "lng": 76.278901
+    },
+    {
+        "id": "ker_ai_365",
+        "city": "Palakkad",
+        "name": "AI Cam: Ottappalam Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.772931,
+        "lng": 76.374819
+    },
+    {
+        "id": "ker_ai_366",
+        "city": "Palakkad",
+        "name": "AI Cam: Pathirippala",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.780306,
+        "lng": 76.476421
+    },
+    {
+        "id": "ker_ai_367",
+        "city": "Palakkad",
+        "name": "AI Cam: Parali",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.801812,
+        "lng": 76.552827
+    },
+    {
+        "id": "ker_ai_368",
+        "city": "Palakkad",
+        "name": "AI Cam: Olavakkode",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.789012,
+        "lng": 76.634567
+    },
+    {
+        "id": "ker_ai_369",
+        "city": "Palakkad",
+        "name": "AI Cam: Palakkad Stadium",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 10.76789,
+        "lng": 76.656789
+    },
+    {
+        "id": "ker_ai_370",
+        "city": "Palakkad",
+        "name": "AI Cam: Kanjikode",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.785432,
+        "lng": 76.732109
+    },
+    {
+        "id": "ker_ai_371",
+        "city": "Palakkad",
+        "name": "AI Cam: Walayar Border",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.845,
+        "lng": 76.85
+    },
+    {
+        "id": "ker_ai_372",
+        "city": "Palakkad",
+        "name": "AI Cam: Chittur",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.698765,
+        "lng": 76.712345
+    },
+    {
+        "id": "ker_ai_373",
+        "city": "Palakkad",
+        "name": "AI Cam: Thathamangalam",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.682646,
+        "lng": 76.700196
+    },
+    {
+        "id": "ker_ai_374",
+        "city": "Palakkad",
+        "name": "AI Cam: Koduvayur",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.654321,
+        "lng": 76.612345
+    },
+    {
+        "id": "ker_ai_375",
+        "city": "Palakkad",
+        "name": "AI Cam: Kollengode",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 10.612345,
+        "lng": 76.698765
+    },
+    {
+        "id": "ker_ai_376",
+        "city": "Palakkad",
+        "name": "AI Cam: Nemmara",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.589012,
+        "lng": 76.587654
+    },
+    {
+        "id": "ker_ai_377",
+        "city": "Palakkad",
+        "name": "AI Cam: Vadakkanchery Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.5899,
+        "lng": 76.480494
+    },
+    {
+        "id": "ker_ai_378",
+        "city": "Palakkad",
+        "name": "AI Cam: Alathur Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.648486,
+        "lng": 76.536347
+    },
+    {
+        "id": "ker_ai_379",
+        "city": "Palakkad",
+        "name": "AI Cam: Kuzhalmannam",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.716079,
+        "lng": 76.603115
+    },
+    {
+        "id": "ker_ai_380",
+        "city": "Palakkad",
+        "name": "AI Cam: Kongad",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.860293,
+        "lng": 76.507927
+    },
+    {
+        "id": "ker_ai_381",
+        "city": "Palakkad",
+        "name": "AI Cam: Mannarkkad Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.99853,
+        "lng": 76.470079
+    },
+    {
+        "id": "ker_ai_382",
+        "city": "Palakkad",
+        "name": "AI Cam: Alanallur",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.007068,
+        "lng": 76.350809
+    },
+    {
+        "id": "ker_ai_383",
+        "city": "Palakkad",
+        "name": "AI Cam: Cherpulassery Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.881635,
+        "lng": 76.318491
+    },
+    {
+        "id": "ker_ai_384",
+        "city": "Palakkad",
+        "name": "AI Cam: Sreekrishnapuram",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 10.912345,
+        "lng": 76.423456
+    },
+    {
+        "id": "ker_ai_385",
+        "city": "Palakkad",
+        "name": "AI Cam: Koppam",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.781601,
+        "lng": 76.659033
+    },
+    {
+        "id": "ker_ai_386",
+        "city": "Thrissur",
+        "name": "AI Cam: Koratty",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.265432,
+        "lng": 76.345678
+    },
+    {
+        "id": "ker_ai_387",
+        "city": "Thrissur",
+        "name": "AI Cam: Chalakudy Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.301234,
+        "lng": 76.332109
+    },
+    {
+        "id": "ker_ai_388",
+        "city": "Thrissur",
+        "name": "AI Cam: Potta",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.323456,
+        "lng": 76.321098
+    },
+    {
+        "id": "ker_ai_389",
+        "city": "Thrissur",
+        "name": "AI Cam: Kodakara",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.36789,
+        "lng": 76.301234
+    },
+    {
+        "id": "ker_ai_390",
+        "city": "Thrissur",
+        "name": "AI Cam: Puthukkad",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.423456,
+        "lng": 76.265432
+    },
+    {
+        "id": "ker_ai_391",
+        "city": "Thrissur",
+        "name": "AI Cam: Amballur",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.456789,
+        "lng": 76.24321
+    },
+    {
+        "id": "ker_ai_392",
+        "city": "Thrissur",
+        "name": "AI Cam: Ollur",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.490123,
+        "lng": 76.234567
+    },
+    {
+        "id": "ker_ai_393",
+        "city": "Thrissur",
+        "name": "AI Cam: Mannuthy Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.534567,
+        "lng": 76.26789
+    },
+    {
+        "id": "ker_ai_394",
+        "city": "Thrissur",
+        "name": "AI Cam: East Fort Thrissur",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.526543,
+        "lng": 76.223456
+    },
+    {
+        "id": "ker_ai_395",
+        "city": "Thrissur",
+        "name": "AI Cam: West Fort Thrissur",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.523456,
+        "lng": 76.208901
+    },
+    {
+        "id": "ker_ai_396",
+        "city": "Thrissur",
+        "name": "AI Cam: Ayyanthole",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.521848,
+        "lng": 76.19932
+    },
+    {
+        "id": "ker_ai_397",
+        "city": "Thrissur",
+        "name": "AI Cam: Viyyur",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.54828,
+        "lng": 76.212006
+    },
+    {
+        "id": "ker_ai_398",
+        "city": "Thrissur",
+        "name": "AI Cam: Ramavarmapuram",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.552178,
+        "lng": 76.226716
+    },
+    {
+        "id": "ker_ai_399",
+        "city": "Thrissur",
+        "name": "AI Cam: Mulankunnathukavu",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.59963,
+        "lng": 76.210612
+    },
+    {
+        "id": "ker_ai_400",
+        "city": "Thrissur",
+        "name": "AI Cam: Wadakkanchery",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 10.665432,
+        "lng": 76.234567
+    },
+    {
+        "id": "ker_ai_401",
+        "city": "Thrissur",
+        "name": "AI Cam: Chelakkara Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.695636,
+        "lng": 76.331407
+    },
+    {
+        "id": "ker_ai_402",
+        "city": "Thrissur",
+        "name": "AI Cam: Pazhayannur",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.685709,
+        "lng": 76.41827
+    },
+    {
+        "id": "ker_ai_403",
+        "city": "Thrissur",
+        "name": "AI Cam: Kechery",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.612345,
+        "lng": 76.123456
+    },
+    {
+        "id": "ker_ai_404",
+        "city": "Thrissur",
+        "name": "AI Cam: Kunnamkulam Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.64637,
+        "lng": 76.065842
+    },
+    {
+        "id": "ker_ai_405",
+        "city": "Thrissur",
+        "name": "AI Cam: Perumpilavu",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.693286,
+        "lng": 76.091638
+    },
+    {
+        "id": "ker_ai_406",
+        "city": "Thrissur",
+        "name": "AI Cam: Guruvayur Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.595678,
+        "lng": 76.038901
+    },
+    {
+        "id": "ker_ai_407",
+        "city": "Thrissur",
+        "name": "AI Cam: Chavakkad Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.588148,
+        "lng": 76.015799
+    },
+    {
+        "id": "ker_ai_408",
+        "city": "Thrissur",
+        "name": "AI Cam: Vatanappally",
+        "type": "AI_CAM",
+        "speed_limit": 100,
+        "lat": 10.46192,
+        "lng": 76.083932
+    },
+    {
+        "id": "ker_ai_409",
+        "city": "Thrissur",
+        "name": "AI Cam: Thriprayar Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.414214,
+        "lng": 76.113296
+    },
+    {
+        "id": "ker_ai_410",
+        "city": "Thrissur",
+        "name": "AI Cam: Kaipamangalam",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.323456,
+        "lng": 76.156789
+    },
+    {
+        "id": "ker_ai_411",
+        "city": "Thrissur",
+        "name": "AI Cam: Kodungallur Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.228454,
+        "lng": 76.198317
+    },
+    {
+        "id": "ker_ai_412",
+        "city": "Thrissur",
+        "name": "AI Cam: Mala",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.240563,
+        "lng": 76.271499
+    },
+    {
+        "id": "ker_ai_413",
+        "city": "Thrissur",
+        "name": "AI Cam: Irinjalakuda Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.347069,
+        "lng": 76.212382
+    },
+    {
+        "id": "ker_ai_414",
+        "city": "Thrissur",
+        "name": "AI Cam: Kodakara Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.36789,
+        "lng": 76.301234
+    },
+    {
+        "id": "ker_ai_415",
+        "city": "Ernakulam",
+        "name": "AI Cam: Angamaly Town",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 10.192972,
+        "lng": 76.386875
+    },
+    {
+        "id": "ker_ai_416",
+        "city": "Ernakulam",
+        "name": "AI Cam: Kalady",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.170216,
+        "lng": 76.44492
+    },
+    {
+        "id": "ker_ai_417",
+        "city": "Ernakulam",
+        "name": "AI Cam: Malayattoor",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.198765,
+        "lng": 76.498765
+    },
+    {
+        "id": "ker_ai_418",
+        "city": "Ernakulam",
+        "name": "AI Cam: Perumbavoor Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.111429,
+        "lng": 76.479071
+    },
+    {
+        "id": "ker_ai_419",
+        "city": "Ernakulam",
+        "name": "AI Cam: Kothamangalam Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.066309,
+        "lng": 76.617274
+    },
+    {
+        "id": "ker_ai_420",
+        "city": "Ernakulam",
+        "name": "AI Cam: Muvattupuzha Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 9.979157,
+        "lng": 76.586806
+    },
+    {
+        "id": "ker_ai_421",
+        "city": "Ernakulam",
+        "name": "AI Cam: Koothattukulam",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 9.865432,
+        "lng": 76.578901
+    },
+    {
+        "id": "ker_ai_422",
+        "city": "Ernakulam",
+        "name": "AI Cam: Piravom",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 9.876543,
+        "lng": 76.478901
+    },
+    {
+        "id": "ker_ai_423",
+        "city": "Ernakulam",
+        "name": "AI Cam: Mulanthuruthy",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 9.898765,
+        "lng": 76.401234
+    },
+    {
+        "id": "ker_ai_424",
+        "city": "Ernakulam",
+        "name": "AI Cam: Tripunithura Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 9.952464,
+        "lng": 76.358681
+    },
+    {
+        "id": "ker_ai_425",
+        "city": "Ernakulam",
+        "name": "AI Cam: Vyttila",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 9.96789,
+        "lng": 76.321098
+    },
+    {
+        "id": "ker_ai_426",
+        "city": "Ernakulam",
+        "name": "AI Cam: Palarivattom",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.001234,
+        "lng": 76.306789
+    },
+    {
+        "id": "ker_ai_427",
+        "city": "Ernakulam",
+        "name": "AI Cam: Edappally",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.024567,
+        "lng": 76.308901
+    },
+    {
+        "id": "ker_ai_428",
+        "city": "Ernakulam",
+        "name": "AI Cam: Kalamassery",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.056789,
+        "lng": 76.319012
+    },
+    {
+        "id": "ker_ai_429",
+        "city": "Ernakulam",
+        "name": "AI Cam: Aluva Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.109876,
+        "lng": 76.35789
+    },
+    {
+        "id": "ker_ai_430",
+        "city": "Ernakulam",
+        "name": "AI Cam: Nedumbassery Airport",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.155668,
+        "lng": 76.403794
+    },
+    {
+        "id": "ker_ai_431",
+        "city": "Ernakulam",
+        "name": "AI Cam: North Paravoor Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.146208,
+        "lng": 76.25462
+    },
+    {
+        "id": "ker_ai_432",
+        "city": "Ernakulam",
+        "name": "AI Cam: Varapuzha",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.077112,
+        "lng": 76.27662
+    },
+    {
+        "id": "ker_ai_433",
+        "city": "Ernakulam",
+        "name": "AI Cam: Cheranallur",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.045678,
+        "lng": 76.289012
+    },
+    {
+        "id": "ker_ai_434",
+        "city": "Ernakulam",
+        "name": "AI Cam: High Court Jn",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 9.982345,
+        "lng": 76.276543
+    },
+    {
+        "id": "ker_ai_435",
+        "city": "Ernakulam",
+        "name": "AI Cam: MG Road Ernakulam",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 9.965432,
+        "lng": 76.28321
+    },
+    {
+        "id": "ker_ai_436",
+        "city": "Ernakulam",
+        "name": "AI Cam: Thoppumpady",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 9.932109,
+        "lng": 76.26789
+    },
+    {
+        "id": "ker_ai_437",
+        "city": "Ernakulam",
+        "name": "AI Cam: Fort Kochi",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 9.964321,
+        "lng": 76.24321
+    },
+    {
+        "id": "ker_ai_438",
+        "city": "Ernakulam",
+        "name": "AI Cam: Kumbalangi",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 9.876543,
+        "lng": 76.289012
+    },
+    {
+        "id": "ker_ai_439",
+        "city": "Ernakulam",
+        "name": "AI Cam: Aroor Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 9.914416,
+        "lng": 76.583409
+    },
+    {
+        "id": "ker_ai_440",
+        "city": "Idukki",
+        "name": "AI Cam: Thodupuzha Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 9.912343,
+        "lng": 76.69756
+    },
+    {
+        "id": "ker_ai_441",
+        "city": "Idukki",
+        "name": "AI Cam: Moolamattom",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 9.856789,
+        "lng": 76.789012
+    },
+    {
+        "id": "ker_ai_442",
+        "city": "Idukki",
+        "name": "AI Cam: Idukki Arch Dam",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 9.843387,
+        "lng": 76.984704
+    },
+    {
+        "id": "ker_ai_443",
+        "city": "Idukki",
+        "name": "AI Cam: Adimali Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.015773,
+        "lng": 76.953149
+    },
+    {
+        "id": "ker_ai_444",
+        "city": "Idukki",
+        "name": "AI Cam: Munnar Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.07719,
+        "lng": 77.063012
+    },
+    {
+        "id": "ker_ai_445",
+        "city": "Idukki",
+        "name": "AI Cam: Devikulam",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.061234,
+        "lng": 77.105678
+    },
+    {
+        "id": "ker_ai_446",
+        "city": "Idukki",
+        "name": "AI Cam: Nedumkandam Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 9.839622,
+        "lng": 77.157403
+    },
+    {
+        "id": "ker_ai_447",
+        "city": "Idukki",
+        "name": "AI Cam: Kattappana Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 9.755894,
+        "lng": 77.118938
+    },
+    {
+        "id": "ker_ai_448",
+        "city": "Idukki",
+        "name": "AI Cam: Kumily Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 9.606601,
+        "lng": 77.163427
+    },
+    {
+        "id": "ker_ai_449",
+        "city": "Idukki",
+        "name": "AI Cam: Peermade",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 9.579295,
+        "lng": 76.970636
+    },
+    {
+        "id": "ker_ai_450",
+        "city": "Idukki",
+        "name": "AI Cam: Vagamon Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 9.649876,
+        "lng": 76.926314
+    },
+    {
+        "id": "ker_ai_451",
+        "city": "Ernakulam",
+        "name": "AI Cam: Kaloor",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 9.993456,
+        "lng": 76.291234
+    },
+    {
+        "id": "ker_ai_452",
+        "city": "Ernakulam",
+        "name": "AI Cam: Kadavanthra",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 9.965432,
+        "lng": 76.298765
+    },
+    {
+        "id": "ker_ai_453",
+        "city": "Ernakulam",
+        "name": "AI Cam: Panampilly Nagar",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 9.956789,
+        "lng": 76.301234
+    },
+    {
+        "id": "ker_ai_454",
+        "city": "Ernakulam",
+        "name": "AI Cam: Kundannoor",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 9.934567,
+        "lng": 76.312345
+    },
+    {
+        "id": "ker_ai_455",
+        "city": "Ernakulam",
+        "name": "AI Cam: Maradu",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 9.945678,
+        "lng": 76.323456
+    },
+    {
+        "id": "ker_ai_456",
+        "city": "Ernakulam",
+        "name": "AI Cam: Chakkamkadam",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.123456,
+        "lng": 76.234567
+    },
+    {
+        "id": "ker_ai_457",
+        "city": "Ernakulam",
+        "name": "AI Cam: Munambam",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.178901,
+        "lng": 76.178901
+    },
+    {
+        "id": "ker_ai_458",
+        "city": "Ernakulam",
+        "name": "AI Cam: Njarakkal Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.034567,
+        "lng": 76.212345
+    },
+    {
+        "id": "ker_ai_459",
+        "city": "Ernakulam",
+        "name": "AI Cam: Palluruthy",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 9.923456,
+        "lng": 76.278901
+    },
+    {
+        "id": "ker_ai_460",
+        "city": "Ernakulam",
+        "name": "AI Cam: Kakkanad Civil Station",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.012345,
+        "lng": 76.345678
+    },
+    {
+        "id": "ker_ai_461",
+        "city": "Ernakulam",
+        "name": "AI Cam: Infopark Phase 1",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.005678,
+        "lng": 76.36789
+    },
+    {
+        "id": "ker_ai_462",
+        "city": "Ernakulam",
+        "name": "AI Cam: Infopark Phase 2",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.001234,
+        "lng": 76.378901
+    },
+    {
+        "id": "ker_ai_463",
+        "city": "Ernakulam",
+        "name": "AI Cam: Smart City",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 9.998765,
+        "lng": 76.389012
+    },
+    {
+        "id": "ker_ai_464",
+        "city": "Ernakulam",
+        "name": "AI Cam: Karimugal",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 9.987654,
+        "lng": 76.401234
+    },
+    {
+        "id": "ker_ai_465",
+        "city": "Ernakulam",
+        "name": "AI Cam: Ambalamugal",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 9.965432,
+        "lng": 76.389012
+    },
+    {
+        "id": "ker_ai_466",
+        "city": "Ernakulam",
+        "name": "AI Cam: Chottanikkara",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 9.934567,
+        "lng": 76.391234
+    },
+    {
+        "id": "ker_ai_467",
+        "city": "Ernakulam",
+        "name": "AI Cam: Mulanthuruthy Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 9.890123,
+        "lng": 76.405678
+    },
+    {
+        "id": "ker_ai_468",
+        "city": "Ernakulam",
+        "name": "AI Cam: Piravom Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 9.876543,
+        "lng": 76.478901
+    },
+    {
+        "id": "ker_ai_469",
+        "city": "Ernakulam",
+        "name": "AI Cam: Koothattukulam Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 9.865432,
+        "lng": 76.578901
+    },
+    {
+        "id": "ker_ai_470",
+        "city": "Ernakulam",
+        "name": "AI Cam: Pothanikkad",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.034567,
+        "lng": 76.623456
+    },
+    {
+        "id": "ker_ai_471",
+        "city": "Ernakulam",
+        "name": "AI Cam: Kothamangalam Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.066309,
+        "lng": 76.617274
+    },
+    {
+        "id": "ker_ai_472",
+        "city": "Ernakulam",
+        "name": "AI Cam: Nellimattam",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.056789,
+        "lng": 76.654321
+    },
+    {
+        "id": "ker_ai_473",
+        "city": "Ernakulam",
+        "name": "AI Cam: Oonnukal",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.045678,
+        "lng": 76.701234
+    },
+    {
+        "id": "ker_ai_474",
+        "city": "Ernakulam",
+        "name": "AI Cam: Neriamangalam",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 10.056789,
+        "lng": 76.789012
+    },
+    {
+        "id": "ker_ai_475",
+        "city": "Ernakulam",
+        "name": "AI Cam: Perumbavoor Bypass",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.112345,
+        "lng": 76.489012
+    },
+    {
+        "id": "ker_ai_476",
+        "city": "Ernakulam",
+        "name": "AI Cam: Kalady Bridge",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.16789,
+        "lng": 76.434567
+    },
+    {
+        "id": "ker_ai_477",
+        "city": "Ernakulam",
+        "name": "AI Cam: Malayattoor Temple",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.198765,
+        "lng": 76.498765
+    },
+    {
+        "id": "ker_ai_478",
+        "city": "Ernakulam",
+        "name": "AI Cam: Angamaly Central",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 10.192972,
+        "lng": 76.386875
+    },
+    {
+        "id": "ker_ai_479",
+        "city": "Ernakulam",
+        "name": "AI Cam: Karukutty",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.234567,
+        "lng": 76.398765
+    },
+    {
+        "id": "ker_ai_480",
+        "city": "Ernakulam",
+        "name": "AI Cam: Mookkannoor",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.212345,
+        "lng": 76.412345
+    },
+    {
+        "id": "ker_ai_481",
+        "city": "Thrissur",
+        "name": "AI Cam: Koratty Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.265432,
+        "lng": 76.345678
+    },
+    {
+        "id": "ker_ai_482",
+        "city": "Thrissur",
+        "name": "AI Cam: Chalakudy South",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.298765,
+        "lng": 76.334567
+    },
+    {
+        "id": "ker_ai_483",
+        "city": "Thrissur",
+        "name": "AI Cam: Chalakudy North",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.312345,
+        "lng": 76.323456
+    },
+    {
+        "id": "ker_ai_484",
+        "city": "Thrissur",
+        "name": "AI Cam: Potta Ashram",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.323456,
+        "lng": 76.321098
+    },
+    {
+        "id": "ker_ai_485",
+        "city": "Thrissur",
+        "name": "AI Cam: Kodakara Central",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.36789,
+        "lng": 76.301234
+    },
+    {
+        "id": "ker_ai_486",
+        "city": "Thrissur",
+        "name": "AI Cam: Puthukkad Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.423456,
+        "lng": 76.265432
+    },
+    {
+        "id": "ker_ai_487",
+        "city": "Thrissur",
+        "name": "AI Cam: Amballur Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.456789,
+        "lng": 76.24321
+    },
+    {
+        "id": "ker_ai_488",
+        "city": "Thrissur",
+        "name": "AI Cam: Ollur Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.490123,
+        "lng": 76.234567
+    },
+    {
+        "id": "ker_ai_489",
+        "city": "Thrissur",
+        "name": "AI Cam: Mannuthy Bypass",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.534567,
+        "lng": 76.26789
+    },
+    {
+        "id": "ker_ai_490",
+        "city": "Thrissur",
+        "name": "AI Cam: Pattikkad",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.556789,
+        "lng": 76.289012
+    },
+    {
+        "id": "ker_ai_491",
+        "city": "Thrissur",
+        "name": "AI Cam: Peechi",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.534567,
+        "lng": 76.345678
+    },
+    {
+        "id": "ker_ai_492",
+        "city": "Thrissur",
+        "name": "AI Cam: Vaniampara",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.56789,
+        "lng": 76.36789
+    },
+    {
+        "id": "ker_ai_493",
+        "city": "Thrissur",
+        "name": "AI Cam: Vadakkanchery Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.589899,
+        "lng": 76.480494
+    },
+    {
+        "id": "ker_ai_494",
+        "city": "Thrissur",
+        "name": "AI Cam: Chelakkara Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.695636,
+        "lng": 76.331407
+    },
+    {
+        "id": "ker_ai_495",
+        "city": "Thrissur",
+        "name": "AI Cam: Pazhayannur Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.685709,
+        "lng": 76.41827
+    },
+    {
+        "id": "ker_ai_496",
+        "city": "Thrissur",
+        "name": "AI Cam: Thiruvilwamala",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.73031,
+        "lng": 76.42706
+    },
+    {
+        "id": "ker_ai_497",
+        "city": "Thrissur",
+        "name": "AI Cam: Cheruthuruthy Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.749079,
+        "lng": 76.274745
+    },
+    {
+        "id": "ker_ai_498",
+        "city": "Thrissur",
+        "name": "AI Cam: Desamangalam",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.723456,
+        "lng": 76.234567
+    },
+    {
+        "id": "ker_ai_499",
+        "city": "Thrissur",
+        "name": "AI Cam: Wadakkanchery Town",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 10.665432,
+        "lng": 76.234567
+    },
+    {
+        "id": "ker_ai_500",
+        "city": "Thrissur",
+        "name": "AI Cam: Mulankunnathukavu Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.59963,
+        "lng": 76.210612
+    },
+    {
+        "id": "ker_ai_501",
+        "city": "Thrissur",
+        "name": "AI Cam: Choondal",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.630492,
+        "lng": 76.088322
+    },
+    {
+        "id": "ker_ai_502",
+        "city": "Thrissur",
+        "name": "AI Cam: Kunnamkulam Central",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.64637,
+        "lng": 76.065842
+    },
+    {
+        "id": "ker_ai_503",
+        "city": "Thrissur",
+        "name": "AI Cam: Perumpilavu Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.693286,
+        "lng": 76.091638
+    },
+    {
+        "id": "ker_ai_504",
+        "city": "Thrissur",
+        "name": "AI Cam: Akkikavu",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 10.691637,
+        "lng": 76.093285
+    },
+    {
+        "id": "ker_ai_505",
+        "city": "Thrissur",
+        "name": "AI Cam: Kadavallur",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.718225,
+        "lng": 76.072579
+    },
+    {
+        "id": "ker_ai_506",
+        "city": "Thrissur",
+        "name": "AI Cam: Guruvayur Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.595678,
+        "lng": 76.038901
+    },
+    {
+        "id": "ker_ai_507",
+        "city": "Thrissur",
+        "name": "AI Cam: Chavakkad Central",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.588148,
+        "lng": 76.015799
+    },
+    {
+        "id": "ker_ai_508",
+        "city": "Thrissur",
+        "name": "AI Cam: Vatanappally Town",
+        "type": "AI_CAM",
+        "speed_limit": 100,
+        "lat": 10.46192,
+        "lng": 76.083932
+    },
+    {
+        "id": "ker_ai_509",
+        "city": "Thrissur",
+        "name": "AI Cam: Thriprayar Central",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.414214,
+        "lng": 76.113296
+    },
+    {
+        "id": "ker_ai_510",
+        "city": "Thrissur",
+        "name": "AI Cam: Valappad",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.396695,
+        "lng": 76.11573
+    },
+    {
+        "id": "ker_ai_511",
+        "city": "Thrissur",
+        "name": "AI Cam: Kaipamangalam Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.323456,
+        "lng": 76.156789
+    },
+    {
+        "id": "ker_ai_512",
+        "city": "Thrissur",
+        "name": "AI Cam: Mathilakam",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 10.293174,
+        "lng": 76.160817
+    },
+    {
+        "id": "ker_ai_513",
+        "city": "Thrissur",
+        "name": "AI Cam: Perinjanam",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.26789,
+        "lng": 76.178901
+    },
+    {
+        "id": "ker_ai_514",
+        "city": "Thrissur",
+        "name": "AI Cam: Kodungallur Central",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.228454,
+        "lng": 76.198317
+    },
+    {
+        "id": "ker_ai_515",
+        "city": "Thrissur",
+        "name": "AI Cam: Eriyad",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.228195,
+        "lng": 76.174506
+    },
+    {
+        "id": "ker_ai_516",
+        "city": "Thrissur",
+        "name": "AI Cam: Mala Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.240563,
+        "lng": 76.271499
+    },
+    {
+        "id": "ker_ai_517",
+        "city": "Thrissur",
+        "name": "AI Cam: Annamanada",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.256789,
+        "lng": 76.301234
+    },
+    {
+        "id": "ker_ai_518",
+        "city": "Thrissur",
+        "name": "AI Cam: Irinjalakuda Central",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.347069,
+        "lng": 76.212382
+    },
+    {
+        "id": "ker_ai_519",
+        "city": "Thrissur",
+        "name": "AI Cam: Kattoor",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.36789,
+        "lng": 76.189012
+    },
+    {
+        "id": "ker_ai_520",
+        "city": "Thrissur",
+        "name": "AI Cam: Cherpu",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.434567,
+        "lng": 76.212345
+    },
+    {
+        "id": "ker_ai_521",
+        "city": "Thrissur",
+        "name": "AI Cam: Thaikkattussery",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.456789,
+        "lng": 76.234567
+    },
+    {
+        "id": "ker_ai_522",
+        "city": "Thrissur",
+        "name": "AI Cam: Koorkkenchery",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.498765,
+        "lng": 76.212345
+    },
+    {
+        "id": "ker_ai_523",
+        "city": "Thrissur",
+        "name": "AI Cam: Kuriachira",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.498372,
+        "lng": 76.22837
+    },
+    {
+        "id": "ker_ai_524",
+        "city": "Thrissur",
+        "name": "AI Cam: Sakthan Thampuran Nagar",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.516789,
+        "lng": 76.21789
+    },
+    {
+        "id": "ker_ai_525",
+        "city": "Thrissur",
+        "name": "AI Cam: Swaraj Round",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.527645,
+        "lng": 76.214434
+    },
+    {
+        "id": "ker_ai_526",
+        "city": "Palakkad",
+        "name": "AI Cam: Thrithala Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.798765,
+        "lng": 76.123456
+    },
+    {
+        "id": "ker_ai_527",
+        "city": "Palakkad",
+        "name": "AI Cam: Koottanad Town",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 10.823456,
+        "lng": 76.16789
+    },
+    {
+        "id": "ker_ai_528",
+        "city": "Palakkad",
+        "name": "AI Cam: Pattambi Central",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.809012,
+        "lng": 76.187302
+    },
+    {
+        "id": "ker_ai_529",
+        "city": "Palakkad",
+        "name": "AI Cam: Shoranur Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.765432,
+        "lng": 76.278901
+    },
+    {
+        "id": "ker_ai_530",
+        "city": "Palakkad",
+        "name": "AI Cam: Ottappalam Central",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.772931,
+        "lng": 76.374819
+    },
+    {
+        "id": "ker_ai_531",
+        "city": "Palakkad",
+        "name": "AI Cam: Pathirippala Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.780306,
+        "lng": 76.476421
+    },
+    {
+        "id": "ker_ai_532",
+        "city": "Palakkad",
+        "name": "AI Cam: Parali Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.801812,
+        "lng": 76.552827
+    },
+    {
+        "id": "ker_ai_533",
+        "city": "Palakkad",
+        "name": "AI Cam: Olavakkode Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.789012,
+        "lng": 76.634567
+    },
+    {
+        "id": "ker_ai_534",
+        "city": "Palakkad",
+        "name": "AI Cam: Palakkad Central",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 10.76789,
+        "lng": 76.656789
+    },
+    {
+        "id": "ker_ai_535",
+        "city": "Palakkad",
+        "name": "AI Cam: Kanjikode Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.785432,
+        "lng": 76.732109
+    },
+    {
+        "id": "ker_ai_536",
+        "city": "Palakkad",
+        "name": "AI Cam: Walayar Checkpost",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.845,
+        "lng": 76.85
+    },
+    {
+        "id": "ker_ai_537",
+        "city": "Palakkad",
+        "name": "AI Cam: Chittur Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.698765,
+        "lng": 76.712345
+    },
+    {
+        "id": "ker_ai_538",
+        "city": "Palakkad",
+        "name": "AI Cam: Thathamangalam Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.682646,
+        "lng": 76.700196
+    },
+    {
+        "id": "ker_ai_539",
+        "city": "Palakkad",
+        "name": "AI Cam: Koduvayur Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.654321,
+        "lng": 76.612345
+    },
+    {
+        "id": "ker_ai_540",
+        "city": "Palakkad",
+        "name": "AI Cam: Kollengode Town",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 10.612345,
+        "lng": 76.698765
+    },
+    {
+        "id": "ker_ai_541",
+        "city": "Palakkad",
+        "name": "AI Cam: Nemmara Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.589012,
+        "lng": 76.587654
+    },
+    {
+        "id": "ker_ai_542",
+        "city": "Palakkad",
+        "name": "AI Cam: Vadakkanchery Central",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.5899,
+        "lng": 76.480494
+    },
+    {
+        "id": "ker_ai_543",
+        "city": "Palakkad",
+        "name": "AI Cam: Alathur Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.648486,
+        "lng": 76.536347
+    },
+    {
+        "id": "ker_ai_544",
+        "city": "Palakkad",
+        "name": "AI Cam: Kuzhalmannam Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.716079,
+        "lng": 76.603115
+    },
+    {
+        "id": "ker_ai_545",
+        "city": "Palakkad",
+        "name": "AI Cam: Kongad Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 10.860293,
+        "lng": 76.507927
+    },
+    {
+        "id": "ker_ai_546",
+        "city": "Palakkad",
+        "name": "AI Cam: Mannarkkad Central",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.99853,
+        "lng": 76.470079
+    },
+    {
+        "id": "ker_ai_547",
+        "city": "Palakkad",
+        "name": "AI Cam: Alanallur Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.007068,
+        "lng": 76.350809
+    },
+    {
+        "id": "ker_ai_548",
+        "city": "Palakkad",
+        "name": "AI Cam: Cherpulassery Central",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.881635,
+        "lng": 76.318491
+    },
+    {
+        "id": "ker_ai_549",
+        "city": "Palakkad",
+        "name": "AI Cam: Sreekrishnapuram Town",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 10.912345,
+        "lng": 76.423456
+    },
+    {
+        "id": "ker_ai_550",
+        "city": "Palakkad",
+        "name": "AI Cam: Koppam Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.781601,
+        "lng": 76.659033
+    },
+    {
+        "id": "ker_ai_551",
+        "city": "Malappuram",
+        "name": "AI Cam: Valanchery Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.878901,
+        "lng": 76.071234
+    },
+    {
+        "id": "ker_ai_552",
+        "city": "Malappuram",
+        "name": "AI Cam: Kuttippuram Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 10.834567,
+        "lng": 76.023456
+    },
+    {
+        "id": "ker_ai_553",
+        "city": "Malappuram",
+        "name": "AI Cam: Tirur Central",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.916645,
+        "lng": 75.91821
+    },
+    {
+        "id": "ker_ai_554",
+        "city": "Malappuram",
+        "name": "AI Cam: Tanur Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 10.97152,
+        "lng": 75.883061
+    },
+    {
+        "id": "ker_ai_555",
+        "city": "Malappuram",
+        "name": "AI Cam: Parappanangadi Central",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.042392,
+        "lng": 75.861447
+    },
+    {
+        "id": "ker_ai_556",
+        "city": "Malappuram",
+        "name": "AI Cam: Chelembra Town",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.156789,
+        "lng": 75.890123
+    },
+    {
+        "id": "ker_ai_557",
+        "city": "Malappuram",
+        "name": "AI Cam: Kondotty Central",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.140534,
+        "lng": 75.976373
+    },
+    {
+        "id": "ker_ai_558",
+        "city": "Malappuram",
+        "name": "AI Cam: Manjeri Central",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.119711,
+        "lng": 76.112968
+    },
+    {
+        "id": "ker_ai_559",
+        "city": "Malappuram",
+        "name": "AI Cam: Malappuram Central",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.033899,
+        "lng": 76.099808
+    },
+    {
+        "id": "ker_ai_560",
+        "city": "Malappuram",
+        "name": "AI Cam: Kottakkal Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 10.992081,
+        "lng": 75.979843
+    },
+    {
+        "id": "ker_ai_561",
+        "city": "Malappuram",
+        "name": "AI Cam: Perinthalmanna Central",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 10.973937,
+        "lng": 76.23663
+    },
+    {
+        "id": "ker_ai_562",
+        "city": "Malappuram",
+        "name": "AI Cam: Angadippuram Town",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 10.975859,
+        "lng": 76.212108
+    },
+    {
+        "id": "ker_ai_563",
+        "city": "Malappuram",
+        "name": "AI Cam: Mankada",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.027564,
+        "lng": 76.169781
+    },
+    {
+        "id": "ker_ai_564",
+        "city": "Malappuram",
+        "name": "AI Cam: Wandoor Town",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 11.198765,
+        "lng": 76.234567
+    },
+    {
+        "id": "ker_ai_565",
+        "city": "Malappuram",
+        "name": "AI Cam: Nilambur Central",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 11.276543,
+        "lng": 76.223456
+    },
+    {
+        "id": "ker_ai_566",
+        "city": "Malappuram",
+        "name": "AI Cam: Edakkara Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.345678,
+        "lng": 76.289012
+    },
+    {
+        "id": "ker_ai_567",
+        "city": "Malappuram",
+        "name": "AI Cam: Vazhikkadavu Town",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 11.389012,
+        "lng": 76.321234
+    },
+    {
+        "id": "ker_ai_568",
+        "city": "Malappuram",
+        "name": "AI Cam: Areekode Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.239719,
+        "lng": 76.046638
+    },
+    {
+        "id": "ker_ai_569",
+        "city": "Malappuram",
+        "name": "AI Cam: Edavanna Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.225082,
+        "lng": 76.146075
+    },
+    {
+        "id": "ker_ai_570",
+        "city": "Malappuram",
+        "name": "AI Cam: Areacode Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.239719,
+        "lng": 76.046638
+    },
+    {
+        "id": "ker_ai_571",
+        "city": "Kozhikode",
+        "name": "AI Cam: Ramanattukara Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.179588,
+        "lng": 75.853828
+    },
+    {
+        "id": "ker_ai_572",
+        "city": "Kozhikode",
+        "name": "AI Cam: Feroke Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.190123,
+        "lng": 75.845678
+    },
+    {
+        "id": "ker_ai_573",
+        "city": "Kozhikode",
+        "name": "AI Cam: Beypore",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.170562,
+        "lng": 75.80605
+    },
+    {
+        "id": "ker_ai_574",
+        "city": "Kozhikode",
+        "name": "AI Cam: Meenchanda",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.223456,
+        "lng": 75.801234
+    },
+    {
+        "id": "ker_ai_575",
+        "city": "Kozhikode",
+        "name": "AI Cam: Mankave",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.234567,
+        "lng": 75.789012
+    },
+    {
+        "id": "ker_ai_576",
+        "city": "Kozhikode",
+        "name": "AI Cam: Kallayi",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.23285,
+        "lng": 75.789009
+    },
+    {
+        "id": "ker_ai_577",
+        "city": "Kozhikode",
+        "name": "AI Cam: Palayam Kozhikode",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.248901,
+        "lng": 75.781234
+    },
+    {
+        "id": "ker_ai_578",
+        "city": "Kozhikode",
+        "name": "AI Cam: Mananchira Central",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.256017,
+        "lng": 75.77898
+    },
+    {
+        "id": "ker_ai_579",
+        "city": "Kozhikode",
+        "name": "AI Cam: Vellayil",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.26789,
+        "lng": 75.772345
+    },
+    {
+        "id": "ker_ai_580",
+        "city": "Kozhikode",
+        "name": "AI Cam: Nadakkavu",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.278901,
+        "lng": 75.776543
+    },
+    {
+        "id": "ker_ai_581",
+        "city": "Kozhikode",
+        "name": "AI Cam: West Hill Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.289012,
+        "lng": 75.765432
+    },
+    {
+        "id": "ker_ai_582",
+        "city": "Kozhikode",
+        "name": "AI Cam: Elathur",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.323456,
+        "lng": 75.745678
+    },
+    {
+        "id": "ker_ai_583",
+        "city": "Kozhikode",
+        "name": "AI Cam: Pantheerankavu Central",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.230238,
+        "lng": 75.84634
+    },
+    {
+        "id": "ker_ai_584",
+        "city": "Kozhikode",
+        "name": "AI Cam: Thondayad Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.256789,
+        "lng": 75.812345
+    },
+    {
+        "id": "ker_ai_585",
+        "city": "Kozhikode",
+        "name": "AI Cam: Malaparamba Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.278901,
+        "lng": 75.801234
+    },
+    {
+        "id": "ker_ai_586",
+        "city": "Kozhikode",
+        "name": "AI Cam: Eranhipalam Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.26789,
+        "lng": 75.790123
+    },
+    {
+        "id": "ker_ai_587",
+        "city": "Kozhikode",
+        "name": "AI Cam: Civil Station",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.284567,
+        "lng": 75.783456
+    },
+    {
+        "id": "ker_ai_588",
+        "city": "Kozhikode",
+        "name": "AI Cam: Medical College",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.274567,
+        "lng": 75.834567
+    },
+    {
+        "id": "ker_ai_589",
+        "city": "Kozhikode",
+        "name": "AI Cam: Mavoor Road",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.256789,
+        "lng": 75.945678
+    },
+    {
+        "id": "ker_ai_590",
+        "city": "Kozhikode",
+        "name": "AI Cam: Kunnamangalam",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.304161,
+        "lng": 75.872061
+    },
+    {
+        "id": "ker_ai_591",
+        "city": "Kozhikode",
+        "name": "AI Cam: Koduvally",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.344982,
+        "lng": 75.900277
+    },
+    {
+        "id": "ker_ai_592",
+        "city": "Kozhikode",
+        "name": "AI Cam: Thamarassery Town",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.468716,
+        "lng": 75.969365
+    },
+    {
+        "id": "ker_ai_593",
+        "city": "Kozhikode",
+        "name": "AI Cam: Balusseri Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.447831,
+        "lng": 75.825911
+    },
+    {
+        "id": "ker_ai_594",
+        "city": "Kozhikode",
+        "name": "AI Cam: Atholi",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.389012,
+        "lng": 75.76789
+    },
+    {
+        "id": "ker_ai_595",
+        "city": "Kozhikode",
+        "name": "AI Cam: Ulliyeri",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.449016,
+        "lng": 75.774445
+    },
+    {
+        "id": "ker_ai_596",
+        "city": "Kozhikode",
+        "name": "AI Cam: Koyilandy Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.447831,
+        "lng": 75.825911
+    },
+    {
+        "id": "ker_ai_597",
+        "city": "Kozhikode",
+        "name": "AI Cam: Nandi Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.46789,
+        "lng": 75.712345
+    },
+    {
+        "id": "ker_ai_598",
+        "city": "Kozhikode",
+        "name": "AI Cam: Payyoli",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.512781,
+        "lng": 75.612925
+    },
+    {
+        "id": "ker_ai_599",
+        "city": "Kozhikode",
+        "name": "AI Cam: Vadakara Town",
+        "type": "AI_CAM",
+        "speed_limit": 100,
+        "lat": 11.5965,
+        "lng": 75.589191
+    },
+    {
+        "id": "ker_ai_600",
+        "city": "Kozhikode",
+        "name": "AI Cam: Chombala",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.623456,
+        "lng": 75.56789
+    },
+    {
+        "id": "ker_ai_601",
+        "city": "Wayanad",
+        "name": "AI Cam: Lakkidi Town",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.517829,
+        "lng": 76.021165
+    },
+    {
+        "id": "ker_ai_602",
+        "city": "Wayanad",
+        "name": "AI Cam: Vythiri Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.553456,
+        "lng": 76.045678
+    },
+    {
+        "id": "ker_ai_603",
+        "city": "Wayanad",
+        "name": "AI Cam: Chundale Town",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.589012,
+        "lng": 76.06789
+    },
+    {
+        "id": "ker_ai_604",
+        "city": "Wayanad",
+        "name": "AI Cam: Kalpetta Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.607518,
+        "lng": 76.083423
+    },
+    {
+        "id": "ker_ai_605",
+        "city": "Wayanad",
+        "name": "AI Cam: Kainatti Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.634705,
+        "lng": 76.088538
+    },
+    {
+        "id": "ker_ai_606",
+        "city": "Wayanad",
+        "name": "AI Cam: Muttil Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.641189,
+        "lng": 76.107401
+    },
+    {
+        "id": "ker_ai_607",
+        "city": "Wayanad",
+        "name": "AI Cam: Meenangadi Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.660197,
+        "lng": 76.163571
+    },
+    {
+        "id": "ker_ai_608",
+        "city": "Wayanad",
+        "name": "AI Cam: Sulthan Bathery Central",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.658445,
+        "lng": 76.247523
+    },
+    {
+        "id": "ker_ai_609",
+        "city": "Wayanad",
+        "name": "AI Cam: Meppadi Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.562278,
+        "lng": 76.125484
+    },
+    {
+        "id": "ker_ai_610",
+        "city": "Wayanad",
+        "name": "AI Cam: Ambalavayal Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.623282,
+        "lng": 76.210988
+    },
+    {
+        "id": "ker_ai_611",
+        "city": "Wayanad",
+        "name": "AI Cam: Pulpally Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.794567,
+        "lng": 76.16789
+    },
+    {
+        "id": "ker_ai_612",
+        "city": "Wayanad",
+        "name": "AI Cam: Panamaram Central",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.739283,
+        "lng": 76.072747
+    },
+    {
+        "id": "ker_ai_613",
+        "city": "Wayanad",
+        "name": "AI Cam: Mananthavady Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.813142,
+        "lng": 75.994653
+    },
+    {
+        "id": "ker_ai_614",
+        "city": "Wayanad",
+        "name": "AI Cam: Kattikulam Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.842197,
+        "lng": 76.057265
+    },
+    {
+        "id": "ker_ai_615",
+        "city": "Wayanad",
+        "name": "AI Cam: Vellamunda Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.731847,
+        "lng": 75.951586
+    },
+    {
+        "id": "ker_ai_616",
+        "city": "Wayanad",
+        "name": "AI Cam: Padinjarathara Town",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.684064,
+        "lng": 75.974517
+    },
+    {
+        "id": "ker_ai_617",
+        "city": "Wayanad",
+        "name": "AI Cam: Tholpetty Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.945678,
+        "lng": 76.06789
+    },
+    {
+        "id": "ker_ai_618",
+        "city": "Wayanad",
+        "name": "AI Cam: Periya Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.86789,
+        "lng": 75.889012
+    },
+    {
+        "id": "ker_ai_619",
+        "city": "Wayanad",
+        "name": "AI Cam: Kambalakkad Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.669998,
+        "lng": 76.079357
+    },
+    {
+        "id": "ker_ai_620",
+        "city": "Wayanad",
+        "name": "AI Cam: Kenichira Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.723769,
+        "lng": 76.150871
+    },
+    {
+        "id": "ker_ai_621",
+        "city": "Kannur",
+        "name": "AI Cam: Mahe Bridge",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.709093,
+        "lng": 75.528502
+    },
+    {
+        "id": "ker_ai_622",
+        "city": "Kannur",
+        "name": "AI Cam: Thalassery Central",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.749234,
+        "lng": 75.494732
+    },
+    {
+        "id": "ker_ai_623",
+        "city": "Kannur",
+        "name": "AI Cam: Dharmadam Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.776543,
+        "lng": 75.471234
+    },
+    {
+        "id": "ker_ai_624",
+        "city": "Kannur",
+        "name": "AI Cam: Muzhappilangad Town",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 11.798765,
+        "lng": 75.456789
+    },
+    {
+        "id": "ker_ai_625",
+        "city": "Kannur",
+        "name": "AI Cam: Edakkad Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.834567,
+        "lng": 75.432109
+    },
+    {
+        "id": "ker_ai_626",
+        "city": "Kannur",
+        "name": "AI Cam: Chovva Town",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 11.871585,
+        "lng": 75.396342
+    },
+    {
+        "id": "ker_ai_627",
+        "city": "Kannur",
+        "name": "AI Cam: Caltex Central",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.874567,
+        "lng": 75.371234
+    },
+    {
+        "id": "ker_ai_628",
+        "city": "Kannur",
+        "name": "AI Cam: Thana Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.882345,
+        "lng": 75.375678
+    },
+    {
+        "id": "ker_ai_629",
+        "city": "Kannur",
+        "name": "AI Cam: Valapattanam Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.912345,
+        "lng": 75.36789
+    },
+    {
+        "id": "ker_ai_630",
+        "city": "Kannur",
+        "name": "AI Cam: Pappinisseri Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.945678,
+        "lng": 75.354321
+    },
+    {
+        "id": "ker_ai_631",
+        "city": "Kannur",
+        "name": "AI Cam: Dharmasala Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.976543,
+        "lng": 75.389012
+    },
+    {
+        "id": "ker_ai_632",
+        "city": "Kannur",
+        "name": "AI Cam: Taliparamba Central",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.04193,
+        "lng": 75.355718
+    },
+    {
+        "id": "ker_ai_633",
+        "city": "Kannur",
+        "name": "AI Cam: Pariyaram Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.123456,
+        "lng": 75.301234
+    },
+    {
+        "id": "ker_ai_634",
+        "city": "Kannur",
+        "name": "AI Cam: Pilathara Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.156543,
+        "lng": 75.26321
+    },
+    {
+        "id": "ker_ai_635",
+        "city": "Kannur",
+        "name": "AI Cam: Payyannur Central",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.100346,
+        "lng": 75.195932
+    },
+    {
+        "id": "ker_ai_636",
+        "city": "Kannur",
+        "name": "AI Cam: Pinarayi Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.801234,
+        "lng": 75.512345
+    },
+    {
+        "id": "ker_ai_637",
+        "city": "Kannur",
+        "name": "AI Cam: Koothuparamba Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.830353,
+        "lng": 75.566231
+    },
+    {
+        "id": "ker_ai_638",
+        "city": "Kannur",
+        "name": "AI Cam: Mattannur Central",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.931235,
+        "lng": 75.570094
+    },
+    {
+        "id": "ker_ai_639",
+        "city": "Kannur",
+        "name": "AI Cam: Iritty Central",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.987797,
+        "lng": 75.676975
+    },
+    {
+        "id": "ker_ai_640",
+        "city": "Kannur",
+        "name": "AI Cam: Ulikkal Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.037799,
+        "lng": 75.665455
+    },
+    {
+        "id": "ker_ai_641",
+        "city": "Kannur",
+        "name": "AI Cam: Sreekandapuram Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.044914,
+        "lng": 75.50673
+    },
+    {
+        "id": "ker_ai_642",
+        "city": "Kannur",
+        "name": "AI Cam: Payyavoor Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.060018,
+        "lng": 75.578067
+    },
+    {
+        "id": "ker_ai_643",
+        "city": "Kannur",
+        "name": "AI Cam: Alakode Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.18592,
+        "lng": 75.466135
+    },
+    {
+        "id": "ker_ai_644",
+        "city": "Kannur",
+        "name": "AI Cam: Cherupuzha",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 12.2717,
+        "lng": 75.360799
+    },
+    {
+        "id": "ker_ai_645",
+        "city": "Kannur",
+        "name": "AI Cam: Peravoor Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.896789,
+        "lng": 75.734567
+    },
+    {
+        "id": "ker_ai_646",
+        "city": "Kannur",
+        "name": "AI Cam: Kelakam Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 11.865432,
+        "lng": 75.801234
+    },
+    {
+        "id": "ker_ai_647",
+        "city": "Kannur",
+        "name": "AI Cam: Kottiyoor Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 11.876543,
+        "lng": 75.856789
+    },
+    {
+        "id": "ker_ai_648",
+        "city": "Kannur",
+        "name": "AI Cam: Anjarakandy Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.880558,
+        "lng": 75.50655
+    },
+    {
+        "id": "ker_ai_649",
+        "city": "Kannur",
+        "name": "AI Cam: Chakkarakkal Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 11.889006,
+        "lng": 75.474955
+    },
+    {
+        "id": "ker_ai_650",
+        "city": "Kannur",
+        "name": "AI Cam: Irikkur Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 11.991266,
+        "lng": 75.548675
+    },
+    {
+        "id": "ker_ai_651",
+        "city": "Kasaragod",
+        "name": "AI Cam: Thrikaripur Central",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 12.143232,
+        "lng": 75.177462
+    },
+    {
+        "id": "ker_ai_652",
+        "city": "Kasaragod",
+        "name": "AI Cam: Cheruvathur Central",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.216424,
+        "lng": 75.161629
+    },
+    {
+        "id": "ker_ai_653",
+        "city": "Kasaragod",
+        "name": "AI Cam: Cheemeni",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.235686,
+        "lng": 75.225463
+    },
+    {
+        "id": "ker_ai_654",
+        "city": "Kasaragod",
+        "name": "AI Cam: Nileshwar Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.25556,
+        "lng": 75.130433
+    },
+    {
+        "id": "ker_ai_655",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kanhangad Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.321242,
+        "lng": 75.086752
+    },
+    {
+        "id": "ker_ai_656",
+        "city": "Kasaragod",
+        "name": "AI Cam: Bekal Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.401177,
+        "lng": 75.03007
+    },
+    {
+        "id": "ker_ai_657",
+        "city": "Kasaragod",
+        "name": "AI Cam: Uduma Central",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.433285,
+        "lng": 75.059737
+    },
+    {
+        "id": "ker_ai_658",
+        "city": "Kasaragod",
+        "name": "AI Cam: Chattanchal Central",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.46746,
+        "lng": 75.027003
+    },
+    {
+        "id": "ker_ai_659",
+        "city": "Kasaragod",
+        "name": "AI Cam: Cherkala Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.508925,
+        "lng": 75.055216
+    },
+    {
+        "id": "ker_ai_660",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kasaragod Central",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.500905,
+        "lng": 74.989737
+    },
+    {
+        "id": "ker_ai_661",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kumbla Central",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.592714,
+        "lng": 74.946532
+    },
+    {
+        "id": "ker_ai_662",
+        "city": "Kasaragod",
+        "name": "AI Cam: Uppala Central",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.664898,
+        "lng": 74.921597
+    },
+    {
+        "id": "ker_ai_663",
+        "city": "Kasaragod",
+        "name": "AI Cam: Manjeshwar Central",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.705892,
+        "lng": 74.905156
+    },
+    {
+        "id": "ker_ai_664",
+        "city": "Kasaragod",
+        "name": "AI Cam: Badiadka Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 12.588955,
+        "lng": 75.07359
+    },
+    {
+        "id": "ker_ai_665",
+        "city": "Kasaragod",
+        "name": "AI Cam: Mulleria Town",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 12.551829,
+        "lng": 75.1169
+    },
+    {
+        "id": "ker_ai_666",
+        "city": "Kasaragod",
+        "name": "AI Cam: Adhur Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.516592,
+        "lng": 75.132576
+    },
+    {
+        "id": "ker_ai_667",
+        "city": "Kasaragod",
+        "name": "AI Cam: Parappa Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.390023,
+        "lng": 75.253018
+    },
+    {
+        "id": "ker_ai_668",
+        "city": "Kasaragod",
+        "name": "AI Cam: Vellarikundu Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.355648,
+        "lng": 75.337775
+    },
+    {
+        "id": "ker_ai_669",
+        "city": "Kasaragod",
+        "name": "AI Cam: Rajapuram Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.433285,
+        "lng": 75.289737
+    },
+    {
+        "id": "ker_ai_670",
+        "city": "Kasaragod",
+        "name": "AI Cam: Bandadka",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.498763,
+        "lng": 75.267684
+    },
+    {
+        "id": "ker_ai_671",
+        "city": "Kasaragod",
+        "name": "AI Cam: Perla",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.637022,
+        "lng": 75.102964
+    },
+    {
+        "id": "ker_ai_672",
+        "city": "Kasaragod",
+        "name": "AI Cam: Chittari",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.355391,
+        "lng": 75.06968
+    },
+    {
+        "id": "ker_ai_673",
+        "city": "Kasaragod",
+        "name": "AI Cam: Pallikera",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.387097,
+        "lng": 75.044575
+    },
+    {
+        "id": "ker_ai_674",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kalanad",
+        "type": "AI_CAM",
+        "speed_limit": 80,
+        "lat": 12.451513,
+        "lng": 75.021879
+    },
+    {
+        "id": "ker_ai_675",
+        "city": "Kasaragod",
+        "name": "AI Cam: Vidyanagar",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.520427,
+        "lng": 75.007505
+    },
+    {
+        "id": "ker_ai_676",
+        "city": "Kasaragod",
+        "name": "AI Cam: Seethangoli",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.587238,
+        "lng": 75.001678
+    },
+    {
+        "id": "ker_ai_677",
+        "city": "Kasaragod",
+        "name": "AI Cam: Bandiyod",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.640146,
+        "lng": 74.929356
+    },
+    {
+        "id": "ker_ai_678",
+        "city": "Kasaragod",
+        "name": "AI Cam: Hosangadi",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.705892,
+        "lng": 74.905156
+    },
+    {
+        "id": "ker_ai_679",
+        "city": "Kasaragod",
+        "name": "AI Cam: Vorkady",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.739032,
+        "lng": 74.983384
+    },
+    {
+        "id": "ker_ai_680",
+        "city": "Kasaragod",
+        "name": "AI Cam: Meenja",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.682345,
+        "lng": 75.012345
+    },
+    {
+        "id": "ker_ai_681",
+        "city": "Kasaragod",
+        "name": "AI Cam: Paivalike",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 12.712345,
+        "lng": 75.045678
+    },
+    {
+        "id": "ker_ai_682",
+        "city": "Kasaragod",
+        "name": "AI Cam: Enmakaje",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.656789,
+        "lng": 75.123456
+    },
+    {
+        "id": "ker_ai_683",
+        "city": "Kasaragod",
+        "name": "AI Cam: Puthige",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.623456,
+        "lng": 75.089012
+    },
+    {
+        "id": "ker_ai_684",
+        "city": "Kasaragod",
+        "name": "AI Cam: Madhur",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.545678,
+        "lng": 75.034567
+    },
+    {
+        "id": "ker_ai_685",
+        "city": "Kasaragod",
+        "name": "AI Cam: Mogral Puthur",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.56789,
+        "lng": 74.96789
+    },
+    {
+        "id": "ker_ai_686",
+        "city": "Kasaragod",
+        "name": "AI Cam: Chemnad",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.489012,
+        "lng": 75.012345
+    },
+    {
+        "id": "ker_ai_687",
+        "city": "Kasaragod",
+        "name": "AI Cam: Chengala",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.512345,
+        "lng": 75.06789
+    },
+    {
+        "id": "ker_ai_688",
+        "city": "Kasaragod",
+        "name": "AI Cam: Karadka",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.534567,
+        "lng": 75.145678
+    },
+    {
+        "id": "ker_ai_689",
+        "city": "Kasaragod",
+        "name": "AI Cam: Delampady",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.556789,
+        "lng": 75.212345
+    },
+    {
+        "id": "ker_ai_690",
+        "city": "Kasaragod",
+        "name": "AI Cam: Bedadka",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.489012,
+        "lng": 75.178901
+    },
+    {
+        "id": "ker_ai_691",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kuttikol",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.477041,
+        "lng": 75.211227
+    },
+    {
+        "id": "ker_ai_692",
+        "city": "Kasaragod",
+        "name": "AI Cam: Pullur-Periya",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.36789,
+        "lng": 75.101234
+    },
+    {
+        "id": "ker_ai_693",
+        "city": "Kasaragod",
+        "name": "AI Cam: Ajanoor",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.334567,
+        "lng": 75.089012
+    },
+    {
+        "id": "ker_ai_694",
+        "city": "Kasaragod",
+        "name": "AI Cam: Madikai",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 12.312345,
+        "lng": 75.145678
+    },
+    {
+        "id": "ker_ai_695",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kinanoor-Karindalam",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 12.289012,
+        "lng": 75.212345
+    },
+    {
+        "id": "ker_ai_696",
+        "city": "Kasaragod",
+        "name": "AI Cam: Balal",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.345678,
+        "lng": 75.312345
+    },
+    {
+        "id": "ker_ai_697",
+        "city": "Kasaragod",
+        "name": "AI Cam: West Eleri",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.26789,
+        "lng": 75.289012
+    },
+    {
+        "id": "ker_ai_698",
+        "city": "Kasaragod",
+        "name": "AI Cam: East Eleri",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 12.245678,
+        "lng": 75.334567
+    },
+    {
+        "id": "ker_ai_699",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kallar",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.412345,
+        "lng": 75.321098
+    },
+    {
+        "id": "ker_ai_700",
+        "city": "Kasaragod",
+        "name": "AI Cam: Panathady",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.434567,
+        "lng": 75.36789
+    },
+    {
+        "id": "ker_ai_701",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kodom-Belur",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.401234,
+        "lng": 75.189012
+    },
+    {
+        "id": "ker_ai_702",
+        "city": "Kasaragod",
+        "name": "AI Cam: Mangalpady",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.678901,
+        "lng": 74.934567
+    },
+    {
+        "id": "ker_ai_703",
+        "city": "Kasaragod",
+        "name": "AI Cam: Manjeshwaram Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.705892,
+        "lng": 74.905156
+    },
+    {
+        "id": "ker_ai_704",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kumbla Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.592714,
+        "lng": 74.946532
+    },
+    {
+        "id": "ker_ai_705",
+        "city": "Kasaragod",
+        "name": "AI Cam: Adoor Kasaragod",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.516592,
+        "lng": 75.132576
+    },
+    {
+        "id": "ker_ai_706",
+        "city": "Kasaragod",
+        "name": "AI Cam: Bellur",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.578901,
+        "lng": 75.234567
+    },
+    {
+        "id": "ker_ai_707",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kumbadaje",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.601234,
+        "lng": 75.16789
+    },
+    {
+        "id": "ker_ai_708",
+        "city": "Kasaragod",
+        "name": "AI Cam: Muliyar",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.523456,
+        "lng": 75.112345
+    },
+    {
+        "id": "ker_ai_709",
+        "city": "Kasaragod",
+        "name": "AI Cam: Karindalam",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 12.289012,
+        "lng": 75.212345
+    },
+    {
+        "id": "ker_ai_710",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kinanoor",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.301234,
+        "lng": 75.234567
+    },
+    {
+        "id": "ker_ai_711",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kayyur-Cheemeni",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.235686,
+        "lng": 75.225463
+    },
+    {
+        "id": "ker_ai_712",
+        "city": "Kasaragod",
+        "name": "AI Cam: Pilicode",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 12.189012,
+        "lng": 75.189012
+    },
+    {
+        "id": "ker_ai_713",
+        "city": "Kasaragod",
+        "name": "AI Cam: Padne",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.16789,
+        "lng": 75.156789
+    },
+    {
+        "id": "ker_ai_714",
+        "city": "Kasaragod",
+        "name": "AI Cam: Valiyaparamba",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.145678,
+        "lng": 75.134567
+    },
+    {
+        "id": "ker_ai_715",
+        "city": "Kasaragod",
+        "name": "AI Cam: Trikarpur Town",
+        "type": "AI_CAM",
+        "speed_limit": 40,
+        "lat": 12.143232,
+        "lng": 75.177462
+    },
+    {
+        "id": "ker_ai_716",
+        "city": "Kasaragod",
+        "name": "AI Cam: Uduma Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.433285,
+        "lng": 75.059737
+    },
+    {
+        "id": "ker_ai_717",
+        "city": "Kasaragod",
+        "name": "AI Cam: Pallikkara Town",
+        "type": "AI_CAM",
+        "speed_limit": 60,
+        "lat": 12.387097,
+        "lng": 75.044575
+    },
+    {
+        "id": "ker_ai_718",
+        "city": "Kasaragod",
+        "name": "AI Cam: Ajanur Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.334567,
+        "lng": 75.089012
+    },
+    {
+        "id": "ker_ai_719",
+        "city": "Kasaragod",
+        "name": "AI Cam: Madikai Town",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 12.312345,
+        "lng": 75.145678
+    },
+    {
+        "id": "ker_ai_720",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kodom-Belur Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.401234,
+        "lng": 75.189012
+    },
+    {
+        "id": "ker_ai_721",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kallar Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.412345,
+        "lng": 75.321098
+    },
+    {
+        "id": "ker_ai_722",
+        "city": "Kasaragod",
+        "name": "AI Cam: Panathady Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.434567,
+        "lng": 75.36789
+    },
+    {
+        "id": "ker_ai_723",
+        "city": "Kasaragod",
+        "name": "AI Cam: Balal Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.345678,
+        "lng": 75.312345
+    },
+    {
+        "id": "ker_ai_724",
+        "city": "Kasaragod",
+        "name": "AI Cam: West Eleri Town",
+        "type": "AI_CAM",
+        "speed_limit": 30,
+        "lat": 12.26789,
+        "lng": 75.289012
+    },
+    {
+        "id": "ker_ai_725",
+        "city": "Kasaragod",
+        "name": "AI Cam: East Eleri Town",
+        "type": "AI_CAM",
+        "speed_limit": 45,
+        "lat": 12.245678,
+        "lng": 75.334567
+    },
+    {
+        "id": "ker_ai_726",
+        "city": "Kasaragod",
+        "name": "AI Cam: Kuttikol Town",
+        "type": "AI_CAM",
+        "speed_limit": 50,
+        "lat": 12.477041,
+        "lng": 75.211227
     }
 ]
