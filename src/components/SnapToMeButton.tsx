@@ -129,19 +129,20 @@ export function SnapToMeButton() {
             <style>{`
                 .snap-fix-btn {
                     position: fixed;
-                    bottom: 220px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    z-index: 50;
+                    left: 16px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    z-index: 100;
                     
                     display: flex;
+                    flex-direction: column;
                     align-items: center;
-                    gap: 10px;
+                    gap: 4px;
                     
-                    padding: 14px 28px;
+                    padding: 14px 18px;
                     background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
                     border: none;
-                    border-radius: 30px;
+                    border-radius: 16px;
                     color: #1e1e2e;
                     font-weight: 700;
                     cursor: pointer;
@@ -152,11 +153,11 @@ export function SnapToMeButton() {
                 }
                 
                 .snap-fix-btn:hover:not(:disabled) {
-                    transform: translateX(-50%) scale(1.05);
+                    transform: translateY(-50%) scale(1.05);
                 }
                 
                 .snap-fix-btn:active:not(:disabled) {
-                    transform: translateX(-50%) scale(0.95);
+                    transform: translateY(-50%) scale(0.95);
                 }
                 
                 .snap-fix-btn:disabled {
