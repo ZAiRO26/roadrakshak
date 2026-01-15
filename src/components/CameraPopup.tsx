@@ -15,13 +15,18 @@ interface CameraPopupProps {
 export function CameraPopup({ camera, onClose, onAction }: CameraPopupProps) {
     const isUser = camera.source === 'USER';
     const isPolice = camera.type === 'POLICE_POST';
+    const isAiCam = camera.type === 'AI_CAM';
     const isFixed = camera.hasOverride === true;
-    const limitText = camera.limit ? `${camera.limit} km/h` : (isPolice ? 'No speed limit' : 'No limit set');
+    const limitText = camera.limit
+        ? `${camera.limit} km/h`
+        : (isPolice ? 'No speed limit' : (isAiCam ? 'AI Monitoring' : 'No limit set'));
     const typeText = camera.type === 'POLICE_POST'
         ? 'Police Checkpoint'
         : camera.type === 'RED_LIGHT_CAM'
             ? 'Red Light Camera'
-            : 'Speed Camera';
+            : camera.type === 'AI_CAM'
+                ? 'AI Enforcement Camera'
+                : 'Speed Camera';
 
     const handleDelete = () => {
         deleteUserCamera(camera.id);
@@ -35,16 +40,16 @@ export function CameraPopup({ camera, onClose, onAction }: CameraPopupProps) {
         onClose();
     };
 
-    // Determine header style: user (purple), police (blue), or official (red)
-    const headerClass = isUser ? 'user' : (isPolice ? 'police' : 'official');
+    // Determine header style: user (purple), police (blue), ai (yellow), or official (red)
+    const headerClass = isUser ? 'user' : (isPolice ? 'police' : (isAiCam ? 'ai' : 'official'));
 
     // Determine icon
-    const icon = isPolice ? '🚓' : (camera.type === 'RED_LIGHT_CAM' ? '🚦' : '📷');
+    const icon = isPolice ? '🚓' : (isAiCam ? '👁️' : (camera.type === 'RED_LIGHT_CAM' ? '🚦' : '📷'));
 
     // Determine header text
     const headerText = isUser
         ? '👤 USER ADDED CAMERA'
-        : (isPolice ? '👮 HSP CHECKPOINT' : '👮 OFFICIAL CAMERA');
+        : (isPolice ? '👮 HSP CHECKPOINT' : (isAiCam ? '🤖 AI ENFORCEMENT ZONE' : '👮 OFFICIAL CAMERA'));
 
     return (
         <>
@@ -74,6 +79,11 @@ export function CameraPopup({ camera, onClose, onAction }: CameraPopupProps) {
                         <span className="label">📋 Type</span>
                         <span className="value">{typeText}</span>
                     </div>
+                    {isAiCam && (
+                        <div className="popup-warning">
+                            ⚠️ Checks: Seatbelt, Helmet, Phone, Lane
+                        </div>
+                    )}
                 </div>
 
                 {/* Actions */}
@@ -150,6 +160,11 @@ export function CameraPopup({ camera, onClose, onAction }: CameraPopupProps) {
                     background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
                 }
 
+                .popup-header.ai {
+                    background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+                    color: #1e1e2e;
+                }
+
                 .popup-icon {
                     font-size: 20px;
                 }
@@ -179,6 +194,18 @@ export function CameraPopup({ camera, onClose, onAction }: CameraPopupProps) {
 
                 .popup-content {
                     padding: 16px;
+                }
+
+                .popup-warning {
+                    margin-top: 12px;
+                    padding: 10px 12px;
+                    background: rgba(239, 68, 68, 0.15);
+                    border: 1px solid rgba(239, 68, 68, 0.4);
+                    border-radius: 8px;
+                    color: #fca5a5;
+                    font-size: 12px;
+                    font-weight: 600;
+                    text-align: center;
                 }
 
                 .popup-row {

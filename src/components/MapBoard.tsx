@@ -296,18 +296,26 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
             // Determine marker class and icon based on type
             const isPolicePost = camera.type === 'POLICE_POST';
             const isRedLight = camera.type === 'RED_LIGHT_CAM';
+            const isAiCam = camera.type === 'AI_CAM';
 
             if (isPolicePost) {
                 el.className = 'camera-marker camera-police';
                 el.innerHTML = '🚓';
+            } else if (isAiCam) {
+                el.className = 'camera-marker camera-ai';
+                el.innerHTML = '👁️';
             } else {
                 el.className = `camera-marker camera-official ${isRedLight ? 'red-light' : 'speed'}`;
                 el.innerHTML = isRedLight ? '🚦' : '📷';
             }
 
-            const limitText = camera.limit ? `Limit: ${camera.limit} km/h` : (isPolicePost ? 'Police Checkpoint' : 'No speed limit');
+            const limitText = camera.limit
+                ? `Limit: ${camera.limit} km/h`
+                : (isPolicePost ? 'Police Checkpoint' : (isAiCam ? 'AI Enforcement Zone' : 'No speed limit'));
             const isFixed = hasOverride(camera.id);
-            const typeLabel = isPolicePost ? '👮 HSP CHECKPOINT' : '⚠️ OFFICIAL';
+            const typeLabel = isPolicePost
+                ? '👮 HSP CHECKPOINT'
+                : (isAiCam ? '🤖 AI ENFORCEMENT' : '⚠️ OFFICIAL');
             el.title = `${typeLabel}: ${camera.name}\n${limitText}${isFixed ? ' (📍 Fixed)' : ''}`;
 
             // Add click handler for popup
@@ -473,6 +481,13 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
           filter: drop-shadow(0 3px 12px rgba(59, 130, 246, 0.9)) brightness(1.1);
           z-index: 40;
           font-size: 26px;
+          cursor: pointer;
+        }
+        /* AI Cameras - yellow/black warning */
+        .camera-ai {
+          filter: drop-shadow(0 4px 15px rgba(234, 179, 8, 1)) brightness(1.3);
+          z-index: 70;
+          font-size: 28px;
           cursor: pointer;
         }
       `}</style>

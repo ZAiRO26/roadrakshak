@@ -2,7 +2,7 @@
  * Camera type definitions for unified camera handling
  */
 
-export type CameraType = 'SPEED_CAM' | 'RED_LIGHT_CAM' | 'POLICE_POST';
+export type CameraType = 'SPEED_CAM' | 'RED_LIGHT_CAM' | 'POLICE_POST' | 'AI_CAM';
 export type CameraSource = 'OFFICIAL' | 'OSM' | 'USER';
 
 export interface CameraNode {
@@ -22,7 +22,7 @@ export interface OfficialCameraRaw {
     id: string;
     city: string;
     name: string;
-    type: 'SPEED_CAM' | 'RED_LIGHT_CAM' | 'POLICE_POST';
+    type: 'SPEED_CAM' | 'RED_LIGHT_CAM' | 'POLICE_POST' | 'AI_CAM';
     speed_limit: number | null;
     lat: number;
     lng: number;
