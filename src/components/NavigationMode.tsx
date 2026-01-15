@@ -42,6 +42,10 @@ export function NavigationMode({
     const [routeError, setRouteError] = useState<string | null>(null);
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
+    // Auto-rerouting state
+    const [isRerouting, setIsRerouting] = useState(false);
+    const [showReroutingToast, setShowReroutingToast] = useState(false);
+
     const { latitude, longitude } = useGpsStore();
 
     // Debounced search
@@ -171,6 +175,74 @@ export function NavigationMode({
         }
     }, [routeInfo, currentStepIndex]);
 
+    // Calculate distance from point to line segment (Haversine-based)
+    const pointToLineDistance = useCallback((
+        point: [number, number],
+        lineStart: [number, number],
+        lineEnd: [number, number]
+    ): number => {
+        const R = 6371000; // Earth's radius in meters
+        const toRad = (deg: number) => deg * (Math.PI / 180);
+
+        // Haversine distance between two points
+        const haversine = (lat1: number, lon1: number, lat2: number, lon2: number) => {
+            const dLat = toRad(lat2 - lat1);
+            const dLon = toRad(lon2 - lon1);
+            const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        };
+
+        // Simple perpendicular distance approximation
+        const d1 = haversine(point[1], point[0], lineStart[1], lineStart[0]);
+        const d2 = haversine(point[1], point[0], lineEnd[1], lineEnd[0]);
+        return Math.min(d1, d2);
+    }, []);
+
+    // Auto-rerouting: detect deviation from route
+    useEffect(() => {
+        if (!isNavigating || !routeInfo || !latitude || !longitude || isRerouting) return;
+        if (!destination) return;
+
+        const routeCoords = routeInfo.geometry.coordinates;
+        if (routeCoords.length < 2) return;
+
+        // Find minimum distance to any segment of the route
+        let minDistance = Infinity;
+        for (let i = 0; i < routeCoords.length - 1; i++) {
+            const dist = pointToLineDistance(
+                [longitude, latitude],
+                routeCoords[i] as [number, number],
+                routeCoords[i + 1] as [number, number]
+            );
+            minDistance = Math.min(minDistance, dist);
+        }
+
+        // If deviation > 50 meters, trigger reroute
+        if (minDistance > 50) {
+            console.log(`[Navigation] Off-route by ${Math.round(minDistance)}m - Rerouting...`);
+            setIsRerouting(true);
+            setShowReroutingToast(true);
+
+            // Recalculate route from current position
+            getDirections(
+                { lat: latitude, lng: longitude },
+                { lat: destination.lat, lng: destination.lng }
+            ).then(result => {
+                if (result && result.routes.length > 0) {
+                    setRouteInfo(result.routes[0]);
+                    setCurrentStepIndex(0);
+                    onRouteCalculated(result.routes[0].geometry);
+                    console.log('[Navigation] Reroute complete');
+                }
+            }).catch(err => {
+                console.error('[Navigation] Reroute failed:', err);
+            }).finally(() => {
+                setIsRerouting(false);
+                setTimeout(() => setShowReroutingToast(false), 2000);
+            });
+        }
+    }, [latitude, longitude, isNavigating, routeInfo, destination, isRerouting, pointToLineDistance, onRouteCalculated]);
+
     // Get maneuver icon
     const getManeuverIcon = (maneuver: string = '') => {
         const icons: Record<string, string> = {
@@ -225,6 +297,14 @@ export function NavigationMode({
                         ❌ End Trip
                     </button>
                 </div>
+
+                {/* REROUTING TOAST */}
+                {showReroutingToast && (
+                    <div className="rerouting-toast">
+                        <span className="rerouting-spinner">🔄</span>
+                        <span>Rerouting...</span>
+                    </div>
+                )}
 
                 <style>{navigationActiveStyles}</style>
             </>
@@ -330,13 +410,19 @@ const searchStyles = `
     display: flex;
     align-items: center;
     background: white;
-    border-radius: 24px;
-    padding: 10px 16px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-    gap: 10px;
+    border-radius: 28px;
+    padding: 12px 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    gap: 12px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.nav-search-bar:focus-within {
+    box-shadow: 0 6px 28px rgba(0,0,0,0.25);
+    transform: translateY(-1px);
 }
 [data-theme="dark"] .nav-search-bar {
-    background: rgba(30, 41, 59, 0.95);
+    background: rgba(30, 41, 59, 0.98);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
 .search-icon, .loading-icon { font-size: 18px; opacity: 0.6; }
 .search-input {
@@ -375,7 +461,12 @@ const searchStyles = `
     padding: 16px;
     background: white;
     border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    animation: slideUp 0.3s ease-out;
+}
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 [data-theme="dark"] .destination-selected { background: rgba(30, 41, 59, 0.98); }
 .dest-info {
@@ -423,8 +514,14 @@ const routePreviewStyles = `
     background: white;
     border-radius: 24px 24px 0 0;
     padding: 20px;
-    box-shadow: 0 -4px 24px rgba(0,0,0,0.2);
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.25);
     z-index: 1001;
+    animation: slideUpPanel 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes slideUpPanel {
+    from { opacity: 0; transform: translateY(100%); }
+    to { opacity: 1; transform: translateY(0); }
 }
 [data-theme="dark"] .route-preview { background: #1e293b; }
 .route-header {
@@ -592,6 +689,38 @@ const navigationActiveStyles = `
 }
 .nav-end-trip-btn:active {
     transform: scale(0.98);
+}
+
+/* Rerouting Toast */
+.rerouting-toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1002;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    padding: 16px 28px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 8px 32px rgba(59,130,246,0.4);
+    animation: toastPulse 1s ease-in-out infinite;
+}
+.rerouting-spinner {
+    font-size: 24px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes toastPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.02); }
 }
 `;
 
