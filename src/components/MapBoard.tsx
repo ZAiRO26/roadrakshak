@@ -25,6 +25,7 @@ interface MapBoardProps {
     onMapReady?: (map: any) => void;
     onMapControlsReady?: (controls: MapControls) => void;
     routeGeometry?: GeoJSON.LineString | null;
+    isNavigating?: boolean;  // Enable follow mode during navigation
 }
 
 // Default center: Delhi, India
@@ -34,7 +35,7 @@ const DEFAULT_ZOOM = 12;
 // Get API key once at module level
 const API_KEY = import.meta.env.VITE_OLA_API_KEY || '';
 
-export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapBoardProps) {
+export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavigating }: MapBoardProps) {
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const mapRef = useRef<any>(null);
     const olaMapsRef = useRef<OlaMaps | null>(null);
@@ -185,16 +186,31 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
         }
     }, [latitude, longitude, heading, isMapLoaded]);
 
-    // Follow user position (use raw GPS for centering, smooth for marker)
+    // Follow user position - Enhanced for navigation mode
     useEffect(() => {
-        if (mapRef.current && rawLat !== null && rawLng !== null && isMapLoaded) {
-            updateUserMarker();
+        if (!mapRef.current || rawLat === null || rawLng === null || !isMapLoaded) return;
+
+        updateUserMarker();
+
+        if (isNavigating) {
+            // NAVIGATION MODE: Head-up rotation, zoomed in, slight tilt
             mapRef.current.easeTo({
                 center: [rawLng, rawLat],
+                zoom: 17,                   // Closer zoom for navigation
+                bearing: heading || 0,      // Rotate map to heading (head-up)
+                pitch: 45,                  // 3D tilt
+                duration: 800,
+            });
+        } else {
+            // NORMAL MODE: Standard follow without rotation
+            mapRef.current.easeTo({
+                center: [rawLng, rawLat],
+                bearing: 0,                 // Reset rotation
+                pitch: 0,                   // Flat view
                 duration: 500,
             });
         }
-    }, [rawLat, rawLng, isMapLoaded, updateUserMarker]);
+    }, [rawLat, rawLng, heading, isMapLoaded, isNavigating, updateUserMarker]);
 
     // Listen for camera events to refresh markers instantly
     useEffect(() => {
@@ -358,28 +374,53 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
         });
     }, [policeReports, isMapLoaded]);
 
-    // Display route
+    // Display route with enhanced styling
     useEffect(() => {
-        if (!mapRef.current || !isMapLoaded || !routeGeometry) return;
+        if (!mapRef.current || !isMapLoaded) return;
 
         const map = mapRef.current;
 
+        // If no route geometry, remove existing route layers
+        if (!routeGeometry || routeGeometry.coordinates.length === 0) {
+            if (map.getLayer('route')) map.removeLayer('route');
+            if (map.getLayer('route-outline')) map.removeLayer('route-outline');
+            if (map.getSource('route')) map.removeSource('route');
+            return;
+        }
+
+        const routeData = {
+            type: 'Feature' as const,
+            properties: {},
+            geometry: routeGeometry,
+        };
+
         if (map.getSource('route')) {
-            map.getSource('route').setData({
-                type: 'Feature',
-                properties: {},
-                geometry: routeGeometry,
-            });
+            // Update existing source
+            map.getSource('route').setData(routeData);
         } else {
+            // Add new source and layers
             map.addSource('route', {
                 type: 'geojson',
-                data: {
-                    type: 'Feature',
-                    properties: {},
-                    geometry: routeGeometry,
+                data: routeData,
+            });
+
+            // Outer glow/outline layer (thicker, darker)
+            map.addLayer({
+                id: 'route-outline',
+                type: 'line',
+                source: 'route',
+                layout: {
+                    'line-join': 'round',
+                    'line-cap': 'round',
+                },
+                paint: {
+                    'line-color': '#1a56db',  // Darker blue for outline
+                    'line-width': 12,
+                    'line-opacity': 0.5,
                 },
             });
 
+            // Inner main route line (brighter blue)
             map.addLayer({
                 id: 'route',
                 type: 'line',
@@ -389,9 +430,9 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
                     'line-cap': 'round',
                 },
                 paint: {
-                    'line-color': '#4285F4',
-                    'line-width': 6,
-                    'line-opacity': 0.8,
+                    'line-color': '#4285F4',  // Google Maps blue
+                    'line-width': 7,
+                    'line-opacity': 0.95,
                 },
             });
         }

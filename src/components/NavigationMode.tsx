@@ -183,34 +183,51 @@ export function NavigationMode({
         return icons[maneuver] || '➡️';
     };
 
-    // NAVIGATION ACTIVE UI
+    // NAVIGATION ACTIVE UI - Google Maps Style HUD
     if (isNavigating && routeInfo) {
         const step = routeInfo.steps[currentStepIndex];
+        const distanceToTurn = step?.distance || 0;
+        const roadName = step?.name || 'the road';
+
         return (
-            <div className="navigation-active">
-                {/* Current instruction */}
-                <div className="nav-instruction" onClick={handleNextStep}>
-                    <div className="nav-icon">{getManeuverIcon(step?.maneuver)}</div>
-                    <div className="nav-text">
-                        <div className="nav-main" dangerouslySetInnerHTML={{ __html: step?.instruction || 'Continue' }} />
-                        <div className="nav-sub">{formatDistance(step?.distance || 0)}</div>
+            <>
+                {/* TOP DIRECTION BANNER - Green gradient */}
+                <div className="nav-top-banner">
+                    <div className="nav-direction-card" onClick={handleNextStep}>
+                        <div className="nav-arrow">{getManeuverIcon(step?.maneuver)}</div>
+                        <div className="nav-direction-info">
+                            <div className="nav-distance-big">{formatDistance(distanceToTurn)}</div>
+                            <div className="nav-instruction-text" dangerouslySetInnerHTML={{ __html: step?.instruction || 'Continue straight' }} />
+                            {roadName && <div className="nav-road-name">on {roadName}</div>}
+                        </div>
+                        <div className="nav-step-indicator">{currentStepIndex + 1}/{routeInfo.steps.length}</div>
                     </div>
-                    <div className="nav-step-count">{currentStepIndex + 1}/{routeInfo.steps.length}</div>
                 </div>
 
-                {/* Route summary */}
-                <div className="nav-summary">
-                    <span>📍 {destination?.name}</span>
-                    <span>{formatDistance(routeInfo.distance)} • {formatDuration(routeInfo.duration)}</span>
+                {/* BOTTOM TRIP INFO PANEL */}
+                <div className="nav-bottom-panel">
+                    <div className="nav-trip-stats">
+                        <div className="trip-stat">
+                            <span className="stat-value-big">{formatDuration(routeInfo.duration)}</span>
+                            <span className="stat-label-small">ETA</span>
+                        </div>
+                        <div className="trip-divider" />
+                        <div className="trip-stat">
+                            <span className="stat-value-big">{formatDistance(routeInfo.distance)}</span>
+                            <span className="stat-label-small">Distance</span>
+                        </div>
+                        <div className="trip-divider" />
+                        <div className="trip-stat destination">
+                            <span className="stat-value-dest">📍 {destination?.name}</span>
+                        </div>
+                    </div>
+                    <button className="nav-end-trip-btn" onClick={handleExitNavigation}>
+                        ❌ End Trip
+                    </button>
                 </div>
-
-                {/* Exit button */}
-                <button className="nav-exit-btn" onClick={handleExitNavigation}>
-                    ✕ Exit Navigation
-                </button>
 
                 <style>{navigationActiveStyles}</style>
-            </div>
+            </>
         );
     }
 
@@ -457,51 +474,124 @@ const routePreviewStyles = `
 `;
 
 const navigationActiveStyles = `
-.navigation-active {
+/* TOP DIRECTION BANNER - Green Gradient */
+.nav-top-banner {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1001;
-    background: linear-gradient(180deg, rgba(30,41,59,0.98) 0%, rgba(30,41,59,0.95) 100%);
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
     padding: 16px;
-    padding-top: max(16px, env(safe-area-inset-top));
+    padding-top: max(20px, env(safe-area-inset-top));
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
-.nav-instruction {
+.nav-direction-card {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 16px;
-    background: rgba(59, 130, 246, 0.2);
-    border-radius: 16px;
     cursor: pointer;
-    margin-bottom: 12px;
 }
-.nav-icon { font-size: 36px; }
-.nav-text { flex: 1; }
-.nav-main { font-size: 16px; font-weight: 600; color: white; }
-.nav-sub { font-size: 13px; opacity: 0.7; color: white; margin-top: 4px; }
-.nav-step-count { font-size: 12px; opacity: 0.5; color: white; }
-.nav-summary {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 10px;
-    font-size: 13px;
+.nav-arrow {
+    font-size: 48px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+.nav-direction-info {
+    flex: 1;
+}
+.nav-distance-big {
+    font-size: 28px;
+    font-weight: 800;
     color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.nav-instruction-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.95);
+    margin-top: 4px;
+}
+.nav-road-name {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    margin-top: 2px;
+}
+.nav-step-indicator {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    background: rgba(0,0,0,0.2);
+    padding: 6px 10px;
+    border-radius: 12px;
+}
+
+/* BOTTOM TRIP INFO PANEL */
+.nav-bottom-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    background: linear-gradient(180deg, rgba(30,41,59,0.98) 0%, rgba(15,23,42,0.99) 100%);
+    padding: 16px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.3);
+}
+.nav-trip-stats {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     margin-bottom: 12px;
 }
-.nav-exit-btn {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid rgba(239, 68, 68, 0.5);
-    border-radius: 10px;
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
+.trip-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+.trip-stat.destination {
+    flex: 1;
+    align-items: flex-end;
+    min-width: auto;
+}
+.stat-value-big {
+    font-size: 18px;
+    font-weight: 700;
+    color: #60a5fa;
+}
+.stat-label-small {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+}
+.stat-value-dest {
     font-size: 14px;
-    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+.trip-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(255,255,255,0.2);
+}
+.nav-end-trip-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 12px rgba(239,68,68,0.3);
+}
+.nav-end-trip-btn:active {
+    transform: scale(0.98);
 }
 `;
 

@@ -121,6 +121,7 @@ function App() {
         onMapReady={handleMapReady}
         onMapControlsReady={setMapControlMethods}
         routeGeometry={routeGeometry}
+        isNavigating={isNavigating}
       />
 
       {/* GPS Warning Banner (non-blocking) */}
