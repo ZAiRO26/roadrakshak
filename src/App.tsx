@@ -13,7 +13,6 @@ import { MapControls } from './components/MapControls';
 import { SnapToMeButton } from './components/SnapToMeButton';
 import { AddCameraButton } from './components/AddCameraButton';
 import { useGPS } from './hooks/useGPS';
-import { useWakeLock } from './hooks/useWakeLock';
 import { useSpeedLimit } from './hooks/useSpeedLimit';
 import { useAlerts } from './hooks/useAlerts';
 import { useAppStore } from './stores/appStore';
@@ -30,9 +29,6 @@ function App() {
   // Initialize GPS tracking
   const { latitude, longitude, error: gpsError } = useGPS();
 
-  // Activate wake lock to keep screen on
-  const { requestWakeLock } = useWakeLock();
-
   // Fetch and track speed limits
   useSpeedLimit();
 
@@ -44,11 +40,10 @@ function App() {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
-  // Initialize Firebase and request wake lock on mount
+  // Initialize Firebase on mount
   useEffect(() => {
     initFirebase();
-    requestWakeLock();
-  }, [requestWakeLock]);
+  }, []);
 
   // Show GPS warning banner after 3 seconds if no GPS
   useEffect(() => {
