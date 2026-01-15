@@ -5,10 +5,11 @@ import { useGpsStore } from '../stores/gpsStore';
 import { useAppStore } from '../stores/appStore';
 import { useSmoothPosition } from '../hooks/useSmoothPosition';
 import { getAllOfficialCameras, mergeCamerasWithPriority } from '../services/CameraLoader';
-import { getUserCamerasAsNodes, deleteUserCamera, resetOfficialCamera, hasOverride } from '../services/OverrideService';
+import { getUserCamerasAsNodes, hasOverride } from '../services/OverrideService';
 import type { CameraNode } from '../types/camera';
 import { CAMERA_CORRECTED_EVENT } from './SnapToMeButton';
 import { USER_CAMERA_ADDED_EVENT } from './AddCameraButton';
+import { CameraPopup } from './CameraPopup';
 
 // Event for camera deletion
 export const CAMERA_DELETED_EVENT = 'camera-deleted';
@@ -46,6 +47,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
 
     const [isMapLoaded, setIsMapLoaded] = useState(false);
     const [cameraRefreshTrigger, setCameraRefreshTrigger] = useState(0);
+    const [selectedCamera, setSelectedCamera] = useState<(CameraNode & { hasOverride?: boolean }) | null>(null);
 
     // Use smooth position for animated marker (fixes jumping dot)
     const { latitude, longitude, heading } = useSmoothPosition();
@@ -224,19 +226,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
             el.title = `👤 USER: ${camera.name}`;
 
             el.onclick = () => {
-                const limitText = camera.limit ? `${camera.limit} km/h` : 'No limit';
-                const confirmed = window.confirm(
-                    `👤 USER CAMERA\n\n` +
-                    `📍 ${camera.name}\n` +
-                    `🏎️ Limit: ${limitText}\n` +
-                    `📋 Type: ${camera.type === 'RED_LIGHT_CAM' ? 'Red Light' : 'Speed'}\n\n` +
-                    `🗑️ Click OK to DELETE this camera`
-                );
-                if (confirmed) {
-                    deleteUserCamera(camera.id);
-                    setCameraRefreshTrigger(prev => prev + 1);
-                    window.dispatchEvent(new CustomEvent(CAMERA_DELETED_EVENT));
-                }
+                setSelectedCamera({ ...camera, hasOverride: false });
             };
 
             const marker = olaMapsRef.current!.addMarker({
@@ -310,27 +300,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
 
             // Add click handler for popup
             el.onclick = () => {
-                if (isFixed) {
-                    const resetConfirmed = window.confirm(
-                        `⚠️ OFFICIAL CAMERA\n\n` +
-                        `📍 ${camera.name}\n` +
-                        `🏎️ ${limitText}\n` +
-                        `📋 Type: ${camera.type === 'RED_LIGHT_CAM' ? 'Red Light' : 'Speed'}\n\n` +
-                        `📍 This camera has been FIXED by you.\n` +
-                        `↩️ Click OK to RESET to original position`
-                    );
-                    if (resetConfirmed) {
-                        resetOfficialCamera(camera.id);
-                        setCameraRefreshTrigger(prev => prev + 1);
-                    }
-                } else {
-                    alert(
-                        `⚠️ OFFICIAL CAMERA\n\n` +
-                        `📍 ${camera.name}\n` +
-                        `🏎️ ${limitText}\n` +
-                        `📋 Type: ${camera.type === 'RED_LIGHT_CAM' ? 'Red Light' : 'Speed'}`
-                    );
-                }
+                setSelectedCamera({ ...camera, hasOverride: isFixed });
             };
 
             const marker = olaMapsRef.current!.addMarker({
@@ -486,6 +456,18 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
           font-size: 26px;
         }
       `}</style>
+
+            {/* Camera Popup */}
+            {selectedCamera && (
+                <CameraPopup
+                    camera={selectedCamera}
+                    onClose={() => setSelectedCamera(null)}
+                    onAction={() => {
+                        setCameraRefreshTrigger(prev => prev + 1);
+                        window.dispatchEvent(new CustomEvent(CAMERA_DELETED_EVENT));
+                    }}
+                />
+            )}
         </>
     );
 }

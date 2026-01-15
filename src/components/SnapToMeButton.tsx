@@ -99,11 +99,11 @@ export function SnapToMeButton() {
                         <span className="updating">⏳</span>
                     ) : (
                         <>
-                            <span className="icon">🔧</span>
-                            <span className="text">FIX LOCATION</span>
+                            <span className="icon">📍</span>
+                            <span className="text">FIX CAM HERE</span>
+                            <span className="distance">{nearbyCamera.distanceM}m</span>
                         </>
                     )}
-                    <span className="distance">{nearbyCamera.distanceM}m away</span>
                 </button>
             )}
 
@@ -129,20 +129,19 @@ export function SnapToMeButton() {
             <style>{`
                 .snap-fix-btn {
                     position: fixed;
-                    bottom: 100px;
+                    bottom: 280px;
                     left: 50%;
                     transform: translateX(-50%);
                     z-index: 1000;
                     
                     display: flex;
-                    flex-direction: column;
                     align-items: center;
-                    gap: 4px;
+                    gap: 10px;
                     
-                    padding: 12px 24px;
+                    padding: 14px 24px;
                     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
                     border: none;
-                    border-radius: 16px;
+                    border-radius: 30px;
                     color: white;
                     font-weight: 600;
                     cursor: pointer;
@@ -166,7 +165,7 @@ export function SnapToMeButton() {
                 }
                 
                 .snap-fix-btn .icon {
-                    font-size: 20px;
+                    font-size: 18px;
                 }
                 
                 .snap-fix-btn .text {
@@ -178,6 +177,9 @@ export function SnapToMeButton() {
                     font-size: 11px;
                     opacity: 0.9;
                     font-weight: 400;
+                    background: rgba(0,0,0,0.2);
+                    padding: 3px 8px;
+                    border-radius: 10px;
                 }
                 
                 .snap-fix-btn .updating {
