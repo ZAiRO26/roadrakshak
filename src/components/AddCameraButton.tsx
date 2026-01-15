@@ -435,6 +435,28 @@ export function AddCameraButton() {
                         transform: translateX(-50%) translateY(0);
                     }
                 }
+
+                /* Tablet responsive (768px - 1024px) */
+                @media (min-width: 481px) and (max-width: 1024px) {
+                    .add-camera-fab {
+                        bottom: 160px;
+                        right: 16px;
+                        width: 52px;
+                        height: 52px;
+                        font-size: 18px;
+                    }
+                }
+
+                /* Mobile responsive (< 480px) */
+                @media (max-width: 480px) {
+                    .add-camera-fab {
+                        bottom: 140px;
+                        right: 16px;
+                        width: 50px;
+                        height: 50px;
+                        font-size: 16px;
+                    }
+                }
             `}</style>
         </>
     );

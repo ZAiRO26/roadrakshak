@@ -111,6 +111,30 @@ export function MapControls({ onZoomIn, onZoomOut, onRecenter }: MapControlsProp
                 [data-theme="dark"] .zoom-controls .map-control-btn:first-child {
                     border-bottom-color: rgba(255, 255, 255, 0.1);
                 }
+
+                /* Tablet responsive (768px - 1024px) */
+                @media (min-width: 481px) and (max-width: 1024px) {
+                    .map-controls {
+                        right: 14px;
+                        gap: 10px;
+                    }
+                    .map-control-btn {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+
+                /* Mobile responsive (< 480px) */
+                @media (max-width: 480px) {
+                    .map-controls {
+                        right: 12px;
+                        gap: 8px;
+                    }
+                    .map-control-btn {
+                        width: 38px;
+                        height: 38px;
+                    }
+                }
             `}</style>
         </div>
     );
