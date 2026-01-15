@@ -1894,7 +1894,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Parassala",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 50,
         "lat": 8.3150151,
         "lng": 77.1287226
     },
@@ -1912,7 +1912,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Kovalam Jn",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 80,
         "lat": 8.3998494,
         "lng": 76.980877
     },
@@ -1930,7 +1930,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Neyyattinkara (Town)",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 8.4080435,
         "lng": 77.0792108
     },
@@ -1939,7 +1939,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Thozhukkal",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 50,
         "lat": 8.4167193,
         "lng": 77.0803191
     },
@@ -1948,7 +1948,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Balaramapuram (South)",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 30,
         "lat": 8.4263583,
         "lng": 77.038985
     },
@@ -1957,7 +1957,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Balaramapuram (North)",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 8.4271586,
         "lng": 77.0395764
     },
@@ -1984,7 +1984,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Kumarichantha",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 80,
         "lat": 8.4516364,
         "lng": 76.9470077
     },
@@ -2011,7 +2011,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Manacaud Jn",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 8.4719437,
         "lng": 76.9481288
     },
@@ -2020,7 +2020,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Eenjakkal (Bypass 1)",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 8.4805714,
         "lng": 76.935144
     },
@@ -2029,7 +2029,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Eenjakkal (Bypass 2)",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 80,
         "lat": 8.4807817,
         "lng": 76.9359144
     },
@@ -2038,7 +2038,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Killipalam (PRS Hospital)",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 8.4813394,
         "lng": 76.9595876
     },
@@ -2047,7 +2047,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Killipalam (Junction)",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 8.4815023,
         "lng": 76.9582123
     },
@@ -2056,7 +2056,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Power House Road",
         "type": "AI_CAM",
-        "speed_limit": 40,
+        "speed_limit": 50,
         "lat": 8.4849944,
         "lng": 76.952989
     },
@@ -2065,7 +2065,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: East Fort Stretch",
         "type": "AI_CAM",
-        "speed_limit": 30,
+        "speed_limit": 60,
         "lat": 8.485964,
         "lng": 76.9478151
     },
@@ -2074,7 +2074,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Thambanoor",
         "type": "AI_CAM",
-        "speed_limit": 40,
+        "speed_limit": 100,
         "lat": 8.4870139,
         "lng": 76.9521384
     },
@@ -2092,7 +2092,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Kaithamukk",
         "type": "AI_CAM",
-        "speed_limit": 40,
+        "speed_limit": 50,
         "lat": 8.4895629,
         "lng": 76.9401949
     },
@@ -2101,7 +2101,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: MG Road",
         "type": "AI_CAM",
-        "speed_limit": 40,
+        "speed_limit": 60,
         "lat": 8.4902162,
         "lng": 76.9473004
     },
@@ -2110,7 +2110,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Poojapura",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 8.4910375,
         "lng": 76.9738924
     },
@@ -2119,7 +2119,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: All Saints",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 50,
         "lat": 8.4946185,
         "lng": 76.9098068
     },
@@ -2128,7 +2128,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Pettah",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 30,
         "lat": 8.4952048,
         "lng": 76.9275781
     },
@@ -2146,7 +2146,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Holy Angels Road",
         "type": "AI_CAM",
-        "speed_limit": 40,
+        "speed_limit": 45,
         "lat": 8.4980147,
         "lng": 76.942862
     },
@@ -2164,7 +2164,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Mangattukadav",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 30,
         "lat": 8.5004297,
         "lng": 77.0062457
     },
@@ -2173,7 +2173,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Vazhuthacaud",
         "type": "AI_CAM",
-        "speed_limit": 40,
+        "speed_limit": 30,
         "lat": 8.5004554,
         "lng": 76.9582906
     },
@@ -2182,7 +2182,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Chakka Bypass",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 80,
         "lat": 8.5021486,
         "lng": 76.9127634
     },
@@ -2209,7 +2209,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Edapazhanji",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 30,
         "lat": 8.5045791,
         "lng": 76.9705438
     },
@@ -2227,7 +2227,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Kundamankadavu",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 8.5088349,
         "lng": 77.0033788
     },
@@ -2236,7 +2236,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Veli",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 50,
         "lat": 8.5123626,
         "lng": 76.8908583
     },
@@ -2245,7 +2245,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Venpalavattam",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 45,
         "lat": 8.5131922,
         "lng": 76.9105451
     },
@@ -2263,7 +2263,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Pattom Jn",
         "type": "AI_CAM",
-        "speed_limit": 40,
+        "speed_limit": 60,
         "lat": 8.5230483,
         "lng": 76.9407198
     },
@@ -2272,7 +2272,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Aakkulam",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 50,
         "lat": 8.5230868,
         "lng": 76.9122663
     },
@@ -2281,7 +2281,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Pulimood Jn",
         "type": "AI_CAM",
-        "speed_limit": 40,
+        "speed_limit": 50,
         "lat": 8.5235036,
         "lng": 76.9862784
     },
@@ -2308,7 +2308,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Ambalamukk",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 8.5297424,
         "lng": 76.9609495
     },
@@ -2335,7 +2335,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Bypass UST Global",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 80,
         "lat": 8.5377974,
         "lng": 76.8791881
     },
@@ -2344,7 +2344,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Vazhayila",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 8.5426433,
         "lng": 76.9711209
     },
@@ -2362,7 +2362,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Kottamughal",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 8.5521029,
         "lng": 76.9423557
     },
@@ -2371,7 +2371,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Mannanthala",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 8.5607153,
         "lng": 76.9434491
     },
@@ -2380,7 +2380,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Paravankunnu Jn",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 8.5678039,
         "lng": 76.8733965
     },
@@ -2398,7 +2398,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Vattappara",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 8.5928899,
         "lng": 76.9525046
     },
@@ -2407,7 +2407,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Nedumangad",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 80,
         "lat": 8.6006022,
         "lng": 76.9959209
     },
@@ -2416,7 +2416,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Nedumangadu Town",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 8.614673,
         "lng": 76.9977609
     },
@@ -2479,7 +2479,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Kallambalam",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 50,
         "lat": 8.7618969,
         "lng": 76.7877894
     },
@@ -2488,7 +2488,7 @@
         "city": "Thiruvananthapuram",
         "name": "AI Cam: Kilimanoor",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 8.7681143,
         "lng": 76.8851514
     },
@@ -2533,7 +2533,7 @@
         "city": "Kollam",
         "name": "AI Cam: Kadakkal",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 8.826195,
         "lng": 76.917526
     },
@@ -2542,7 +2542,7 @@
         "city": "Kollam",
         "name": "AI Cam: Chathannoor",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 80,
         "lat": 8.8586276,
         "lng": 76.7235559
     },
@@ -2551,7 +2551,7 @@
         "city": "Kollam",
         "name": "AI Cam: Kottiyam",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 8.8659031,
         "lng": 76.671286
     },
@@ -2560,7 +2560,7 @@
         "city": "Kollam",
         "name": "AI Cam: Chadayamangalam",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 8.8736165,
         "lng": 76.8695075
     },
@@ -2569,7 +2569,7 @@
         "city": "Kollam",
         "name": "AI Cam: Oyoor Jn",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 8.8747709,
         "lng": 76.7738671
     },
@@ -2578,7 +2578,7 @@
         "city": "Kollam",
         "name": "AI Cam: SN College Jn",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 8.8810515,
         "lng": 76.6003846
     },
@@ -2596,7 +2596,7 @@
         "city": "Kollam",
         "name": "AI Cam: Kannanalloor",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 8.8949073,
         "lng": 76.6819167
     },
@@ -2605,7 +2605,7 @@
         "city": "Kollam",
         "name": "AI Cam: Ayoor",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 8.8955354,
         "lng": 76.8620022
     },
@@ -2614,7 +2614,7 @@
         "city": "Kollam",
         "name": "AI Cam: Kulathooppuzha",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 8.9038094,
         "lng": 77.0574798
     },
@@ -2623,7 +2623,7 @@
         "city": "Kollam",
         "name": "AI Cam: Ramankulangara",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 8.9047572,
         "lng": 76.5622133
     },
@@ -2641,7 +2641,7 @@
         "city": "Kollam",
         "name": "AI Cam: Karikkod",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 8.9168397,
         "lng": 76.6325294
     },
@@ -2650,7 +2650,7 @@
         "city": "Kollam",
         "name": "AI Cam: Anchal Jn",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 8.9274682,
         "lng": 76.9133146
     },
@@ -2677,7 +2677,7 @@
         "city": "Kollam",
         "name": "AI Cam: Thenmala",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 30,
         "lat": 8.967805,
         "lng": 77.0704108
     },
@@ -2686,7 +2686,7 @@
         "city": "Kollam",
         "name": "AI Cam: Ezhukone",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 8.9806723,
         "lng": 76.7213028
     },
@@ -2695,7 +2695,7 @@
         "city": "Kollam",
         "name": "AI Cam: Titanium Jn",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 80,
         "lat": 9.000891,
         "lng": 76.5353628
     },
@@ -2713,7 +2713,7 @@
         "city": "Kollam",
         "name": "AI Cam: Punaloor",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 9.0176838,
         "lng": 76.9255281
     },
@@ -2722,7 +2722,7 @@
         "city": "Kollam",
         "name": "AI Cam: Kunnikode",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 9.0262467,
         "lng": 76.8508431
     },
@@ -2740,7 +2740,7 @@
         "city": "Kollam",
         "name": "AI Cam: Sasthamkotta",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 100,
         "lat": 9.0432876,
         "lng": 76.625558
     },
@@ -2749,7 +2749,7 @@
         "city": "Kollam",
         "name": "AI Cam: Karunagappally",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 9.0484933,
         "lng": 76.5363593
     },
@@ -2767,7 +2767,7 @@
         "city": "Kollam",
         "name": "AI Cam: Puthiyakavu",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 80,
         "lat": 9.0781564,
         "lng": 76.5316868
     },
@@ -2785,7 +2785,7 @@
         "city": "Kollam",
         "name": "AI Cam: Oachira Bypass",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 80,
         "lat": 9.1293042,
         "lng": 76.5153318
     },
@@ -2794,7 +2794,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Kadampanad",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 9.0919576,
         "lng": 76.6865217
     },
@@ -2812,7 +2812,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Kalanjoor",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 45,
         "lat": 9.1203337,
         "lng": 76.851057
     },
@@ -2830,7 +2830,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Adoor Jn",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 9.1524744,
         "lng": 76.7356439
     },
@@ -2839,7 +2839,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Pandalam",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 9.216957,
         "lng": 76.6811076
     },
@@ -2848,7 +2848,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Konni",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 9.2218772,
         "lng": 76.8509457
     },
@@ -2857,7 +2857,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Kulanada",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 9.2424841,
         "lng": 76.6723683
     },
@@ -2866,7 +2866,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Omallur",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 9.2544153,
         "lng": 76.7619544
     },
@@ -2875,7 +2875,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Stadium",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 9.2612751,
         "lng": 76.7820679
     },
@@ -2884,7 +2884,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Aban Jn",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 9.2654802,
         "lng": 76.7901588
     },
@@ -2893,7 +2893,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Elanthoor",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 9.3000101,
         "lng": 76.7298612
     },
@@ -2920,7 +2920,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Kozhanchery",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 9.3371442,
         "lng": 76.7062382
     },
@@ -2929,7 +2929,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Vadasserikkara",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 9.3372718,
         "lng": 76.8272158
     },
@@ -2938,7 +2938,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Kuttoor",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 9.357776,
         "lng": 76.5890153
     },
@@ -2947,7 +2947,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Perunad",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 45,
         "lat": 9.3674906,
         "lng": 76.8494115
     },
@@ -2965,7 +2965,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Thiruvalla",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 9.3808886,
         "lng": 76.5746856
     },
@@ -2974,7 +2974,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Eraviperur",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 9.3828929,
         "lng": 76.6386073
     },
@@ -2983,7 +2983,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Ittiyappara",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 9.3849077,
         "lng": 76.7837393
     },
@@ -2992,7 +2992,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Thiruvalla Bypass",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 80,
         "lat": 9.388379,
         "lng": 76.5782097
     },
@@ -3010,7 +3010,7 @@
         "city": "Pathanamthitta",
         "name": "AI Cam: Perunthuruthi",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 80,
         "lat": 9.4064875,
         "lng": 76.5597525
     },
@@ -3028,7 +3028,7 @@
         "city": "Alappuzha",
         "name": "AI Cam: Kayamkulam",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 9.171988,
         "lng": 76.498481
     },
@@ -3037,7 +3037,7 @@
         "city": "Alappuzha",
         "name": "AI Cam: Charumoodu",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 9.1748553,
         "lng": 76.6124068
     },
@@ -3046,7 +3046,7 @@
         "city": "Alappuzha",
         "name": "AI Cam: Kattanam",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 9.1764854,
         "lng": 76.5629889
     },
@@ -3055,7 +3055,7 @@
         "city": "Alappuzha",
         "name": "AI Cam: Haripad",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 50,
         "lat": 9.259619,
         "lng": 76.460688
     },
@@ -3091,7 +3091,7 @@
         "city": "Alappuzha",
         "name": "AI Cam: Mannaar",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 9.3256887,
         "lng": 76.5322876
     },
@@ -3109,7 +3109,7 @@
         "city": "Alappuzha",
         "name": "AI Cam: Ambalappuzha",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 30,
         "lat": 9.383509,
         "lng": 76.357872
     },
@@ -3118,7 +3118,7 @@
         "city": "Alappuzha",
         "name": "AI Cam: Thottappalli",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 9.315957,
         "lng": 76.387853
     },
@@ -3127,7 +3127,7 @@
         "city": "Alappuzha",
         "name": "AI Cam: District Court",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 9.502623,
         "lng": 76.3415061
     },
@@ -3136,7 +3136,7 @@
         "city": "Alappuzha",
         "name": "AI Cam: Kaichoondy",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 9.512952,
         "lng": 76.3382155
     },
@@ -3145,7 +3145,7 @@
         "city": "Alappuzha",
         "name": "AI Cam: Muhamma",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 9.6042494,
         "lng": 76.3591657
     },
@@ -3154,7 +3154,7 @@
         "city": "Alappuzha",
         "name": "AI Cam: Cherthala",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 9.6901971,
         "lng": 76.3432824
     },
@@ -3163,7 +3163,7 @@
         "city": "Alappuzha",
         "name": "AI Cam: Thuravoor",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 9.7681592,
         "lng": 76.3186806
     },
@@ -3181,7 +3181,7 @@
         "city": "Kottayam",
         "name": "AI Cam: Changanassery",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 80,
         "lat": 9.4296846,
         "lng": 76.5446039
     },
@@ -3190,7 +3190,7 @@
         "city": "Kottayam",
         "name": "AI Cam: Karukachal",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 9.5007746,
         "lng": 76.635727
     },
@@ -3208,7 +3208,7 @@
         "city": "Kottayam",
         "name": "AI Cam: Ponkunnam",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 9.5621733,
         "lng": 76.7721317
     },
@@ -3217,7 +3217,7 @@
         "city": "Kottayam",
         "name": "AI Cam: Kodimatha",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 9.5727248,
         "lng": 76.5196126
     },
@@ -3235,7 +3235,7 @@
         "city": "Kottayam",
         "name": "AI Cam: Nagampadom",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 9.5987549,
         "lng": 76.528686
     },
@@ -3244,7 +3244,7 @@
         "city": "Kottayam",
         "name": "AI Cam: Ettumanoor",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 9.6784259,
         "lng": 76.5579359
     },
@@ -3253,7 +3253,7 @@
         "city": "Kottayam",
         "name": "AI Cam: Erattupetta",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 9.6856967,
         "lng": 76.7770483
     },
@@ -3262,7 +3262,7 @@
         "city": "Kottayam",
         "name": "AI Cam: Pala",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 9.7097633,
         "lng": 76.6788096
     },
@@ -3271,7 +3271,7 @@
         "city": "Kottayam",
         "name": "AI Cam: Thalayolaparambu",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 9.7828854,
         "lng": 76.4550842
     },
@@ -3280,7 +3280,7 @@
         "city": "Idukki",
         "name": "AI Cam: Thodupuzha",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 9.9123434,
         "lng": 76.6975596
     },
@@ -3298,7 +3298,7 @@
         "city": "Idukki",
         "name": "AI Cam: Cheruthoni",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 30,
         "lat": 9.8433871,
         "lng": 76.9847038
     },
@@ -3307,7 +3307,7 @@
         "city": "Idukki",
         "name": "AI Cam: Nedumkandam",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 9.8396219,
         "lng": 77.1574032
     },
@@ -3316,7 +3316,7 @@
         "city": "Idukki",
         "name": "AI Cam: Kattappana",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 30,
         "lat": 9.7558938,
         "lng": 77.1189376
     },
@@ -3334,7 +3334,7 @@
         "city": "Idukki",
         "name": "AI Cam: Vandiperiyar",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 9.5714768,
         "lng": 77.0888218
     },
@@ -3343,7 +3343,7 @@
         "city": "Idukki",
         "name": "AI Cam: Mundakkayam",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 9.5389935,
         "lng": 76.9010992
     },
@@ -3352,7 +3352,7 @@
         "city": "Idukki",
         "name": "AI Cam: Kuttikanam",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 9.5792949,
         "lng": 76.970636
     },
@@ -3361,7 +3361,7 @@
         "city": "Idukki",
         "name": "AI Cam: Wagamon",
         "type": "AI_CAM",
-        "speed_limit": 40,
+        "speed_limit": 60,
         "lat": 9.6498758,
         "lng": 76.9263138
     },
@@ -3370,7 +3370,7 @@
         "city": "Idukki",
         "name": "AI Cam: Adimali",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 10.0157731,
         "lng": 76.9531487
     },
@@ -3397,7 +3397,7 @@
         "city": "Ernakulam",
         "name": "AI Cam: Tripunithura",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 9.952464,
         "lng": 76.3586813
     },
@@ -3406,7 +3406,7 @@
         "city": "Ernakulam",
         "name": "AI Cam: Irumbanam",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 9.965175,
         "lng": 76.357405
     },
@@ -3424,7 +3424,7 @@
         "city": "Ernakulam",
         "name": "AI Cam: Marine Drive",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 9.9802844,
         "lng": 76.275579
     },
@@ -3433,7 +3433,7 @@
         "city": "Ernakulam",
         "name": "AI Cam: Pattimattom",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 10.0240838,
         "lng": 76.4541183
     },
@@ -3442,7 +3442,7 @@
         "city": "Ernakulam",
         "name": "AI Cam: Njarackal",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 10.0385272,
         "lng": 76.2197479
     },
@@ -3451,7 +3451,7 @@
         "city": "Ernakulam",
         "name": "AI Cam: Kothamangalam",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 10.0663089,
         "lng": 76.6172737
     },
@@ -3469,7 +3469,7 @@
         "city": "Ernakulam",
         "name": "AI Cam: Perumbavoor",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 30,
         "lat": 10.1114289,
         "lng": 76.4790709
     },
@@ -3487,7 +3487,7 @@
         "city": "Ernakulam",
         "name": "AI Cam: Aluva",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 50,
         "lat": 10.1556682,
         "lng": 76.352835
     },
@@ -3496,7 +3496,7 @@
         "city": "Ernakulam",
         "name": "AI Cam: Angamaly",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 80,
         "lat": 10.1929715,
         "lng": 76.3868746
     },
@@ -3523,7 +3523,7 @@
         "city": "Thrissur",
         "name": "AI Cam: Thriprayar",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 30,
         "lat": 10.414214,
         "lng": 76.113296
     },
@@ -3541,7 +3541,7 @@
         "city": "Thrissur",
         "name": "AI Cam: Poonkunnam",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 10.5330967,
         "lng": 76.2019504
     },
@@ -3559,7 +3559,7 @@
         "city": "Thrissur",
         "name": "AI Cam: Chavakkad",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 30,
         "lat": 10.5881476,
         "lng": 76.0157987
     },
@@ -3568,7 +3568,7 @@
         "city": "Thrissur",
         "name": "AI Cam: Vadakkancheri",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 10.5898996,
         "lng": 76.4804941
     },
@@ -3577,7 +3577,7 @@
         "city": "Thrissur",
         "name": "AI Cam: Guruvayur",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 10.5986412,
         "lng": 76.053001
     },
@@ -3586,7 +3586,7 @@
         "city": "Thrissur",
         "name": "AI Cam: Kunnamkulam",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 10.6463695,
         "lng": 76.0658423
     },
@@ -3595,7 +3595,7 @@
         "city": "Thrissur",
         "name": "AI Cam: Chelakkara",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 10.6956359,
         "lng": 76.3314065
     },
@@ -3604,7 +3604,7 @@
         "city": "Thrissur",
         "name": "AI Cam: Cheruthuruthy",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 10.7490788,
         "lng": 76.2747445
     },
@@ -3622,7 +3622,7 @@
         "city": "Palakkad",
         "name": "AI Cam: Kuzhalmantham",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 50,
         "lat": 10.716079,
         "lng": 76.603115
     },
@@ -3649,7 +3649,7 @@
         "city": "Palakkad",
         "name": "AI Cam: Walayar",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 10.845,
         "lng": 76.85
     },
@@ -3658,7 +3658,7 @@
         "city": "Palakkad",
         "name": "AI Cam: Ottappalam",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 10.7729315,
         "lng": 76.3748194
     },
@@ -3667,7 +3667,7 @@
         "city": "Palakkad",
         "name": "AI Cam: Pattambi",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 30,
         "lat": 10.8090125,
         "lng": 76.1873015
     },
@@ -3676,7 +3676,7 @@
         "city": "Palakkad",
         "name": "AI Cam: Cherpalassery",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 10.8816349,
         "lng": 76.318491
     },
@@ -3685,7 +3685,7 @@
         "city": "Palakkad",
         "name": "AI Cam: Mannarkkad",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 50,
         "lat": 10.99853,
         "lng": 76.470079
     },
@@ -3694,7 +3694,7 @@
         "city": "Malappuram",
         "name": "AI Cam: Edappal",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 10.8053098,
         "lng": 76.0079801
     },
@@ -3712,7 +3712,7 @@
         "city": "Malappuram",
         "name": "AI Cam: Perinthalmanna",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 10.9739366,
         "lng": 76.23663
     },
@@ -3721,7 +3721,7 @@
         "city": "Malappuram",
         "name": "AI Cam: Kottakkal",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 10.9920809,
         "lng": 75.9798434
     },
@@ -3730,7 +3730,7 @@
         "city": "Malappuram",
         "name": "AI Cam: Malappuram",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 11.0338985,
         "lng": 76.0998075
     },
@@ -3739,7 +3739,7 @@
         "city": "Malappuram",
         "name": "AI Cam: Parappanangadi",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 11.0423916,
         "lng": 75.8614466
     },
@@ -3748,7 +3748,7 @@
         "city": "Malappuram",
         "name": "AI Cam: Manjeri",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 11.1197107,
         "lng": 76.1129682
     },
@@ -3766,7 +3766,7 @@
         "city": "Malappuram",
         "name": "AI Cam: Nilambur",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 30,
         "lat": 11.2250824,
         "lng": 76.1460753
     },
@@ -3784,7 +3784,7 @@
         "city": "Kozhikode",
         "name": "AI Cam: Pantheerankavu",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 11.230238,
         "lng": 75.84634
     },
@@ -3811,7 +3811,7 @@
         "city": "Kozhikode",
         "name": "AI Cam: Thamarassery",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 11.4687164,
         "lng": 75.969365
     },
@@ -3820,7 +3820,7 @@
         "city": "Kozhikode",
         "name": "AI Cam: Koyilandy",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 11.447831,
         "lng": 75.8259111
     },
@@ -3829,7 +3829,7 @@
         "city": "Kozhikode",
         "name": "AI Cam: Vadakara",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 100,
         "lat": 11.5965001,
         "lng": 75.589191
     },
@@ -3838,7 +3838,7 @@
         "city": "Kozhikode",
         "name": "AI Cam: Kuttiadi",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 30,
         "lat": 11.6513964,
         "lng": 75.7501973
     },
@@ -3847,7 +3847,7 @@
         "city": "Kozhikode",
         "name": "AI Cam: Nadapuram",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 11.6862882,
         "lng": 75.6557102
     },
@@ -3856,7 +3856,7 @@
         "city": "Wayanad",
         "name": "AI Cam: Lakkidi",
         "type": "AI_CAM",
-        "speed_limit": 40,
+        "speed_limit": 80,
         "lat": 11.5178294,
         "lng": 76.021165
     },
@@ -3865,7 +3865,7 @@
         "city": "Wayanad",
         "name": "AI Cam: Meppadi",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 30,
         "lat": 11.562278,
         "lng": 76.125484
     },
@@ -3874,7 +3874,7 @@
         "city": "Wayanad",
         "name": "AI Cam: Kalpetta",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 11.6075182,
         "lng": 76.0834226
     },
@@ -3883,7 +3883,7 @@
         "city": "Wayanad",
         "name": "AI Cam: Sulthan Bathery",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 11.658445,
         "lng": 76.2475233
     },
@@ -3892,7 +3892,7 @@
         "city": "Wayanad",
         "name": "AI Cam: Panamaram",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 40,
         "lat": 11.7392826,
         "lng": 76.0727474
     },
@@ -3901,7 +3901,7 @@
         "city": "Wayanad",
         "name": "AI Cam: Mananthavady",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 11.8131418,
         "lng": 75.9946528
     },
@@ -3919,7 +3919,7 @@
         "city": "Kannur",
         "name": "AI Cam: Koothuparamba",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 11.830353,
         "lng": 75.566231
     },
@@ -3928,7 +3928,7 @@
         "city": "Kannur",
         "name": "AI Cam: Kannur Town",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 80,
         "lat": 11.8855771,
         "lng": 75.3724035
     },
@@ -3937,7 +3937,7 @@
         "city": "Kannur",
         "name": "AI Cam: Mattannur",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 11.9312353,
         "lng": 75.570094
     },
@@ -3964,7 +3964,7 @@
         "city": "Kannur",
         "name": "AI Cam: Payyannur",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 30,
         "lat": 12.1003456,
         "lng": 75.1959322
     },
@@ -3973,7 +3973,7 @@
         "city": "Kannur",
         "name": "AI Cam: Alakode",
         "type": "AI_CAM",
-        "speed_limit": 50,
+        "speed_limit": 60,
         "lat": 12.18592,
         "lng": 75.4661353
     },
@@ -3982,7 +3982,7 @@
         "city": "Kasaragod",
         "name": "AI Cam: Thrikaripur",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 40,
         "lat": 12.1432324,
         "lng": 75.1774622
     },
@@ -3991,7 +3991,7 @@
         "city": "Kasaragod",
         "name": "AI Cam: Cheruvathur",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 50,
         "lat": 12.2164242,
         "lng": 75.1616295
     },
@@ -4054,7 +4054,7 @@
         "city": "Kasaragod",
         "name": "AI Cam: Uppala",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 50,
         "lat": 12.664898,
         "lng": 74.921597
     },
@@ -4063,7 +4063,7 @@
         "city": "Kasaragod",
         "name": "AI Cam: Manjeshwar",
         "type": "AI_CAM",
-        "speed_limit": 60,
+        "speed_limit": 50,
         "lat": 12.7058917,
         "lng": 74.9051556
     }
