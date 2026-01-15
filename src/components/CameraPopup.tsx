@@ -14,9 +14,14 @@ interface CameraPopupProps {
 
 export function CameraPopup({ camera, onClose, onAction }: CameraPopupProps) {
     const isUser = camera.source === 'USER';
+    const isPolice = camera.type === 'POLICE_POST';
     const isFixed = camera.hasOverride === true;
-    const limitText = camera.limit ? `${camera.limit} km/h` : 'No limit set';
-    const typeText = camera.type === 'RED_LIGHT_CAM' ? 'Red Light Camera' : 'Speed Camera';
+    const limitText = camera.limit ? `${camera.limit} km/h` : (isPolice ? 'No speed limit' : 'No limit set');
+    const typeText = camera.type === 'POLICE_POST'
+        ? 'Police Checkpoint'
+        : camera.type === 'RED_LIGHT_CAM'
+            ? 'Red Light Camera'
+            : 'Speed Camera';
 
     const handleDelete = () => {
         deleteUserCamera(camera.id);
@@ -30,17 +35,26 @@ export function CameraPopup({ camera, onClose, onAction }: CameraPopupProps) {
         onClose();
     };
 
+    // Determine header style: user (purple), police (blue), or official (red)
+    const headerClass = isUser ? 'user' : (isPolice ? 'police' : 'official');
+
+    // Determine icon
+    const icon = isPolice ? '🚓' : (camera.type === 'RED_LIGHT_CAM' ? '🚦' : '📷');
+
+    // Determine header text
+    const headerText = isUser
+        ? '👤 USER ADDED CAMERA'
+        : (isPolice ? '👮 HSP CHECKPOINT' : '👮 OFFICIAL CAMERA');
+
     return (
         <>
             <div className="popup-overlay" onClick={onClose} />
             <div className="camera-popup">
                 {/* Header */}
-                <div className={`popup-header ${isUser ? 'user' : 'official'}`}>
-                    <span className="popup-icon">
-                        {camera.type === 'RED_LIGHT_CAM' ? '🚦' : '📷'}
-                    </span>
+                <div className={`popup-header ${headerClass}`}>
+                    <span className="popup-icon">{icon}</span>
                     <span className="popup-source">
-                        {isUser ? '👤 USER ADDED CAMERA' : '👮 OFFICIAL CAMERA'}
+                        {headerText}
                         {isFixed && ' (Fixed)'}
                     </span>
                     <button className="popup-close" onClick={onClose}>✕</button>
@@ -130,6 +144,10 @@ export function CameraPopup({ camera, onClose, onAction }: CameraPopupProps) {
 
                 .popup-header.official {
                     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+                }
+
+                .popup-header.police {
+                    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
                 }
 
                 .popup-icon {

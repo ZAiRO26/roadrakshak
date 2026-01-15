@@ -1321,5 +1321,572 @@
         "speed_limit": 80,
         "lat": 18.7450,
         "lng": 73.5350
+    },
+    {
+        "id": "hsp_01",
+        "city": "Palghar",
+        "name": "HSP Post: Chinchoti (Vasai)",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.383543,
+        "lng": 72.897333
+    },
+    {
+        "id": "hsp_02",
+        "city": "Palghar",
+        "name": "HSP Post: Manor",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.707739,
+        "lng": 72.921569
+    },
+    {
+        "id": "hsp_03",
+        "city": "Palghar",
+        "name": "HSP Post: Charoti",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.911797,
+        "lng": 72.940107
+    },
+    {
+        "id": "hsp_04",
+        "city": "Thane",
+        "name": "HSP Post: Shahapur",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.462742,
+        "lng": 73.33445
+    },
+    {
+        "id": "hsp_05",
+        "city": "Thane",
+        "name": "HSP Post: Malshej Ghat",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.290561,
+        "lng": 73.567583
+    },
+    {
+        "id": "hsp_06",
+        "city": "Nashik",
+        "name": "HSP Post: Ghoti",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.692638,
+        "lng": 73.543191
+    },
+    {
+        "id": "hsp_07",
+        "city": "Nashik",
+        "name": "HSP Post: Pimpalgaon",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 20.116287,
+        "lng": 73.953049
+    },
+    {
+        "id": "hsp_08",
+        "city": "Nashik",
+        "name": "HSP Post: Malegaon",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 20.583438,
+        "lng": 74.58825
+    },
+    {
+        "id": "hsp_09",
+        "city": "Nashik",
+        "name": "HSP Post: Sinnar",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.778052,
+        "lng": 74.081956
+    },
+    {
+        "id": "hsp_10",
+        "city": "Nandurbar",
+        "name": "HSP Post: Visarwadi",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 21.184976,
+        "lng": 74.191007
+    },
+    {
+        "id": "hsp_11",
+        "city": "Dhule",
+        "name": "HSP Post: Dhule",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 20.87976,
+        "lng": 74.7889
+    },
+    {
+        "id": "hsp_12",
+        "city": "Dhule",
+        "name": "HSP Post: Shirpur",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 21.417198,
+        "lng": 74.988214
+    },
+    {
+        "id": "hsp_13",
+        "city": "Jalgaon",
+        "name": "HSP Post: Paldhi",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 21.019168,
+        "lng": 75.441987
+    },
+    {
+        "id": "hsp_14",
+        "city": "Jalgaon",
+        "name": "HSP Post: Chalisgaon",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 20.391299,
+        "lng": 75.044414
+    },
+    {
+        "id": "hsp_15",
+        "city": "Raigad",
+        "name": "HSP Post: Palaspe (Panvel)",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 18.957545,
+        "lng": 73.156974
+    },
+    {
+        "id": "hsp_16",
+        "city": "Raigad",
+        "name": "HSP Post: Borghat (Khopoli)",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 18.771391,
+        "lng": 73.365222
+    },
+    {
+        "id": "hsp_17",
+        "city": "Raigad",
+        "name": "HSP Post: Wakan",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 18.49904,
+        "lng": 73.175713
+    },
+    {
+        "id": "hsp_18",
+        "city": "Raigad",
+        "name": "HSP Post: Mahad",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 18.075061,
+        "lng": 73.407536
+    },
+    {
+        "id": "hsp_19",
+        "city": "Ratnagiri",
+        "name": "HSP Post: Kashedi Ghat",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 17.904487,
+        "lng": 73.435632
+    },
+    {
+        "id": "hsp_20",
+        "city": "Ratnagiri",
+        "name": "HSP Post: Chiplun",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 17.591682,
+        "lng": 73.489815
+    },
+    {
+        "id": "hsp_21",
+        "city": "Ratnagiri",
+        "name": "HSP Post: Hatkhamba",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 17.010059,
+        "lng": 73.430298
+    },
+    {
+        "id": "hsp_22",
+        "city": "Sindhudurg",
+        "name": "HSP Post: Kasal",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 16.154922,
+        "lng": 73.684373
+    },
+    {
+        "id": "hsp_23",
+        "city": "Ahmednagar",
+        "name": "HSP Post: Ahmednagar",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.095232,
+        "lng": 74.72688
+    },
+    {
+        "id": "hsp_24",
+        "city": "Ahmednagar",
+        "name": "HSP Post: Babhaleshwar",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.603411,
+        "lng": 74.510448
+    },
+    {
+        "id": "hsp_25",
+        "city": "Pune",
+        "name": "HSP Post: Alephata",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.182957,
+        "lng": 74.09592
+    },
+    {
+        "id": "hsp_26",
+        "city": "Ahmednagar",
+        "name": "HSP Post: Dolasane",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.388865,
+        "lng": 74.210996
+    },
+    {
+        "id": "hsp_27",
+        "city": "Ahmednagar",
+        "name": "HSP Post: Tisgaon",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.188997,
+        "lng": 75.072841
+    },
+    {
+        "id": "hsp_28",
+        "city": "Pune",
+        "name": "HSP Post: Khandala (Expressway)",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 18.770151,
+        "lng": 73.36686
+    },
+    {
+        "id": "hsp_29",
+        "city": "Pune",
+        "name": "HSP Post: Wadgaon",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 18.7450211,
+        "lng": 73.6299718
+    },
+    {
+        "id": "hsp_30",
+        "city": "Pune",
+        "name": "HSP Post: Sarola",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 18.230957,
+        "lng": 73.913865
+    },
+    {
+        "id": "hsp_31",
+        "city": "Pune",
+        "name": "HSP Post: Baramati Phata",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 18.452598,
+        "lng": 74.384918
+    },
+    {
+        "id": "hsp_32",
+        "city": "Satara",
+        "name": "HSP Post: Bhuinj",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 17.261662,
+        "lng": 74.177364
+    },
+    {
+        "id": "hsp_33",
+        "city": "Satara",
+        "name": "HSP Post: Karad",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 17.299227,
+        "lng": 74.192554
+    },
+    {
+        "id": "hsp_34",
+        "city": "Kolhapur",
+        "name": "HSP Post: Ujalaiwadi",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 16.661666,
+        "lng": 74.267557
+    },
+    {
+        "id": "hsp_35",
+        "city": "Solapur",
+        "name": "HSP Post: Modnimb",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 17.9153879,
+        "lng": 75.4012909
+    },
+    {
+        "id": "hsp_36",
+        "city": "Solapur",
+        "name": "HSP Post: Pakhani",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 17.765588,
+        "lng": 75.756261
+    },
+    {
+        "id": "hsp_37",
+        "city": "Pune",
+        "name": "HSP Post: Indapur",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 18.22762,
+        "lng": 74.816205
+    },
+    {
+        "id": "hsp_38",
+        "city": "Aurangabad",
+        "name": "HSP Post: Aurangabad",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.866643,
+        "lng": 75.516644
+    },
+    {
+        "id": "hsp_39",
+        "city": "Aurangabad",
+        "name": "HSP Post: Khultabad",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 20.020613,
+        "lng": 75.155758
+    },
+    {
+        "id": "hsp_40",
+        "city": "Jalna",
+        "name": "HSP Post: Jalna",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.859462,
+        "lng": 75.845366
+    },
+    {
+        "id": "hsp_41",
+        "city": "Beed",
+        "name": "HSP Post: Gevrai",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.202824,
+        "lng": 75.770098
+    },
+    {
+        "id": "hsp_42",
+        "city": "Beed",
+        "name": "HSP Post: Manjarsumbha",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 18.836373,
+        "lng": 75.725548
+    },
+    {
+        "id": "hsp_43",
+        "city": "Osmanabad",
+        "name": "HSP Post: Osmanabad",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 18.198451,
+        "lng": 76.041584
+    },
+    {
+        "id": "hsp_44",
+        "city": "Osmanabad",
+        "name": "HSP Post: Naldurg",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 17.814172,
+        "lng": 76.279121
+    },
+    {
+        "id": "hsp_45",
+        "city": "Nanded",
+        "name": "HSP Post: Nanded",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.264445,
+        "lng": 77.367737
+    },
+    {
+        "id": "hsp_46",
+        "city": "Nanded",
+        "name": "HSP Post: Barad",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.229123,
+        "lng": 77.480989
+    },
+    {
+        "id": "hsp_47",
+        "city": "Parbhani",
+        "name": "HSP Post: Parbhani",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.277288,
+        "lng": 76.855735
+    },
+    {
+        "id": "hsp_48",
+        "city": "Parbhani",
+        "name": "HSP Post: Jintur",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.59818,
+        "lng": 76.695689
+    },
+    {
+        "id": "hsp_49",
+        "city": "Latur",
+        "name": "HSP Post: Latur",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 18.486512,
+        "lng": 76.807615
+    },
+    {
+        "id": "hsp_50",
+        "city": "Buldhana",
+        "name": "HSP Post: Malkapur",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 20.988461,
+        "lng": 76.167534
+    },
+    {
+        "id": "hsp_51",
+        "city": "Akola",
+        "name": "HSP Post: Balapur",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 20.692938,
+        "lng": 76.797907
+    },
+    {
+        "id": "hsp_52",
+        "city": "Akola",
+        "name": "HSP Post: Amani",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 20.209939,
+        "lng": 77.02712
+    },
+    {
+        "id": "hsp_53",
+        "city": "Amravati",
+        "name": "HSP Post: Badnera",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 20.765985,
+        "lng": 77.634611
+    },
+    {
+        "id": "hsp_54",
+        "city": "Amravati",
+        "name": "HSP Post: Dhamangaon",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 20.682744,
+        "lng": 78.147749
+    },
+    {
+        "id": "hsp_55",
+        "city": "Yavatmal",
+        "name": "HSP Post: Karanji",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 20.130826,
+        "lng": 78.615524
+    },
+    {
+        "id": "hsp_56",
+        "city": "Yavatmal",
+        "name": "HSP Post: Umarkhed",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 19.917068,
+        "lng": 77.9127089
+    },
+    {
+        "id": "hsp_57",
+        "city": "Chandrapur",
+        "name": "HSP Post: Chandrapur",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 20.153727,
+        "lng": 79.085029
+    },
+    {
+        "id": "hsp_58",
+        "city": "Nagpur",
+        "name": "HSP Post: Ramtek",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 21.661389,
+        "lng": 79.412377
+    },
+    {
+        "id": "hsp_59",
+        "city": "Nagpur",
+        "name": "HSP Post: Patansaongi",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 21.340537,
+        "lng": 79.015601
+    },
+    {
+        "id": "hsp_60",
+        "city": "Nagpur",
+        "name": "HSP Post: Jam",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 20.619951,
+        "lng": 78.931328
+    },
+    {
+        "id": "hsp_61",
+        "city": "Nagpur",
+        "name": "HSP Post: Khursapar",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 21.151893,
+        "lng": 78.589169
+    },
+    {
+        "id": "hsp_62",
+        "city": "Nagpur",
+        "name": "HSP Post: Gadegaon",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 21.080766,
+        "lng": 79.79332
+    },
+    {
+        "id": "hsp_63",
+        "city": "Nagpur",
+        "name": "HSP Post: Dongargaon",
+        "type": "POLICE_POST",
+        "speed_limit": null,
+        "lat": 21.078943,
+        "lng": 80.15609
     }
 ]

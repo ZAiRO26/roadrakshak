@@ -292,12 +292,23 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
 
         officialCameras.forEach(camera => {
             const el = document.createElement('div');
-            el.className = `camera-marker camera-official ${camera.type === 'RED_LIGHT_CAM' ? 'red-light' : 'speed'}`;
-            el.innerHTML = camera.type === 'RED_LIGHT_CAM' ? '🚦' : '📷';
 
-            const limitText = camera.limit ? `Limit: ${camera.limit} km/h` : 'No speed limit';
+            // Determine marker class and icon based on type
+            const isPolicePost = camera.type === 'POLICE_POST';
+            const isRedLight = camera.type === 'RED_LIGHT_CAM';
+
+            if (isPolicePost) {
+                el.className = 'camera-marker camera-police';
+                el.innerHTML = '🚓';
+            } else {
+                el.className = `camera-marker camera-official ${isRedLight ? 'red-light' : 'speed'}`;
+                el.innerHTML = isRedLight ? '🚦' : '📷';
+            }
+
+            const limitText = camera.limit ? `Limit: ${camera.limit} km/h` : (isPolicePost ? 'Police Checkpoint' : 'No speed limit');
             const isFixed = hasOverride(camera.id);
-            el.title = `⚠️ OFFICIAL: ${camera.name}\n${limitText}${isFixed ? ' (📍 Fixed)' : ''}`;
+            const typeLabel = isPolicePost ? '👮 HSP CHECKPOINT' : '⚠️ OFFICIAL';
+            el.title = `${typeLabel}: ${camera.name}\n${limitText}${isFixed ? ' (📍 Fixed)' : ''}`;
 
             // Add click handler for popup
             el.onclick = () => {
@@ -455,6 +466,13 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
           filter: drop-shadow(0 4px 15px rgba(139, 92, 246, 1)) brightness(1.2);
           z-index: 60;
           font-size: 30px;
+          cursor: pointer;
+        }
+        /* Police checkpoints - blue glow */
+        .camera-police {
+          filter: drop-shadow(0 3px 12px rgba(59, 130, 246, 0.9)) brightness(1.1);
+          z-index: 40;
+          font-size: 26px;
           cursor: pointer;
         }
       `}</style>
