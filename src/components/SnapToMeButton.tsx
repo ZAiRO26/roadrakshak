@@ -100,7 +100,7 @@ export function SnapToMeButton() {
                     ) : (
                         <>
                             <span className="icon">📍</span>
-                            <span className="text">FIX CAM HERE</span>
+                            <span className="text">SNAP TO ME</span>
                             <span className="distance">{nearbyCamera.distanceM}m</span>
                         </>
                     )}
@@ -129,24 +129,24 @@ export function SnapToMeButton() {
             <style>{`
                 .snap-fix-btn {
                     position: fixed;
-                    bottom: 280px;
+                    bottom: 220px;
                     left: 50%;
                     transform: translateX(-50%);
-                    z-index: 1000;
+                    z-index: 50;
                     
                     display: flex;
                     align-items: center;
                     gap: 10px;
                     
-                    padding: 14px 24px;
-                    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                    padding: 14px 28px;
+                    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
                     border: none;
                     border-radius: 30px;
-                    color: white;
-                    font-weight: 600;
+                    color: #1e1e2e;
+                    font-weight: 700;
                     cursor: pointer;
                     
-                    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+                    box-shadow: 0 4px 20px rgba(251, 191, 36, 0.5);
                     animation: pulse-fix 2s infinite;
                     transition: transform 0.15s;
                 }

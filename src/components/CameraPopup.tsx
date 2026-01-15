@@ -40,7 +40,7 @@ export function CameraPopup({ camera, onClose, onAction }: CameraPopupProps) {
                         {camera.type === 'RED_LIGHT_CAM' ? '🚦' : '📷'}
                     </span>
                     <span className="popup-source">
-                        {isUser ? '👤 USER CAMERA' : '⚠️ OFFICIAL'}
+                        {isUser ? '👤 USER ADDED CAMERA' : '👮 OFFICIAL CAMERA'}
                         {isFixed && ' (Fixed)'}
                     </span>
                     <button className="popup-close" onClick={onClose}>✕</button>
