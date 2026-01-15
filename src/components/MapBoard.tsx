@@ -222,8 +222,9 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
         userCameras.forEach(camera => {
             const el = document.createElement('div');
             el.className = 'camera-marker camera-user';
-            el.innerHTML = camera.type === 'RED_LIGHT_CAM' ? '🚦' : '📷';
-            el.title = `👤 USER: ${camera.name}`;
+            // Use purple map pin for USER cameras (distinct from official camera icons)
+            el.innerHTML = '📍';
+            el.title = `👤 USER: ${camera.name}${camera.limit ? ` (${camera.limit} km/h)` : ''}`;
 
             el.onclick = () => {
                 setSelectedCamera({ ...camera, hasOverride: false });
@@ -449,11 +450,12 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry }: MapB
         .camera-official.red-light {
           filter: drop-shadow(0 3px 10px rgba(251, 191, 36, 0.9));
         }
-        /* User cameras - purple highlight */
+        /* User cameras - purple pin with strong glow */
         .camera-user {
-          filter: drop-shadow(0 3px 10px rgba(139, 92, 246, 0.9)) brightness(1.1);
-          z-index: 50;
-          font-size: 26px;
+          filter: drop-shadow(0 4px 15px rgba(139, 92, 246, 1)) brightness(1.2);
+          z-index: 60;
+          font-size: 30px;
+          cursor: pointer;
         }
       `}</style>
 
