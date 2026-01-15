@@ -1,0 +1,40 @@
+// Kerala MVD AI Camera Network - Part 3 (Ernakulam, Thrissur)
+module.exports = [
+    // --- ERNAKULAM (13 cameras) ---
+    { "id": "ker_ai_167", "city": "Ernakulam", "name": "AI Cam: Aroor Kumbalam", "type": "AI_CAM", "speed_limit": 60, "lat": 9.9144159, "lng": 76.5834088 },
+    { "id": "ker_ai_168", "city": "Ernakulam", "name": "AI Cam: Tripunithura", "type": "AI_CAM", "speed_limit": 50, "lat": 9.9524640, "lng": 76.3586813 },
+    { "id": "ker_ai_169", "city": "Ernakulam", "name": "AI Cam: Irumbanam", "type": "AI_CAM", "speed_limit": 50, "lat": 9.9651750, "lng": 76.3574050 },
+    { "id": "ker_ai_170", "city": "Ernakulam", "name": "AI Cam: Muvattupuzha", "type": "AI_CAM", "speed_limit": 50, "lat": 9.9791568, "lng": 76.5868065 },
+    { "id": "ker_ai_171", "city": "Ernakulam", "name": "AI Cam: Marine Drive", "type": "AI_CAM", "speed_limit": 50, "lat": 9.9802844, "lng": 76.2755790 },
+    { "id": "ker_ai_172", "city": "Ernakulam", "name": "AI Cam: Pattimattom", "type": "AI_CAM", "speed_limit": 50, "lat": 10.0240838, "lng": 76.4541183 },
+    { "id": "ker_ai_173", "city": "Ernakulam", "name": "AI Cam: Njarackal", "type": "AI_CAM", "speed_limit": 50, "lat": 10.0385272, "lng": 76.2197479 },
+    { "id": "ker_ai_174", "city": "Ernakulam", "name": "AI Cam: Kothamangalam", "type": "AI_CAM", "speed_limit": 50, "lat": 10.0663089, "lng": 76.6172737 },
+    { "id": "ker_ai_175", "city": "Ernakulam", "name": "AI Cam: Varappuzha Bridge", "type": "AI_CAM", "speed_limit": 60, "lat": 10.0771118, "lng": 76.2766201 },
+    { "id": "ker_ai_176", "city": "Ernakulam", "name": "AI Cam: Perumbavoor", "type": "AI_CAM", "speed_limit": 50, "lat": 10.1114289, "lng": 76.4790709 },
+    { "id": "ker_ai_177", "city": "Ernakulam", "name": "AI Cam: North Paravoor", "type": "AI_CAM", "speed_limit": 50, "lat": 10.1462080, "lng": 76.2546196 },
+    { "id": "ker_ai_178", "city": "Ernakulam", "name": "AI Cam: Aluva", "type": "AI_CAM", "speed_limit": 60, "lat": 10.1556682, "lng": 76.3528350 },
+    { "id": "ker_ai_179", "city": "Ernakulam", "name": "AI Cam: Angamaly", "type": "AI_CAM", "speed_limit": 60, "lat": 10.1929715, "lng": 76.3868746 },
+    // --- THRISSUR (12 cameras) ---
+    { "id": "ker_ai_180", "city": "Thrissur", "name": "AI Cam: Kodungalloor", "type": "AI_CAM", "speed_limit": 50, "lat": 10.2284536, "lng": 76.1983165 },
+    { "id": "ker_ai_181", "city": "Thrissur", "name": "AI Cam: Chalakudy", "type": "AI_CAM", "speed_limit": 50, "lat": 10.3470689, "lng": 76.2123822 },
+    { "id": "ker_ai_182", "city": "Thrissur", "name": "AI Cam: Thriprayar", "type": "AI_CAM", "speed_limit": 60, "lat": 10.4142140, "lng": 76.1132960 },
+    { "id": "ker_ai_183", "city": "Thrissur", "name": "AI Cam: Round West", "type": "AI_CAM", "speed_limit": 40, "lat": 10.5248233, "lng": 76.2120080 },
+    { "id": "ker_ai_184", "city": "Thrissur", "name": "AI Cam: Poonkunnam", "type": "AI_CAM", "speed_limit": 50, "lat": 10.5330967, "lng": 76.2019504 },
+    { "id": "ker_ai_185", "city": "Thrissur", "name": "AI Cam: Mannuthy", "type": "AI_CAM", "speed_limit": 60, "lat": 10.5138647, "lng": 76.2583522 },
+    { "id": "ker_ai_186", "city": "Thrissur", "name": "AI Cam: Chavakkad", "type": "AI_CAM", "speed_limit": 50, "lat": 10.5881476, "lng": 76.0157987 },
+    { "id": "ker_ai_187", "city": "Thrissur", "name": "AI Cam: Vadakkancheri", "type": "AI_CAM", "speed_limit": 60, "lat": 10.5898996, "lng": 76.4804941 },
+    { "id": "ker_ai_188", "city": "Thrissur", "name": "AI Cam: Guruvayur", "type": "AI_CAM", "speed_limit": 50, "lat": 10.5986412, "lng": 76.0530010 },
+    { "id": "ker_ai_189", "city": "Thrissur", "name": "AI Cam: Kunnamkulam", "type": "AI_CAM", "speed_limit": 50, "lat": 10.6463695, "lng": 76.0658423 },
+    { "id": "ker_ai_190", "city": "Thrissur", "name": "AI Cam: Chelakkara", "type": "AI_CAM", "speed_limit": 50, "lat": 10.6956359, "lng": 76.3314065 },
+    { "id": "ker_ai_191", "city": "Thrissur", "name": "AI Cam: Cheruthuruthy", "type": "AI_CAM", "speed_limit": 50, "lat": 10.7490788, "lng": 76.2747445 },
+    // --- PALAKKAD (9 cameras) ---
+    { "id": "ker_ai_192", "city": "Palakkad", "name": "AI Cam: Alathur", "type": "AI_CAM", "speed_limit": 60, "lat": 10.6484858, "lng": 76.5363474 },
+    { "id": "ker_ai_193", "city": "Palakkad", "name": "AI Cam: Kuzhalmantham", "type": "AI_CAM", "speed_limit": 60, "lat": 10.7160790, "lng": 76.6031150 },
+    { "id": "ker_ai_194", "city": "Palakkad", "name": "AI Cam: Kozhinjampara", "type": "AI_CAM", "speed_limit": 60, "lat": 10.7435090, "lng": 76.8307152 },
+    { "id": "ker_ai_195", "city": "Palakkad", "name": "AI Cam: Palakkad Town", "type": "AI_CAM", "speed_limit": 50, "lat": 10.7609772, "lng": 76.6650277 },
+    { "id": "ker_ai_196", "city": "Palakkad", "name": "AI Cam: Walayar", "type": "AI_CAM", "speed_limit": 60, "lat": 10.8450000, "lng": 76.8500000 },
+    { "id": "ker_ai_197", "city": "Palakkad", "name": "AI Cam: Ottappalam", "type": "AI_CAM", "speed_limit": 50, "lat": 10.7729315, "lng": 76.3748194 },
+    { "id": "ker_ai_198", "city": "Palakkad", "name": "AI Cam: Pattambi", "type": "AI_CAM", "speed_limit": 50, "lat": 10.8090125, "lng": 76.1873015 },
+    { "id": "ker_ai_199", "city": "Palakkad", "name": "AI Cam: Cherpalassery", "type": "AI_CAM", "speed_limit": 50, "lat": 10.8816349, "lng": 76.3184910 },
+    { "id": "ker_ai_200", "city": "Palakkad", "name": "AI Cam: Mannarkkad", "type": "AI_CAM", "speed_limit": 60, "lat": 10.9985300, "lng": 76.4700790 }
+];
