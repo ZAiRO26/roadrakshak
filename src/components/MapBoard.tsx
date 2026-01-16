@@ -449,16 +449,15 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
     }, [policeReports, isMapLoaded]);
 
     // Display route with enhanced styling
-    useEffect(() => {
-        if (!mapRef.current || !isMapLoaded) return;
+    // This function adds route layers - called on routeGeometry change and after style loads
+    const addRouteLayers = useCallback(() => {
+        if (!mapRef.current || !routeGeometry || routeGeometry.coordinates.length === 0) return;
 
         const map = mapRef.current;
 
-        // If no route geometry, remove existing route layers
-        if (!routeGeometry || routeGeometry.coordinates.length === 0) {
-            if (map.getLayer('route')) map.removeLayer('route');
-            if (map.getLayer('route-outline')) map.removeLayer('route-outline');
-            if (map.getSource('route')) map.removeSource('route');
+        // Wait for style to be loaded
+        if (!map.isStyleLoaded()) {
+            map.once('style.load', addRouteLayers);
             return;
         }
 
@@ -468,49 +467,85 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
             geometry: routeGeometry,
         };
 
-        if (map.getSource('route')) {
-            // Update existing source
-            map.getSource('route').setData(routeData);
-        } else {
-            // Add new source and layers
-            map.addSource('route', {
-                type: 'geojson',
-                data: routeData,
-            });
+        try {
+            if (map.getSource('route')) {
+                // Update existing source
+                map.getSource('route').setData(routeData);
+            } else {
+                // Add new source and layers
+                map.addSource('route', {
+                    type: 'geojson',
+                    data: routeData,
+                });
 
-            // Outer glow/outline layer (thicker, darker)
-            map.addLayer({
-                id: 'route-outline',
-                type: 'line',
-                source: 'route',
-                layout: {
-                    'line-join': 'round',
-                    'line-cap': 'round',
-                },
-                paint: {
-                    'line-color': '#1a56db',  // Darker blue for outline
-                    'line-width': 12,
-                    'line-opacity': 0.5,
-                },
-            });
+                // Outer glow/outline layer (thicker, darker)
+                map.addLayer({
+                    id: 'route-outline',
+                    type: 'line',
+                    source: 'route',
+                    layout: {
+                        'line-join': 'round',
+                        'line-cap': 'round',
+                    },
+                    paint: {
+                        'line-color': '#1a56db',  // Darker blue for outline
+                        'line-width': 12,
+                        'line-opacity': 0.5,
+                    },
+                });
 
-            // Inner main route line (brighter blue)
-            map.addLayer({
-                id: 'route',
-                type: 'line',
-                source: 'route',
-                layout: {
-                    'line-join': 'round',
-                    'line-cap': 'round',
-                },
-                paint: {
-                    'line-color': '#4285F4',  // Google Maps blue
-                    'line-width': 7,
-                    'line-opacity': 0.95,
-                },
-            });
+                // Inner main route line (brighter blue)
+                map.addLayer({
+                    id: 'route',
+                    type: 'line',
+                    source: 'route',
+                    layout: {
+                        'line-join': 'round',
+                        'line-cap': 'round',
+                    },
+                    paint: {
+                        'line-color': '#4285F4',  // Google Maps blue
+                        'line-width': 7,
+                        'line-opacity': 0.95,
+                    },
+                });
+            }
+        } catch (e) {
+            console.warn('Failed to add route layers:', e);
         }
-    }, [routeGeometry, isMapLoaded]);
+    }, [routeGeometry]);
+
+    // Route layer management
+    useEffect(() => {
+        if (!mapRef.current || !isMapLoaded) return;
+
+        const map = mapRef.current;
+
+        // If no route geometry, remove existing route layers
+        if (!routeGeometry || routeGeometry.coordinates.length === 0) {
+            try {
+                if (map.getLayer('route')) map.removeLayer('route');
+                if (map.getLayer('route-outline')) map.removeLayer('route-outline');
+                if (map.getSource('route')) map.removeSource('route');
+            } catch (e) {
+                // Ignore errors during cleanup
+            }
+            return;
+        }
+
+        // Add route layers
+        addRouteLayers();
+
+        // Re-add route layers after style changes (theme switch)
+        const handleStyleLoad = () => {
+            addRouteLayers();
+        };
+        map.on('style.load', handleStyleLoad);
+
+        return () => {
+            map.off('style.load', handleStyleLoad);
+        };
+    }, [routeGeometry, isMapLoaded, addRouteLayers]);
 
     return (
         <>
