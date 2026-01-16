@@ -84,6 +84,7 @@ export async function geocode(placeId: string): Promise<PlaceDetails | null> {
     const apiKey = import.meta.env.VITE_OLA_API_KEY;
 
     if (!apiKey || !placeId) {
+        console.error('geocode: missing apiKey or placeId');
         return null;
     }
 
@@ -92,6 +93,9 @@ export async function geocode(placeId: string): Promise<PlaceDetails | null> {
             place_id: placeId,
             api_key: apiKey,
         });
+
+        console.log('=== GEOCODE/DETAILS API CALL ===');
+        console.log('Place ID:', placeId);
 
         const response = await fetch(`${API_BASE}/details?${params}`);
 
@@ -102,7 +106,12 @@ export async function geocode(placeId: string): Promise<PlaceDetails | null> {
 
         const data = await response.json();
 
+        console.log('Geocode response:', JSON.stringify(data, null, 2).slice(0, 1500));
+        console.log('Response keys:', Object.keys(data));
+        console.log('Has result:', !!data.result);
+
         if (data.result) {
+            console.log('Result geometry:', JSON.stringify(data.result.geometry));
             return {
                 place_id: data.result.place_id,
                 name: data.result.name,
@@ -111,6 +120,7 @@ export async function geocode(placeId: string): Promise<PlaceDetails | null> {
             };
         }
 
+        console.warn('No result in geocode response');
         return null;
     } catch (error) {
         console.error('Place details error:', error);

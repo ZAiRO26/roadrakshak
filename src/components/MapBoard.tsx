@@ -26,6 +26,7 @@ interface MapBoardProps {
     onMapControlsReady?: (controls: MapControls) => void;
     routeGeometry?: GeoJSON.LineString | null;
     isNavigating?: boolean;  // Enable follow mode during navigation
+    destination?: { lat: number; lng: number; name: string } | null;  // Destination marker
 }
 
 // Default center: Delhi, India
@@ -35,7 +36,7 @@ const DEFAULT_ZOOM = 12;
 // Get API key once at module level
 const API_KEY = import.meta.env.VITE_OLA_API_KEY || '';
 
-export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavigating }: MapBoardProps) {
+export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavigating, destination }: MapBoardProps) {
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const mapRef = useRef<any>(null);
     const olaMapsRef = useRef<OlaMaps | null>(null);
@@ -44,6 +45,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
     const officialCameraMarkersRef = useRef<any[]>([]);
     const userCameraMarkersRef = useRef<any[]>([]);
     const policeMarkersRef = useRef<any[]>([]);
+    const destinationMarkerRef = useRef<any>(null);
     const initializingRef = useRef(false);
 
     const [isMapLoaded, setIsMapLoaded] = useState(false);
@@ -448,6 +450,43 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
         });
     }, [policeReports, isMapLoaded]);
 
+    // Destination marker - Big red pin at destination
+    useEffect(() => {
+        if (!mapRef.current || !isMapLoaded || !olaMapsRef.current) return;
+
+        // Remove existing destination marker
+        if (destinationMarkerRef.current) {
+            destinationMarkerRef.current.remove();
+            destinationMarkerRef.current = null;
+        }
+
+        // If no destination, nothing to render
+        if (!destination) return;
+
+        // Create destination marker element
+        const el = document.createElement('div');
+        el.className = 'destination-marker';
+        el.innerHTML = '📍';
+        el.title = destination.name;
+
+        const marker = olaMapsRef.current.addMarker({
+            element: el,
+            anchor: 'bottom',
+        })
+            .setLngLat([destination.lng, destination.lat])
+            .addTo(mapRef.current);
+
+        destinationMarkerRef.current = marker;
+
+        // Cleanup on unmount
+        return () => {
+            if (destinationMarkerRef.current) {
+                destinationMarkerRef.current.remove();
+                destinationMarkerRef.current = null;
+            }
+        };
+    }, [destination, isMapLoaded]);
+
     // Display route with enhanced styling
     // This function adds route layers - called on routeGeometry change and after style loads
     const addRouteLayers = useCallback(() => {
@@ -639,6 +678,19 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
           z-index: 70;
           font-size: 28px;
           cursor: pointer;
+        }
+        /* Destination marker - Large red pin */
+        .destination-marker {
+          font-size: 48px;
+          z-index: 100;
+          filter: drop-shadow(0 4px 12px rgba(239, 68, 68, 0.8));
+          animation: destinationBounce 0.6s ease-out;
+          transform-origin: bottom center;
+        }
+        @keyframes destinationBounce {
+          0% { transform: translateY(-30px) scale(0.5); opacity: 0; }
+          60% { transform: translateY(5px) scale(1.1); opacity: 1; }
+          100% { transform: translateY(0) scale(1); opacity: 1; }
         }
       `}</style>
 

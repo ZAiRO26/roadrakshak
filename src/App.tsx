@@ -25,6 +25,7 @@ function App() {
   const [routeGeometry, setRouteGeometry] = useState<GeoJSON.LineString | null>(null);
   const [showGpsWarning, setShowGpsWarning] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [destination, setDestination] = useState<{ lat: number; lng: number; name: string } | null>(null);
   const [mapControlMethods, setMapControlMethods] = useState<MapControlMethods | null>(null);
 
   // Initialize GPS tracking
@@ -107,6 +108,7 @@ function App() {
         onRouteCalculated={setRouteGeometry}
         onNavigationStart={() => setIsNavigating(true)}
         onNavigationEnd={() => setIsNavigating(false)}
+        onDestinationChange={setDestination}
         isNavigating={isNavigating}
         flyToLocation={(lat, lng) => mapControlMethods?.flyTo(lat, lng)}
       />
@@ -126,6 +128,7 @@ function App() {
         onMapControlsReady={setMapControlMethods}
         routeGeometry={routeGeometry}
         isNavigating={isNavigating}
+        destination={destination}
       />
 
       {/* GPS Warning Banner (non-blocking) */}

@@ -55,8 +55,6 @@ export async function getDirections(
             waypointsParam +
             `&api_key=${OLA_API_KEY}`;
 
-        console.log('Requesting directions:', { origin, destination, url: url.replace(OLA_API_KEY, 'REDACTED') });
-
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -68,22 +66,106 @@ export async function getDirections(
 
         if (!response.ok) {
             const errorText = await response.text();
-            console.error('Directions API error:', response.status, errorText);
-            // Show a more descriptive error
-            throw new Error(`API returned ${response.status}: ${errorText.slice(0, 100)}`);
+            console.error('Directions API error:', response.status, errorText.slice(0, 200));
+            throw new Error(`API returned ${response.status}`);
         }
 
         const data = await response.json();
 
+        // Check for API errors
+        if (data.status && data.status !== 'OK' && data.status !== 'SUCCESS') {
+            console.error('Directions API error status:', data.status);
+            return null;
+        }
+
+        // Try multiple response formats
+        let routesArray = data.routes;
+
+        // Check if routes is nested under result
+        if (!routesArray && data.result?.routes) {
+            routesArray = data.result.routes;
+        }
+
+        // Check if there's a single route object instead of array
+        if (!routesArray && data.route) {
+            routesArray = [data.route];
+        }
+
         // Parse Ola's response format
-        if (data.routes && data.routes.length > 0) {
-            const route = data.routes[0];
+        if (routesArray && routesArray.length > 0) {
+            const route = routesArray[0];
+
+            // Parse geometry - handle multiple Ola Maps response formats
+            let geometry: GeoJSON.LineString | null = null;
+            let polylineString: string | null = null;
+
+            // Try: route.geometry as encoded string
+            if (typeof route.geometry === 'string' && route.geometry.length > 10) {
+                polylineString = route.geometry;
+            }
+            // Try: route.geometry as GeoJSON
+            else if (route.geometry && route.geometry.type === 'LineString') {
+                geometry = route.geometry;
+            }
+            // Try: overview_polyline as direct string
+            else if (typeof route.overview_polyline === 'string' && route.overview_polyline.length > 10) {
+                polylineString = route.overview_polyline;
+            }
+            // Try: overview_polyline.points (Google format)
+            else if (route.overview_polyline?.points) {
+                polylineString = route.overview_polyline.points;
+            }
+            // Try: overview_polyline.encoded_polyline
+            else if (route.overview_polyline?.encoded_polyline) {
+                polylineString = route.overview_polyline.encoded_polyline;
+            }
+            // Try: Build from legs/steps
+            else if (route.legs && route.legs.length > 0) {
+                const allCoords: [number, number][] = [];
+                for (const leg of route.legs) {
+                    if (leg.steps) {
+                        for (const step of leg.steps) {
+                            if (step.polyline?.points) {
+                                const stepGeom = decodePolyline(step.polyline.points);
+                                allCoords.push(...stepGeom.coordinates);
+                            } else if (step.start_location && step.end_location) {
+                                allCoords.push([step.start_location.lng, step.start_location.lat]);
+                            }
+                        }
+                    }
+                    // Also check leg-level polyline
+                    if (leg.polyline?.points) {
+                        const legGeom = decodePolyline(leg.polyline.points);
+                        allCoords.push(...legGeom.coordinates);
+                    }
+                }
+                if (allCoords.length > 0) {
+                    geometry = { type: 'LineString', coordinates: allCoords };
+                }
+            }
+
+            // Decode polyline if we found one
+            if (polylineString && !geometry) {
+                geometry = decodePolyline(polylineString);
+            }
+
+            // Fallback: straight line
+            if (!geometry || geometry.coordinates.length < 2) {
+                console.warn('No valid route geometry, using straight line');
+                geometry = {
+                    type: 'LineString',
+                    coordinates: [
+                        [origin.lng, origin.lat],
+                        [destination.lng, destination.lat]
+                    ]
+                };
+            }
 
             return {
                 routes: [{
                     distance: route.distance || route.legs?.reduce((sum: number, leg: { distance: number }) => sum + leg.distance, 0) || 0,
                     duration: route.duration || route.legs?.reduce((sum: number, leg: { duration: number }) => sum + leg.duration, 0) || 0,
-                    geometry: decodePolyline(route.geometry || route.overview_polyline?.points),
+                    geometry,
                     steps: parseSteps(route.legs || []),
                 }],
                 origin,
@@ -91,6 +173,7 @@ export async function getDirections(
             };
         }
 
+        console.warn('No routes found in response. Response structure:', Object.keys(data));
         return null;
     } catch (error) {
         console.error('Failed to get directions:', error);

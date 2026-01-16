@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import { autocomplete, parseCoordinates } from '../services/PlacesService';
+import { autocomplete, parseCoordinates, geocode } from '../services/PlacesService';
 import { getDirections, formatDistance, formatDuration, isDirectionsAvailable } from '../services/DirectionsService';
 import type { RouteInfo } from '../services/DirectionsService';
 import { useGpsStore } from '../stores/gpsStore';
@@ -17,6 +17,7 @@ interface NavigationModeProps {
     onRouteCalculated: (geometry: GeoJSON.LineString | null) => void;
     onNavigationStart: () => void;
     onNavigationEnd: () => void;
+    onDestinationChange: (dest: { lat: number; lng: number; name: string } | null) => void;
     isNavigating: boolean;
     flyToLocation: (lat: number, lng: number) => void;
 }
@@ -25,6 +26,7 @@ export function NavigationMode({
     onRouteCalculated,
     onNavigationStart,
     onNavigationEnd,
+    onDestinationChange,
     isNavigating,
     flyToLocation,
 }: NavigationModeProps) {
@@ -100,23 +102,48 @@ export function NavigationMode({
         return () => clearTimeout(timer);
     }, [query, latitude, longitude]);
 
-    // Handle suggestion selection
-    const handleSelectDestination = useCallback((suggestion: Suggestion) => {
-        if (suggestion.lat && suggestion.lng) {
-            setDestination({
-                lat: suggestion.lat,
-                lng: suggestion.lng,
-                name: suggestion.main_text,
-            });
-            setQuery(suggestion.main_text);
-            setShowSuggestions(false);
-            flyToLocation(suggestion.lat, suggestion.lng);
+    // Handle suggestion selection - fetch coordinates if missing
+    const handleSelectDestination = useCallback(async (suggestion: Suggestion) => {
+        setIsLoading(true);
+        setShowSuggestions(false);
+        setQuery(suggestion.main_text);
+
+        let lat = suggestion.lat;
+        let lng = suggestion.lng;
+
+        // If coordinates missing, fetch from geocode/details API
+        if (!lat || !lng) {
+            console.log('Fetching coordinates for place_id:', suggestion.place_id);
+            const details = await geocode(suggestion.place_id);
+            if (details?.geometry?.location) {
+                lat = details.geometry.location.lat;
+                lng = details.geometry.location.lng;
+                console.log('Geocoded coordinates:', { lat, lng });
+            } else {
+                console.error('Failed to geocode place');
+                setRouteError('Could not get location coordinates');
+                setIsLoading(false);
+                return;
+            }
         }
-    }, [flyToLocation]);
+
+        const dest = {
+            lat: lat!,
+            lng: lng!,
+            name: suggestion.main_text,
+        };
+        setDestination(dest);
+        onDestinationChange(dest); // Notify parent for marker
+        flyToLocation(lat!, lng!);
+        setIsLoading(false);
+    }, [flyToLocation, onDestinationChange]);
 
     // Get directions to destination
     const handleGetDirections = useCallback(async () => {
-        if (!destination) return;
+        if (!destination) {
+            console.error('handleGetDirections: No destination set');
+            return;
+        }
         if (latitude === null || longitude === null) {
             setRouteError('GPS location not available');
             return;
@@ -125,6 +152,10 @@ export function NavigationMode({
             setRouteError('Directions service unavailable');
             return;
         }
+
+        console.log('=== CALLING GET DIRECTIONS ===');
+        console.log('Origin (user GPS):', { lat: latitude, lng: longitude });
+        console.log('Destination:', destination);
 
         setIsLoading(true);
         setRouteError(null);
@@ -135,17 +166,20 @@ export function NavigationMode({
                 { lat: destination.lat, lng: destination.lng }
             );
 
+            console.log('getDirections result:', result);
+
             if (result && result.routes.length > 0) {
                 setRouteInfo(result.routes[0]);
                 setCurrentStepIndex(0);
                 onRouteCalculated(result.routes[0].geometry);
             } else {
+                console.error('No routes in result:', result);
                 setRouteError('No route found');
                 onRouteCalculated(null);
             }
         } catch (err) {
             setRouteError('Failed to get directions');
-            console.error(err);
+            console.error('Directions error:', err);
         } finally {
             setIsLoading(false);
         }
@@ -161,12 +195,13 @@ export function NavigationMode({
     // Exit navigation
     const handleExitNavigation = useCallback(() => {
         setDestination(null);
+        onDestinationChange(null); // Clear destination marker
         setRouteInfo(null);
         setCurrentStepIndex(0);
         setQuery('');
         onRouteCalculated(null);
         onNavigationEnd();
-    }, [onRouteCalculated, onNavigationEnd]);
+    }, [onRouteCalculated, onNavigationEnd, onDestinationChange]);
 
     // Navigate to next step
     const handleNextStep = useCallback(() => {
