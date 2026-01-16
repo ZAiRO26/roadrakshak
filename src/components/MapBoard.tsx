@@ -53,6 +53,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
     // Free Roam Mode - controls whether map follows user
     const [isAutoFollow, setIsAutoFollow] = useState(true);
     const pauseFollowTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const lastCenteredPositionRef = useRef<{ lat: number; lng: number } | null>(null);
 
     // Use smooth position for animated marker (fixes jumping dot)
     const { latitude, longitude, heading } = useSmoothPosition();
@@ -130,6 +131,16 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                             clearTimeout(pauseFollowTimeoutRef.current);
                         }
                     });
+
+                    // Refresh camera markers on viewport change (debounced)
+                    let moveEndTimeout: ReturnType<typeof setTimeout> | null = null;
+                    map.on('moveend', () => {
+                        // Debounce to prevent rapid re-renders during pan/zoom
+                        if (moveEndTimeout) clearTimeout(moveEndTimeout);
+                        moveEndTimeout = setTimeout(() => {
+                            setCameraRefreshTrigger(prev => prev + 1);
+                        }, 300); // 300ms debounce
+                    });
                 });
 
                 map.on('error', (e: any) => {
@@ -205,8 +216,28 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
     useEffect(() => {
         if (!mapRef.current || rawLat === null || rawLng === null || !isMapLoaded) return;
 
-        // Always update user marker position
+        // Always update user marker position (no throttle for dot)
         updateUserMarker();
+
+        // Calculate distance from last centered position (5m threshold to prevent micro-jitter)
+        const calcDistance = (lat1: number, lng1: number, lat2: number, lng2: number): number => {
+            const R = 6371000; // Earth's radius in meters
+            const dLat = (lat2 - lat1) * (Math.PI / 180);
+            const dLng = (lng2 - lng1) * (Math.PI / 180);
+            const a = Math.sin(dLat / 2) ** 2 +
+                Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+                Math.sin(dLng / 2) ** 2;
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        };
+
+        // Check if we should update based on movement (5m threshold in normal mode)
+        const lastPos = lastCenteredPositionRef.current;
+        const movedDistance = lastPos ? calcDistance(lastPos.lat, lastPos.lng, rawLat, rawLng) : Infinity;
+        const THRESHOLD = isNavigating ? 2 : 5; // 2m for nav, 5m for normal
+
+        if (movedDistance < THRESHOLD && lastPos) {
+            return; // Haven't moved enough, skip center update
+        }
 
         if (isNavigating) {
             // NAVIGATION MODE: Always follow, but with auto-resume after 10s if paused
@@ -217,8 +248,8 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                 }
                 pauseFollowTimeoutRef.current = setTimeout(() => {
                     setIsAutoFollow(true);
-                }, 10000); // Resume after 10 seconds
-                return; // Don't center yet
+                }, 10000);
+                return;
             }
 
             // Head-up rotation, zoomed in, slight tilt
@@ -229,6 +260,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                 pitch: 45,
                 duration: 800,
             });
+            lastCenteredPositionRef.current = { lat: rawLat, lng: rawLng };
         } else {
             // NORMAL MODE: Only center if auto-follow is enabled
             if (!isAutoFollow) return;
@@ -239,6 +271,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                 pitch: 0,
                 duration: 500,
             });
+            lastCenteredPositionRef.current = { lat: rawLat, lng: rawLng };
         }
     }, [rawLat, rawLng, heading, isMapLoaded, isNavigating, isAutoFollow, updateUserMarker]);
 
@@ -336,7 +369,18 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
 
         const officialCameras = getAllOfficialCameras();
 
-        officialCameras.forEach(camera => {
+        // Get current map bounds for viewport filtering (performance optimization)
+        const bounds = mapRef.current.getBounds();
+        const padding = 0.02; // ~2km buffer zone
+        const visibleCameras = officialCameras.filter(camera => {
+            return camera.lat >= bounds.getSouth() - padding &&
+                camera.lat <= bounds.getNorth() + padding &&
+                camera.lng >= bounds.getWest() - padding &&
+                camera.lng <= bounds.getEast() + padding;
+        });
+
+        // Only render visible cameras (reduces DOM nodes from 900+ to ~50)
+        visibleCameras.forEach(camera => {
             const el = document.createElement('div');
 
             // Determine marker class and icon based on type
