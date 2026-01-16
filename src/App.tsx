@@ -12,6 +12,7 @@ import { NavigationMode } from './components/NavigationMode';
 import { MapControls } from './components/MapControls';
 import { SnapToMeButton } from './components/SnapToMeButton';
 import { AddCameraButton } from './components/AddCameraButton';
+import { OverspeedOverlay } from './components/OverspeedOverlay';
 import { useGPS } from './hooks/useGPS';
 import { useSpeedLimit } from './hooks/useSpeedLimit';
 import { useAlerts } from './hooks/useAlerts';
@@ -95,6 +96,9 @@ function App() {
 
   return (
     <div className="app">
+      {/* OVERSPEED WARNING - Red screen overlay */}
+      <OverspeedOverlay />
+
       {/* Loading screen */}
       <LoadingScreen />
 
