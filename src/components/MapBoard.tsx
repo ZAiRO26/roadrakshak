@@ -50,6 +50,10 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
     const [cameraRefreshTrigger, setCameraRefreshTrigger] = useState(0);
     const [selectedCamera, setSelectedCamera] = useState<(CameraNode & { hasOverride?: boolean }) | null>(null);
 
+    // Free Roam Mode - controls whether map follows user
+    const [isAutoFollow, setIsAutoFollow] = useState(true);
+    const pauseFollowTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
     // Use smooth position for animated marker (fixes jumping dot)
     const { latitude, longitude, heading } = useSmoothPosition();
 
@@ -109,11 +113,22 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                             const lng = useGpsStore.getState().longitude;
                             if (lat !== null && lng !== null) {
                                 map.flyTo({ center: [lng, lat], zoom: 15, duration: 1000 });
+                                setIsAutoFollow(true); // Re-enable auto-follow
                             }
                         },
                         flyTo: (lat: number, lng: number, zoom?: number) => {
                             map.flyTo({ center: [lng, lat], zoom: zoom || 14, duration: 1000 });
                         },
+                    });
+
+                    // Listen for user drag/pan to disable auto-follow
+                    map.on('dragstart', () => {
+                        setIsAutoFollow(false);
+
+                        // Clear any existing timeout
+                        if (pauseFollowTimeoutRef.current) {
+                            clearTimeout(pauseFollowTimeoutRef.current);
+                        }
                     });
                 });
 
@@ -186,31 +201,46 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
         }
     }, [latitude, longitude, heading, isMapLoaded]);
 
-    // Follow user position - Enhanced for navigation mode
+    // Follow user position - Enhanced for navigation mode with auto-follow control
     useEffect(() => {
         if (!mapRef.current || rawLat === null || rawLng === null || !isMapLoaded) return;
 
+        // Always update user marker position
         updateUserMarker();
 
         if (isNavigating) {
-            // NAVIGATION MODE: Head-up rotation, zoomed in, slight tilt
+            // NAVIGATION MODE: Always follow, but with auto-resume after 10s if paused
+            if (!isAutoFollow) {
+                // User dragged during navigation - auto-resume after 10 seconds
+                if (pauseFollowTimeoutRef.current) {
+                    clearTimeout(pauseFollowTimeoutRef.current);
+                }
+                pauseFollowTimeoutRef.current = setTimeout(() => {
+                    setIsAutoFollow(true);
+                }, 10000); // Resume after 10 seconds
+                return; // Don't center yet
+            }
+
+            // Head-up rotation, zoomed in, slight tilt
             mapRef.current.easeTo({
                 center: [rawLng, rawLat],
-                zoom: 17,                   // Closer zoom for navigation
-                bearing: heading || 0,      // Rotate map to heading (head-up)
-                pitch: 45,                  // 3D tilt
+                zoom: 17,
+                bearing: heading || 0,
+                pitch: 45,
                 duration: 800,
             });
         } else {
-            // NORMAL MODE: Standard follow without rotation
+            // NORMAL MODE: Only center if auto-follow is enabled
+            if (!isAutoFollow) return;
+
             mapRef.current.easeTo({
                 center: [rawLng, rawLat],
-                bearing: 0,                 // Reset rotation
-                pitch: 0,                   // Flat view
+                bearing: 0,
+                pitch: 0,
                 duration: 500,
             });
         }
-    }, [rawLat, rawLng, heading, isMapLoaded, isNavigating, updateUserMarker]);
+    }, [rawLat, rawLng, heading, isMapLoaded, isNavigating, isAutoFollow, updateUserMarker]);
 
     // Listen for camera events to refresh markers instantly
     useEffect(() => {
