@@ -127,7 +127,7 @@ export async function getDirections(
                         for (const step of leg.steps) {
                             if (step.polyline?.points) {
                                 const stepGeom = decodePolyline(step.polyline.points);
-                                allCoords.push(...stepGeom.coordinates);
+                                allCoords.push(...(stepGeom.coordinates as [number, number][]));
                             } else if (step.start_location && step.end_location) {
                                 allCoords.push([step.start_location.lng, step.start_location.lat]);
                             }
@@ -136,7 +136,7 @@ export async function getDirections(
                     // Also check leg-level polyline
                     if (leg.polyline?.points) {
                         const legGeom = decodePolyline(leg.polyline.points);
-                        allCoords.push(...legGeom.coordinates);
+                        allCoords.push(...(legGeom.coordinates as [number, number][]));
                     }
                 }
                 if (allCoords.length > 0) {
