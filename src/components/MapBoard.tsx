@@ -102,21 +102,41 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                 });
 
                 map.on('load', () => {
-                    console.log('Ola Map loaded successfully with custom style');
+                    console.log('Ola Map loaded successfully');
                     setIsMapLoaded(true);
                     setLoading(false);
                     onMapReady?.(map);
 
-                    // Expose map control methods
+                    // Expose map control methods with smart camera
                     onMapControlsReady?.({
                         zoomIn: () => map.zoomIn(),
                         zoomOut: () => map.zoomOut(),
                         recenterToUser: () => {
-                            const lat = useGpsStore.getState().latitude;
-                            const lng = useGpsStore.getState().longitude;
+                            const gpsState = useGpsStore.getState();
+                            const lat = gpsState.latitude;
+                            const lng = gpsState.longitude;
+                            const userHeading = gpsState.heading || 0;
+
                             if (lat !== null && lng !== null) {
-                                map.flyTo({ center: [lng, lat], zoom: 15, duration: 1000 });
-                                setIsAutoFollow(true); // Re-enable auto-follow
+                                // Clear any pending auto-resume timer
+                                if (pauseFollowTimeoutRef.current) {
+                                    clearTimeout(pauseFollowTimeoutRef.current);
+                                    pauseFollowTimeoutRef.current = null;
+                                }
+
+                                // Re-enable auto-follow
+                                setIsAutoFollow(true);
+
+                                // Use 3D view if navigating, 2D otherwise
+                                // Note: We use mapRef to store isNavigating for recenter access
+                                map.flyTo({
+                                    center: [lng, lat],
+                                    zoom: isNavigating ? 18 : 15,
+                                    pitch: isNavigating ? 60 : 0,
+                                    bearing: isNavigating ? userHeading : 0,
+                                    duration: 1000,
+                                    essential: true
+                                });
                             }
                         },
                         flyTo: (lat: number, lng: number, zoom?: number) => {
@@ -124,19 +144,52 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                         },
                     });
 
-                    // Listen for user drag/pan to disable auto-follow
-                    map.on('dragstart', () => {
-                        setIsAutoFollow(false);
+                    // === SMART AUTO-FOLLOW: Track user interactions ===
 
-                        // Clear any existing timeout
+                    // Helper: Start auto-resume timer (10 seconds)
+                    const startAutoResumeTimer = () => {
                         if (pauseFollowTimeoutRef.current) {
                             clearTimeout(pauseFollowTimeoutRef.current);
                         }
-                    });
+                        pauseFollowTimeoutRef.current = setTimeout(() => {
+                            setIsAutoFollow(true);
+                            pauseFollowTimeoutRef.current = null;
+                        }, 10000); // 10 second timeout
+                    };
+
+                    // On dragstart/mousedown/touchstart: Disable auto-follow
+                    const handleInteractionStart = () => {
+                        setIsAutoFollow(false);
+                        // Clear any pending timer since user is actively interacting
+                        if (pauseFollowTimeoutRef.current) {
+                            clearTimeout(pauseFollowTimeoutRef.current);
+                            pauseFollowTimeoutRef.current = null;
+                        }
+                    };
+
+                    // On dragend/mouseup/touchend/moveend: Start 10-second timer
+                    const handleInteractionEnd = () => {
+                        // Only start timer if auto-follow is disabled
+                        if (!isAutoFollow) {
+                            startAutoResumeTimer();
+                        }
+                    };
+
+                    // Register interaction listeners
+                    map.on('dragstart', handleInteractionStart);
+                    map.on('mousedown', handleInteractionStart);
+                    map.on('touchstart', handleInteractionStart);
+
+                    map.on('dragend', handleInteractionEnd);
+                    map.on('mouseup', handleInteractionEnd);
+                    map.on('touchend', handleInteractionEnd);
 
                     // Refresh camera markers on viewport change (debounced)
                     let moveEndTimeout: ReturnType<typeof setTimeout> | null = null;
                     map.on('moveend', () => {
+                        // Also handle interaction end
+                        handleInteractionEnd();
+
                         // Debounce to prevent rapid re-renders during pan/zoom
                         if (moveEndTimeout) clearTimeout(moveEndTimeout);
                         moveEndTimeout = setTimeout(() => {
@@ -254,13 +307,13 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                 return;
             }
 
-            // Head-up rotation, zoomed in, slight tilt
+            // NAVIGATION MODE: 3D Driver's View - Tilted & Rotated
             mapRef.current.easeTo({
                 center: [rawLng, rawLat],
-                zoom: 17,
-                bearing: heading || 0,
-                pitch: 45,
-                duration: 800,
+                zoom: 18,           // Closer view for navigation
+                bearing: heading || 0,  // Rotate map so car faces UP
+                pitch: 60,          // 3D "Horizon" view
+                duration: 600,      // Smoother following
             });
             lastCenteredPositionRef.current = { lat: rawLat, lng: rawLng };
         } else {
