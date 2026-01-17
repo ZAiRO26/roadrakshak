@@ -35,57 +35,63 @@ const initialState: GPSState = {
     isStationary: true,
 };
 
-// Speed smoothing configuration - AGGRESSIVE filtering for indoor/stationary noise
-const SPEED_HISTORY_SIZE = 8; // Number of readings to average (more = smoother)
-const MIN_SPEED_THRESHOLD = 8; // km/h - speeds below this are considered stationary (was 3)
-const MAX_ACCURACY_FOR_SPEED = 20; // meters - ignore speed if accuracy is worse than this (was 30)
-const STATIONARY_SPEED_THRESHOLD = 10; // km/h - consistent threshold for "not moving" (was 5)
+// Speed smoothing configuration - PRO-GRADE GPS CALIBRATION (Phase 27)
+const SPEED_HISTORY_SIZE = 5; // Number of readings for weighted average (more responsive)
+const MIN_SPEED_THRESHOLD = 3; // km/h - speeds below this are considered stationary
+const MAX_ACCURACY_FOR_SPEED = 30; // meters - ignore speed if accuracy is worse than this
+const STATIONARY_SPEED_THRESHOLD = 5; // km/h - consistent threshold for "not moving"
+const EMA_ALPHA = 0.7; // Exponential Moving Average factor (0.7 = responsive but smooth)
 
 // Speed history for smoothing
 let speedHistory: number[] = [];
+let lastEmaSpeed: number = 0;
 
 /**
- * Calculate smoothed speed using weighted moving average
- * Recent readings have more weight
+ * Calculate smoothed speed using Exponential Moving Average (EMA)
+ * EMA: smoothedSpeed = (alpha * newSpeed) + ((1 - alpha) * lastSpeed)
+ * alpha = 0.7 means responsive but smooth (higher = more responsive, lower = smoother)
  */
 function smoothSpeed(newSpeed: number, accuracy: number | null): number {
     // If accuracy is poor, don't trust the speed reading
     if (accuracy !== null && accuracy > MAX_ACCURACY_FOR_SPEED) {
-        // Keep last known speed or return 0
-        return speedHistory.length > 0 ? speedHistory[speedHistory.length - 1] : 0;
+        // Keep last EMA speed or return 0
+        return lastEmaSpeed > 0 ? Math.round(lastEmaSpeed) : 0;
     }
 
-    // Add new speed to history
+    // Add new speed to history for threshold checks
     speedHistory.push(newSpeed);
-
-    // Keep only recent readings
     if (speedHistory.length > SPEED_HISTORY_SIZE) {
         speedHistory.shift();
     }
 
-    // If all readings are below threshold, return 0 (stationary)
-    const allBelowThreshold = speedHistory.every(s => s < MIN_SPEED_THRESHOLD);
-    if (allBelowThreshold) {
+    // If speed is below minimum threshold (GPS drift when stopped), return 0
+    if (newSpeed < MIN_SPEED_THRESHOLD) {
+        // Check if we've been stationary for a while
+        const recentReadings = speedHistory.slice(-3);
+        const allLow = recentReadings.every(s => s < MIN_SPEED_THRESHOLD);
+        if (allLow) {
+            lastEmaSpeed = 0;
+            return 0;
+        }
+    }
+
+    // Apply Exponential Moving Average (EMA)
+    // First reading: initialize EMA with raw speed
+    if (lastEmaSpeed === 0 && newSpeed >= MIN_SPEED_THRESHOLD) {
+        lastEmaSpeed = newSpeed;
+        return Math.round(newSpeed);
+    }
+
+    // EMA formula: smoothed = alpha * new + (1 - alpha) * previous
+    const emaSpeed = (EMA_ALPHA * newSpeed) + ((1 - EMA_ALPHA) * lastEmaSpeed);
+    lastEmaSpeed = emaSpeed;
+
+    // If EMA result is below threshold, return 0
+    if (emaSpeed < MIN_SPEED_THRESHOLD) {
         return 0;
     }
 
-    // Weighted average - recent readings have more weight
-    let weightedSum = 0;
-    let totalWeight = 0;
-    speedHistory.forEach((speed, index) => {
-        const weight = index + 1; // More recent = higher weight
-        weightedSum += speed * weight;
-        totalWeight += weight;
-    });
-
-    const avgSpeed = weightedSum / totalWeight;
-
-    // If average is below threshold, return 0
-    if (avgSpeed < MIN_SPEED_THRESHOLD) {
-        return 0;
-    }
-
-    return Math.round(avgSpeed);
+    return Math.round(emaSpeed);
 }
 
 export const useGpsStore = create<GPSState & GPSActions>((set, get) => ({
@@ -126,14 +132,16 @@ export const useGpsStore = create<GPSState & GPSActions>((set, get) => ({
 
     setTracking: (isTracking: boolean) => {
         set({ isTracking });
-        // Reset speed history when tracking starts
+        // Reset speed history and EMA when tracking starts
         if (isTracking) {
             speedHistory = [];
+            lastEmaSpeed = 0;
         }
     },
 
     reset: () => {
         speedHistory = [];
+        lastEmaSpeed = 0;
         set(initialState);
     },
 }));

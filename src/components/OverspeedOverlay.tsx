@@ -12,10 +12,12 @@ export function OverspeedOverlay() {
     const speed = useGpsStore(state => state.speed);
     const currentSpeedLimit = useAppStore(state => state.currentSpeedLimit);
 
-    // Convert speed from m/s to km/h
-    const currentSpeedKmh = speed !== null ? Math.round(speed * 3.6) : 0;
+    // Speed is ALREADY in km/h from gpsStore (no conversion needed!)
+    const currentSpeedKmh = speed;
 
-    // Check if overspeeding (limit must be valid and speed must exceed it)
+    // Check if overspeeding:
+    // 1. Speed limit must be valid (not null, not 0)
+    // 2. Current speed must exceed the limit
     const isOverspeeding = currentSpeedLimit !== null && currentSpeedLimit > 0 && currentSpeedKmh > currentSpeedLimit;
 
     // Don't render if not overspeeding
