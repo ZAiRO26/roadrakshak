@@ -62,30 +62,47 @@ export function MapControls({ onZoomIn, onZoomOut, onRecenter, isNavigating = fa
                 .map-control-btn {
                     width: 44px;
                     height: 44px;
-                    border-radius: 8px;
-                    border: none;
+                    border-radius: 12px;
+                    border: 1px solid rgba(255, 255, 255, 0.15);
                     background: white;
                     color: #374151;
                     cursor: pointer;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-                    transition: background 0.15s, transform 0.15s;
+                    box-shadow: 
+                        0 4px 16px rgba(0, 0, 0, 0.15),
+                        0 2px 4px rgba(0, 0, 0, 0.1),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+                    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
                 }
                 [data-theme="dark"] .map-control-btn {
-                    background: rgba(30, 41, 59, 0.95);
+                    background: rgba(30, 41, 59, 0.92);
                     color: white;
+                    border-color: rgba(255, 255, 255, 0.12);
+                    backdrop-filter: blur(12px);
+                    -webkit-backdrop-filter: blur(12px);
+                    box-shadow: 
+                        0 4px 16px rgba(0, 0, 0, 0.35),
+                        0 2px 4px rgba(0, 0, 0, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
                 }
                 .map-control-btn:hover {
-                    background: #f3f4f6;
-                    transform: scale(1.05);
+                    background: #f0f4f8;
+                    transform: scale(1.08);
+                    box-shadow: 
+                        0 6px 24px rgba(0, 0, 0, 0.18),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
                 }
                 [data-theme="dark"] .map-control-btn:hover {
                     background: rgba(51, 65, 85, 0.95);
+                    box-shadow: 
+                        0 6px 24px rgba(0, 0, 0, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.15);
                 }
                 .map-control-btn:active {
-                    transform: scale(0.95);
+                    transform: scale(0.92);
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
                 }
                 .recenter-btn {
                     background: white;
