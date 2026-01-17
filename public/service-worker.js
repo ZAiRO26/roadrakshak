@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zairo-maps-v1';
+const CACHE_NAME = 'zairo-maps-v2';
 const STATIC_ASSETS = [
     '/',
     '/index.html',
