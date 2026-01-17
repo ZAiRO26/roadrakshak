@@ -153,9 +153,27 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                             clearTimeout(pauseFollowTimeoutRef.current);
                         }
                         pauseFollowTimeoutRef.current = setTimeout(() => {
+                            // Re-enable auto-follow
                             setIsAutoFollow(true);
                             isAutoFollowRef.current = true;
                             pauseFollowTimeoutRef.current = null;
+
+                            // IMMEDIATELY snap camera back to user's current GPS location
+                            const gpsState = useGpsStore.getState();
+                            const lat = gpsState.latitude;
+                            const lng = gpsState.longitude;
+                            const userHeading = gpsState.heading || 0;
+
+                            if (lat !== null && lng !== null && map) {
+                                // Use 3D view if navigating, 2D otherwise
+                                map.easeTo({
+                                    center: [lng, lat],
+                                    zoom: isNavigating ? 18 : 15,
+                                    pitch: isNavigating ? 60 : 0,
+                                    bearing: isNavigating ? userHeading : 0,
+                                    duration: 1000,
+                                });
+                            }
                         }, 10000); // 10 second timeout
                     };
 
