@@ -246,8 +246,8 @@ export function getUserCamerasAsNodes(): CameraNode[] {
 // ============== EXPORT ==============
 
 /**
- * Export all data as JSON string (for backup/sharing)
- * Includes both fixed official cameras and user cameras
+ * (DEPRECATED) Export all data including official cameras
+ * Use exportUserDataOnly() instead for user-specific data
  */
 export function exportMergedData(): string {
     // Fixed official cameras
@@ -266,7 +266,7 @@ export function exportMergedData(): string {
         city: 'User Added',
         name: cam.name || 'User Camera',
         type: cam.type,
-        speed_limit: null,
+        speed_limit: cam.limit,
         lat: cam.lat,
         lng: cam.lng,
     }));
@@ -278,7 +278,30 @@ export function exportMergedData(): string {
 }
 
 /**
- * Copy merged data to clipboard
+ * Export ONLY user data (user-added cameras + corrections to official cameras)
+ * This is what should be shared/backed up - NOT the entire official database!
+ */
+export function exportUserDataOnly(): { userCameras: UserCamera[]; corrections: { id: string; lat: number; lng: number; timestamp: number }[]; exportDate: string } {
+    const userCameras = getUserCameras();
+    const overrides = getOverrides();
+
+    // Convert overrides to array format for export
+    const corrections = Object.entries(overrides).map(([id, override]) => ({
+        id,
+        lat: override.lat,
+        lng: override.lng,
+        timestamp: override.timestamp,
+    }));
+
+    return {
+        userCameras,
+        corrections,
+        exportDate: new Date().toISOString(),
+    };
+}
+
+/**
+ * Copy USER DATA ONLY to clipboard (not the entire database!)
  */
 export async function copyMergedToClipboard(): Promise<{ success: boolean; counts: { overrides: number; userCameras: number } }> {
     const counts = {
@@ -286,16 +309,24 @@ export async function copyMergedToClipboard(): Promise<{ success: boolean; count
         userCameras: getUserCameraCount(),
     };
 
+    // If no user data, alert and return
+    if (counts.userCameras === 0 && counts.overrides === 0) {
+        console.log('[OverrideService] No user data to export!');
+        return { success: false, counts };
+    }
+
     try {
-        const data = exportMergedData();
-        await navigator.clipboard.writeText(data);
-        console.log('[OverrideService] Merged data copied to clipboard');
-        console.log(data);
+        // Export ONLY user data, not the entire database!
+        const userData = exportUserDataOnly();
+        const dataStr = JSON.stringify(userData, null, 2);
+        await navigator.clipboard.writeText(dataStr);
+        console.log('[OverrideService] User data copied to clipboard');
+        console.log(`Exported: ${counts.userCameras} cameras, ${counts.overrides} corrections`);
         return { success: true, counts };
     } catch (e) {
         console.error('[OverrideService] Failed to copy to clipboard:', e);
-        console.log('[OverrideService] Data (copy manually):');
-        console.log(exportMergedData());
+        console.log('[OverrideService] User Data (copy manually):');
+        console.log(JSON.stringify(exportUserDataOnly(), null, 2));
         return { success: false, counts };
     }
 }
@@ -342,6 +373,7 @@ export default {
     // Merged data
     getMergedCameras,
     exportMergedData,
+    exportUserDataOnly,
     copyMergedToClipboard,
     // Reset
     clearAllOverrides,
