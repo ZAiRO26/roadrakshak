@@ -1,7 +1,11 @@
 import { useGpsStore } from '../stores/gpsStore';
 import { useAppStore } from '../stores/appStore';
 
-export function Speedometer() {
+interface SpeedometerProps {
+    isNavigating?: boolean;
+}
+
+export function Speedometer({ isNavigating = false }: SpeedometerProps) {
     const { speed } = useGpsStore();
     const { currentSpeedLimit, currentRoadName } = useAppStore();
 
@@ -9,7 +13,7 @@ export function Speedometer() {
     const speedDiff = currentSpeedLimit !== null ? speed - currentSpeedLimit : 0;
 
     return (
-        <div className="speedometer">
+        <div className={`speedometer ${isNavigating ? 'speedometer--navigating' : ''}`}>
             {/* Speed limit badge - NOW ABOVE speedometer */}
             {currentSpeedLimit !== null && (
                 <div

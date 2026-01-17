@@ -176,7 +176,7 @@ function App() {
       <SnapToMeButton />
 
       {/* Add Camera FAB - always visible */}
-      <AddCameraButton />
+      <AddCameraButton isNavigating={isNavigating} />
 
       {/* GPS accuracy indicator */}
       <div className="theme-toggle">
@@ -187,7 +187,7 @@ function App() {
       <Controls isNavigating={isNavigating} />
 
       {/* Speed display */}
-      <Speedometer />
+      <Speedometer isNavigating={isNavigating} />
 
       {/* Report button */}
       <ReportButton />

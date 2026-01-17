@@ -11,7 +11,11 @@ import { fetchRoadLimit } from '../hooks/useSpeedLimit';
 // Event to trigger map marker refresh
 export const USER_CAMERA_ADDED_EVENT = 'user-camera-added';
 
-export function AddCameraButton() {
+interface AddCameraButtonProps {
+    isNavigating?: boolean;
+}
+
+export function AddCameraButton({ isNavigating = false }: AddCameraButtonProps) {
     const { latitude, longitude } = useGpsStore();
     const [isAdding, setIsAdding] = useState(false);
     const [isFetching, setIsFetching] = useState(false);
@@ -83,7 +87,7 @@ export function AddCameraButton() {
         <>
             {/* Main FAB Button */}
             <button
-                className="add-camera-fab"
+                className={`add-camera-fab ${isNavigating ? 'add-camera-fab--navigating' : ''}`}
                 onClick={handleOpenModal}
                 disabled={isAdding || latitude === null}
                 title="Report new camera"
@@ -196,7 +200,7 @@ export function AddCameraButton() {
                     
                     cursor: pointer;
                     box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5);
-                    transition: transform 0.2s, box-shadow 0.2s;
+                    transition: transform 0.2s, box-shadow 0.2s, bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1);
                 }
                 
                 .add-camera-fab:hover:not(:disabled) {
@@ -211,6 +215,11 @@ export function AddCameraButton() {
                 .add-camera-fab:disabled {
                     opacity: 0.5;
                     cursor: not-allowed;
+                }
+
+                /* During navigation, move camera FAB above the bottom panel */
+                .add-camera-fab--navigating {
+                    bottom: 260px;
                 }
 
                 /* Modal Overlay */
