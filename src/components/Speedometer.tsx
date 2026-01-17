@@ -15,7 +15,12 @@ export function Speedometer({ isNavigating = false }: SpeedometerProps) {
     return (
         <div
             className="speedometer"
-            style={isNavigating ? { bottom: '300px' } : undefined}
+            style={isNavigating ? {
+                bottom: '220px',
+                left: '20px',
+                transform: 'none',
+                alignItems: 'flex-start'
+            } : undefined}
         >
             {/* Speed limit badge - NOW ABOVE speedometer */}
             {currentSpeedLimit !== null && (
