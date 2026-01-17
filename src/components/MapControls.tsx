@@ -55,9 +55,9 @@ export function MapControls({ onZoomIn, onZoomOut, onRecenter, isNavigating = fa
                     gap: 12px;
                     transition: top 0.3s ease, transform 0.3s ease;
                 }
-                /* During navigation, position between banner and bottom panel */
+                /* During navigation, position below banner and settings controls */
                 .map-controls--navigating {
-                    top: 45%;
+                    top: 58%;
                 }
                 .map-control-btn {
                     width: 44px;
