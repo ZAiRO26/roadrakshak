@@ -13,7 +13,10 @@ export function Speedometer({ isNavigating = false }: SpeedometerProps) {
     const speedDiff = currentSpeedLimit !== null ? speed - currentSpeedLimit : 0;
 
     return (
-        <div className={`speedometer ${isNavigating ? 'speedometer--navigating' : ''}`}>
+        <div
+            className="speedometer"
+            style={isNavigating ? { bottom: '300px' } : undefined}
+        >
             {/* Speed limit badge - NOW ABOVE speedometer */}
             {currentSpeedLimit !== null && (
                 <div

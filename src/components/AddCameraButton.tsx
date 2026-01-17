@@ -87,7 +87,8 @@ export function AddCameraButton({ isNavigating = false }: AddCameraButtonProps) 
         <>
             {/* Main FAB Button */}
             <button
-                className={`add-camera-fab ${isNavigating ? 'add-camera-fab--navigating' : ''}`}
+                className="add-camera-fab"
+                style={isNavigating ? { bottom: '380px' } : undefined}
                 onClick={handleOpenModal}
                 disabled={isAdding || latitude === null}
                 title="Report new camera"
