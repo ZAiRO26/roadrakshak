@@ -10,13 +10,7 @@ export function Speedometer() {
 
     return (
         <div className="speedometer">
-            {/* Main speed display */}
-            <div className={`speed-display ${isSpeeding ? 'speeding' : ''}`}>
-                <span className="speed-value">{speed}</span>
-                <span className="speed-unit">km/h</span>
-            </div>
-
-            {/* Speed limit badge */}
+            {/* Speed limit badge - NOW ABOVE speedometer */}
             {currentSpeedLimit !== null && (
                 <div
                     className="speed-limit-badge"
@@ -39,9 +33,15 @@ export function Speedometer() {
                 </div>
             )}
 
-            {/* Road name */}
+            {/* Main speed display */}
+            <div className={`speed-display ${isSpeeding ? 'speeding' : ''}`}>
+                <span className="speed-value">{speed}</span>
+                <span className="speed-unit">km/h</span>
+            </div>
+
+            {/* Road name - tighter spacing below */}
             {currentRoadName && (
-                <div className="road-name">{currentRoadName}</div>
+                <div className="road-name" style={{ marginTop: '-4px' }}>{currentRoadName}</div>
             )}
         </div>
     );
