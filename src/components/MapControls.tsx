@@ -2,11 +2,12 @@ interface MapControlsProps {
     onZoomIn: () => void;
     onZoomOut: () => void;
     onRecenter: () => void;
+    isNavigating?: boolean;
 }
 
-export function MapControls({ onZoomIn, onZoomOut, onRecenter }: MapControlsProps) {
+export function MapControls({ onZoomIn, onZoomOut, onRecenter, isNavigating = false }: MapControlsProps) {
     return (
-        <div className="map-controls">
+        <div className={`map-controls ${isNavigating ? 'map-controls--navigating' : ''}`}>
             {/* Recenter to current location */}
             <button
                 className="map-control-btn recenter-btn"
@@ -52,6 +53,11 @@ export function MapControls({ onZoomIn, onZoomOut, onRecenter }: MapControlsProp
                     display: flex;
                     flex-direction: column;
                     gap: 12px;
+                    transition: top 0.3s ease, transform 0.3s ease;
+                }
+                /* During navigation, position between banner and bottom panel */
+                .map-controls--navigating {
+                    top: 45%;
                 }
                 .map-control-btn {
                     width: 44px;

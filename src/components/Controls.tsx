@@ -2,7 +2,11 @@ import { useAppStore } from '../stores/appStore';
 import { useWakeLock } from '../hooks/useWakeLock';
 import { useBackgroundMode } from '../hooks/useBackgroundMode';
 
-export function Controls() {
+interface ControlsProps {
+    isNavigating?: boolean;
+}
+
+export function Controls({ isNavigating = false }: ControlsProps) {
     const { theme, toggleTheme, isMuted, toggleMute } = useAppStore();
     const { shouldBeLocked, toggleWakeLock, showToast: wakeLockToast, toastMessage: wakeLockMessage } = useWakeLock();
     const {
@@ -15,7 +19,7 @@ export function Controls() {
 
     return (
         <>
-            <div className="controls">
+            <div className={`controls ${isNavigating ? 'controls--navigating' : ''}`}>
                 {/* Theme toggle */}
                 <button
                     className={`control-btn ${theme === 'dark' ? 'active' : ''}`}

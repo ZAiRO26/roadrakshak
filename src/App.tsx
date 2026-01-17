@@ -119,6 +119,7 @@ function App() {
           onZoomIn={() => mapControlMethods.zoomIn()}
           onZoomOut={() => mapControlMethods.zoomOut()}
           onRecenter={() => mapControlMethods.recenterToUser()}
+          isNavigating={isNavigating}
         />
       )}
 
@@ -183,7 +184,7 @@ function App() {
       </div>
 
       {/* Control buttons */}
-      <Controls />
+      <Controls isNavigating={isNavigating} />
 
       {/* Speed display */}
       <Speedometer />
