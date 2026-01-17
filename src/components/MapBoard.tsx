@@ -54,6 +54,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
 
     // Free Roam Mode - controls whether map follows user
     const [isAutoFollow, setIsAutoFollow] = useState(true);
+    const isAutoFollowRef = useRef(true); // Ref to track current value for closures
     const pauseFollowTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const lastCenteredPositionRef = useRef<{ lat: number; lng: number } | null>(null);
 
@@ -153,6 +154,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                         }
                         pauseFollowTimeoutRef.current = setTimeout(() => {
                             setIsAutoFollow(true);
+                            isAutoFollowRef.current = true;
                             pauseFollowTimeoutRef.current = null;
                         }, 10000); // 10 second timeout
                     };
@@ -160,6 +162,7 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                     // On dragstart/mousedown/touchstart: Disable auto-follow
                     const handleInteractionStart = () => {
                         setIsAutoFollow(false);
+                        isAutoFollowRef.current = false; // Update ref for closure access
                         // Clear any pending timer since user is actively interacting
                         if (pauseFollowTimeoutRef.current) {
                             clearTimeout(pauseFollowTimeoutRef.current);
@@ -169,10 +172,9 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
 
                     // On dragend/mouseup/touchend/moveend: Start 10-second timer
                     const handleInteractionEnd = () => {
-                        // Only start timer if auto-follow is disabled
-                        if (!isAutoFollow) {
-                            startAutoResumeTimer();
-                        }
+                        // Always start the timer after interaction ends
+                        // (The timer will re-enable auto-follow after 10 seconds)
+                        startAutoResumeTimer();
                     };
 
                     // Register interaction listeners
