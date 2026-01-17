@@ -35,11 +35,11 @@ const initialState: GPSState = {
     isStationary: true,
 };
 
-// Speed smoothing configuration
-const SPEED_HISTORY_SIZE = 5; // Number of readings to average
-const MIN_SPEED_THRESHOLD = 3; // km/h - speeds below this are considered stationary
-const MAX_ACCURACY_FOR_SPEED = 30; // meters - ignore speed if accuracy is worse than this
-const STATIONARY_SPEED_THRESHOLD = 5; // km/h - consistent threshold for "not moving"
+// Speed smoothing configuration - AGGRESSIVE filtering for indoor/stationary noise
+const SPEED_HISTORY_SIZE = 8; // Number of readings to average (more = smoother)
+const MIN_SPEED_THRESHOLD = 8; // km/h - speeds below this are considered stationary (was 3)
+const MAX_ACCURACY_FOR_SPEED = 20; // meters - ignore speed if accuracy is worse than this (was 30)
+const STATIONARY_SPEED_THRESHOLD = 10; // km/h - consistent threshold for "not moving" (was 5)
 
 // Speed history for smoothing
 let speedHistory: number[] = [];
