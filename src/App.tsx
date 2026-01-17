@@ -10,7 +10,7 @@ import { LoadingScreen } from './components/LoadingScreen';
 import { AccuracyIndicator } from './components/AccuracyIndicator';
 import { NavigationMode } from './components/NavigationMode';
 import { MapControls } from './components/MapControls';
-import { SnapToMeButton } from './components/SnapToMeButton';
+
 import { AddCameraButton } from './components/AddCameraButton';
 import { OverspeedOverlay } from './components/OverspeedOverlay';
 import { useGPS } from './hooks/useGPS';
@@ -172,8 +172,7 @@ function App() {
       {/* Alert banner */}
       <AlertBanner />
 
-      {/* Snap Fix - data tuner button (only visible near cameras) */}
-      <SnapToMeButton />
+
 
       {/* Add Camera FAB - always visible */}
       <AddCameraButton isNavigating={isNavigating} />

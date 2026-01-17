@@ -7,7 +7,7 @@ import { useSmoothPosition } from '../hooks/useSmoothPosition';
 import { getAllOfficialCameras, mergeCamerasWithPriority } from '../services/CameraLoader';
 import { getUserCamerasAsNodes, hasOverride } from '../services/OverrideService';
 import type { CameraNode } from '../types/camera';
-import { CAMERA_CORRECTED_EVENT } from './SnapToMeButton';
+
 import { USER_CAMERA_ADDED_EVENT } from './AddCameraButton';
 import { CameraPopup } from './CameraPopup';
 
@@ -356,10 +356,8 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
             setCameraRefreshTrigger(prev => prev + 1);
         };
 
-        window.addEventListener(CAMERA_CORRECTED_EVENT, handleRefresh);
         window.addEventListener(USER_CAMERA_ADDED_EVENT, handleRefresh);
         return () => {
-            window.removeEventListener(CAMERA_CORRECTED_EVENT, handleRefresh);
             window.removeEventListener(USER_CAMERA_ADDED_EVENT, handleRefresh);
         };
     }, []);
