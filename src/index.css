@@ -68,7 +68,7 @@ body {
 
 /* During navigation, move speedometer above the bottom panel */
 .speedometer--navigating {
-  bottom: 220px;
+  bottom: 300px;
 }
 
 .speed-display {
