@@ -3,13 +3,12 @@ import './index.css';
 import { MapBoard } from './components/MapBoard';
 import type { MapControls as MapControlMethods } from './components/MapBoard';
 import { Speedometer } from './components/Speedometer';
-import { Controls } from './components/Controls';
+import { RightControlPanel } from './components/RightControlPanel';
 import { ReportButton } from './components/ReportButton';
 import { AlertBanner } from './components/AlertBanner';
 import { LoadingScreen } from './components/LoadingScreen';
 import { AccuracyIndicator } from './components/AccuracyIndicator';
 import { NavigationMode } from './components/NavigationMode';
-import { MapControls } from './components/MapControls';
 
 import { AddCameraButton } from './components/AddCameraButton';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -118,15 +117,13 @@ function App() {
         flyToLocation={(lat, lng) => mapControlMethods?.flyTo(lat, lng)}
       />
 
-      {/* Map controls - zoom +/- and recenter */}
-      {mapControlMethods && (
-        <MapControls
-          onZoomIn={() => mapControlMethods.zoomIn()}
-          onZoomOut={() => mapControlMethods.zoomOut()}
-          onRecenter={() => mapControlMethods.recenterToUser()}
-          isNavigating={isNavigating}
-        />
-      )}
+      {/* Unified Right Control Panel (Theme, Audio, Lock, Zoom, Recenter) */}
+      <RightControlPanel
+        isNavigating={isNavigating}
+        onZoomIn={mapControlMethods ? () => mapControlMethods.zoomIn() : undefined}
+        onZoomOut={mapControlMethods ? () => mapControlMethods.zoomOut() : undefined}
+        onRecenter={mapControlMethods ? () => mapControlMethods.recenterToUser() : undefined}
+      />
 
       {/* Main map with route - wrapped in ErrorBoundary */}
       <ErrorBoundary>
@@ -189,8 +186,7 @@ function App() {
         <AccuracyIndicator />
       </div>
 
-      {/* Control buttons */}
-      <Controls isNavigating={isNavigating} />
+
 
       {/* Speed display */}
       <Speedometer isNavigating={isNavigating} />
