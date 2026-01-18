@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import DOMPurify from 'dompurify';
 import { getDirections, formatDistance, formatDuration, isDirectionsAvailable } from '../services/DirectionsService';
 import type { RouteInfo } from '../services/DirectionsService';
 import { useGpsStore } from '../stores/gpsStore';
@@ -155,7 +156,7 @@ export function NavigationPanel({ onRouteCalculated }: NavigationPanelProps) {
                                 <div
                                     className="step-instruction"
                                     dangerouslySetInnerHTML={{
-                                        __html: routeInfo.steps[currentStepIndex]?.instruction || 'Continue'
+                                        __html: DOMPurify.sanitize(routeInfo.steps[currentStepIndex]?.instruction || 'Continue')
                                     }}
                                 />
                                 <div className="step-distance">

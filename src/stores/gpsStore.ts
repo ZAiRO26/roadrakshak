@@ -101,6 +101,23 @@ export const useGpsStore = create<GPSState & GPSActions>((set, get) => ({
         const { coords, timestamp } = position;
         const currentState = get();
 
+        // SECURITY: GPS Accuracy Gate - Don't update position if accuracy is terrible
+        // This prevents marker from jumping to parallel roads during poor signal
+        const MIN_REQUIRED_ACCURACY = 50; // meters
+        if (coords.accuracy && coords.accuracy > MIN_REQUIRED_ACCURACY) {
+            console.warn(`[GPS] Weak signal (${Math.round(coords.accuracy)}m > ${MIN_REQUIRED_ACCURACY}m). Skipping position update.`);
+            // Only update speed (for display), but NOT position
+            const rawSpeedKmh = coords.speed !== null ? Math.round(coords.speed * 3.6) : 0;
+            const smoothedSpeed = smoothSpeed(rawSpeedKmh, coords.accuracy);
+            set({
+                speed: smoothedSpeed,
+                rawSpeed: rawSpeedKmh,
+                accuracy: coords.accuracy,
+                timestamp,
+            });
+            return; // Don't update lat/lng
+        }
+
         // Convert speed from m/s to km/h (GPS provides speed in m/s)
         const rawSpeedKmh = coords.speed !== null ? Math.round(coords.speed * 3.6) : 0;
 

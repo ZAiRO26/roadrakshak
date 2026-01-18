@@ -12,6 +12,7 @@ import { NavigationMode } from './components/NavigationMode';
 import { MapControls } from './components/MapControls';
 
 import { AddCameraButton } from './components/AddCameraButton';
+import ErrorBoundary from './components/ErrorBoundary';
 import { OverspeedOverlay } from './components/OverspeedOverlay';
 import { useGPS } from './hooks/useGPS';
 import { useSpeedLimit } from './hooks/useSpeedLimit';
@@ -123,14 +124,16 @@ function App() {
         />
       )}
 
-      {/* Main map with route */}
-      <MapBoard
-        onMapReady={handleMapReady}
-        onMapControlsReady={setMapControlMethods}
-        routeGeometry={routeGeometry}
-        isNavigating={isNavigating}
-        destination={destination}
-      />
+      {/* Main map with route - wrapped in ErrorBoundary */}
+      <ErrorBoundary>
+        <MapBoard
+          onMapReady={handleMapReady}
+          onMapControlsReady={setMapControlMethods}
+          routeGeometry={routeGeometry}
+          isNavigating={isNavigating}
+          destination={destination}
+        />
+      </ErrorBoundary>
 
       {/* GPS Warning Banner (non-blocking) */}
       {showGpsWarning && gpsError && (
