@@ -13,6 +13,7 @@ import { MapControls } from './components/MapControls';
 
 import { AddCameraButton } from './components/AddCameraButton';
 import ErrorBoundary from './components/ErrorBoundary';
+import { LegalDisclaimer } from './components/LegalDisclaimer';
 import { OverspeedOverlay } from './components/OverspeedOverlay';
 import { useGPS } from './hooks/useGPS';
 import { useSpeedLimit } from './hooks/useSpeedLimit';
@@ -100,6 +101,9 @@ function App() {
     <div className="app">
       {/* OVERSPEED WARNING - Red screen overlay */}
       <OverspeedOverlay />
+
+      {/* Legal Disclaimer on first launch */}
+      <LegalDisclaimer />
 
       {/* Loading screen */}
       <LoadingScreen />
