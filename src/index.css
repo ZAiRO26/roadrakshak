@@ -295,16 +295,16 @@ body {
 /* Report button - PREMIUM FAB */
 .report-btn {
   position: fixed;
-  bottom: 30px;
+  bottom: 130px;
   right: 20px;
-  z-index: 1000;
-  width: 64px;
-  height: 64px;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, 0.25);
   background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
   color: white;
-  font-size: 24px;
+  font-size: 22px;
   cursor: pointer;
   box-shadow:
     0 8px 28px rgba(239, 68, 68, 0.45),

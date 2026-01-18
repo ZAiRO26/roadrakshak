@@ -198,9 +198,9 @@ export function AddCameraButton({ isNavigating = false }: AddCameraButtonProps) 
             <style>{`
                 .add-camera-fab {
                     position: fixed;
-                    bottom: 180px;
                     right: 20px;
-                    z-index: 1000;
+                    bottom: 200px;
+                    z-index: 999;
                     
                     width: 56px;
                     height: 56px;
@@ -233,7 +233,7 @@ export function AddCameraButton({ isNavigating = false }: AddCameraButtonProps) 
 
                 /* During navigation, move camera FAB above the bottom panel */
                 .add-camera-fab--navigating {
-                    bottom: 380px;
+                    bottom: 220px;
                 }
 
                 /* Modal Overlay */

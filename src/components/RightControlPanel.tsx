@@ -114,20 +114,19 @@ export function RightControlPanel({
                 .right-control-panel {
                     position: fixed;
                     right: 12px;
-                    top: max(16px, env(safe-area-inset-top));
-                    bottom: 200px;
+                    top: max(80px, env(safe-area-inset-top) + 64px);
                     z-index: 1000;
                     
                     display: flex;
                     flex-direction: column;
-                    justify-content: space-between;
+                    gap: 12px;
                     align-items: center;
                     
                     pointer-events: none;
                 }
                 
                 .right-control-panel--navigating {
-                    top: max(16px, env(safe-area-inset-top));
+                    top: max(80px, env(safe-area-inset-top) + 64px);
                 }
                 
                 .control-group {
