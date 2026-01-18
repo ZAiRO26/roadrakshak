@@ -106,6 +106,32 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                     console.log('Ola Map loaded successfully');
                     setIsMapLoaded(true);
                     setLoading(false);
+
+                    // === PHASE 32: MAP DECLUTTER - Hide POI Layers ===
+                    // Hide business names, shops, landmarks for clean navigation view
+                    try {
+                        const style = map.getStyle();
+                        if (style && style.layers) {
+                            const poiKeywords = ['poi', 'point-of-interest', 'shop', 'commercial',
+                                'attraction', 'place-label', 'business',
+                                'amenity', 'building-label', 'landuse-label'];
+
+                            let hiddenCount = 0;
+                            style.layers.forEach((layer: any) => {
+                                const layerId = layer.id.toLowerCase();
+                                const shouldHide = poiKeywords.some(keyword => layerId.includes(keyword));
+
+                                if (shouldHide) {
+                                    map.setLayoutProperty(layer.id, 'visibility', 'none');
+                                    hiddenCount++;
+                                }
+                            });
+                            console.log(`[MapDeclutter] Hidden ${hiddenCount} POI layers for clean navigation view`);
+                        }
+                    } catch (err) {
+                        console.warn('[MapDeclutter] Failed to hide POI layers:', err);
+                    }
+
                     onMapReady?.(map);
 
                     // Expose map control methods with smart camera
