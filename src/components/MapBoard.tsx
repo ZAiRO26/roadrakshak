@@ -107,29 +107,45 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                     setIsMapLoaded(true);
                     setLoading(false);
 
-                    // === PHASE 32: MAP DECLUTTER - Hide POI Layers ===
-                    // Hide business names, shops, landmarks for clean navigation view
+                    // === PHASE 32: MAP DECLUTTER - AGGRESSIVE APPROACH ===
+                    // Hide ALL label layers EXCEPT essential road labels (whitelist)
                     try {
                         const style = map.getStyle();
                         if (style && style.layers) {
-                            const poiKeywords = ['poi', 'point-of-interest', 'shop', 'commercial',
-                                'attraction', 'place-label', 'business',
-                                'amenity', 'building-label', 'landuse-label'];
+                            // Only keep these label types (everything else hidden)
+                            const keepLabels = ['road', 'street', 'highway', 'motorway',
+                                'trunk', 'primary', 'secondary', 'tertiary',
+                                'path', 'route', 'bridge', 'tunnel'];
 
                             let hiddenCount = 0;
-                            style.layers.forEach((layer: any) => {
-                                const layerId = layer.id.toLowerCase();
-                                const shouldHide = poiKeywords.some(keyword => layerId.includes(keyword));
+                            let keptCount = 0;
 
-                                if (shouldHide) {
-                                    map.setLayoutProperty(layer.id, 'visibility', 'none');
-                                    hiddenCount++;
+                            console.log('[MapDeclutter] Scanning', style.layers.length, 'layers...');
+
+                            style.layers.forEach((layer: any) => {
+                                // Only target symbol layers (text labels and icons)
+                                if (layer.type === 'symbol') {
+                                    const layerId = layer.id.toLowerCase();
+
+                                    // Check if this is an essential road label
+                                    const isRoadLabel = keepLabels.some(keyword => layerId.includes(keyword));
+
+                                    if (!isRoadLabel) {
+                                        // Hide this non-road label
+                                        map.setLayoutProperty(layer.id, 'visibility', 'none');
+                                        hiddenCount++;
+                                        console.log('[MapDeclutter] HIDDEN:', layer.id);
+                                    } else {
+                                        keptCount++;
+                                        console.log('[MapDeclutter] KEPT:', layer.id);
+                                    }
                                 }
                             });
-                            console.log(`[MapDeclutter] Hidden ${hiddenCount} POI layers for clean navigation view`);
+
+                            console.log(`[MapDeclutter] DONE: Hidden ${hiddenCount} labels, Kept ${keptCount} road labels`);
                         }
                     } catch (err) {
-                        console.warn('[MapDeclutter] Failed to hide POI layers:', err);
+                        console.warn('[MapDeclutter] Failed to filter layers:', err);
                     }
 
                     onMapReady?.(map);
