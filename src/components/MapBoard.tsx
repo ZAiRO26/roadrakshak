@@ -327,12 +327,12 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                 return;
             }
 
-            // NAVIGATION MODE: 3D Driver's View - Tilted & Rotated
+            // NAVIGATION MODE: PHASE 29 - Less extreme, more context
             mapRef.current.easeTo({
                 center: [rawLng, rawLat],
-                zoom: 18,           // Closer view for navigation
+                zoom: 16.5,         // Pulled back for more context (was 18)
                 bearing: heading || 0,  // Rotate map so car faces UP
-                pitch: 60,          // 3D "Horizon" view
+                pitch: 45,          // Standard driving angle (was 60)
                 duration: 600,      // Smoother following
             });
             lastCenteredPositionRef.current = { lat: rawLat, lng: rawLng };

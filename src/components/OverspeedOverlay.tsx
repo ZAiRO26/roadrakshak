@@ -1,8 +1,8 @@
 /**
  * OverspeedOverlay.tsx - Visual overspeed warning
  * 
- * Full-screen red overlay when user exceeds speed limit.
- * Uses pointer-events: none to allow interaction with underlying UI.
+ * PHASE 29: Minimalist "Breathing Border" instead of scary red overlay.
+ * Uses inset box-shadow for a subtle but noticeable pulsing red border.
  */
 
 import { useGpsStore } from '../stores/gpsStore';
@@ -25,26 +25,29 @@ export function OverspeedOverlay() {
 
     return (
         <>
-            <div className="overspeed-overlay" />
+            {/* Breathing Border - Subtle pulsing red border around screen */}
+            <div className="overspeed-border" />
 
             <style>{`
-                .overspeed-overlay {
+                .overspeed-border {
                     position: fixed;
                     inset: 0;
                     width: 100vw;
                     height: 100vh;
-                    background-color: rgba(255, 0, 0, 0.4);
                     z-index: 9999;
                     pointer-events: none;
-                    animation: overspeedPulse 0.8s ease-in-out infinite;
+                    /* Pulsing red border using inset box-shadow */
+                    box-shadow: inset 0 0 0 12px rgba(255, 50, 50, 0.5);
+                    animation: pulseRedBorder 2s ease-in-out infinite;
+                    border-radius: 0;
                 }
 
-                @keyframes overspeedPulse {
+                @keyframes pulseRedBorder {
                     0%, 100% { 
-                        background-color: rgba(255, 0, 0, 0.3);
+                        box-shadow: inset 0 0 0 8px rgba(255, 50, 50, 0.4);
                     }
                     50% { 
-                        background-color: rgba(255, 0, 0, 0.5);
+                        box-shadow: inset 0 0 0 20px rgba(255, 50, 50, 0.7);
                     }
                 }
             `}</style>

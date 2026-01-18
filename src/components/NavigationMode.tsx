@@ -290,28 +290,20 @@ export function NavigationMode({
         return icons[maneuver] || '➡️';
     };
 
-    // NAVIGATION ACTIVE UI - Google Maps Style HUD
+    // NAVIGATION ACTIVE UI - PHASE 29: Minimalist Silent Co-Pilot
     if (isNavigating && routeInfo) {
         const step = routeInfo.steps[currentStepIndex];
         const distanceToTurn = step?.distance || 0;
-        const roadName = step?.name || 'the road';
 
         return (
             <>
-                {/* TOP DIRECTION BANNER - Green gradient */}
-                <div className="nav-top-banner">
-                    <div className="nav-direction-card" onClick={handleNextStep}>
-                        <div className="nav-arrow">{getManeuverIcon(step?.maneuver)}</div>
-                        <div className="nav-direction-info">
-                            <div className="nav-distance-big">{formatDistance(distanceToTurn)}</div>
-                            <div className="nav-instruction-text" dangerouslySetInnerHTML={{ __html: step?.instruction || 'Continue straight' }} />
-                            {roadName && <div className="nav-road-name">on {roadName}</div>}
-                        </div>
-                        <div className="nav-step-indicator">{currentStepIndex + 1}/{routeInfo.steps.length}</div>
-                    </div>
+                {/* MINIMAL TURN PILL - Floating top-left, glassmorphism */}
+                <div className="nav-turn-pill" onClick={handleNextStep}>
+                    <span className="pill-arrow">{getManeuverIcon(step?.maneuver)}</span>
+                    <span className="pill-distance">{formatDistance(distanceToTurn)}</span>
                 </div>
 
-                {/* BOTTOM TRIP INFO PANEL */}
+                {/* BOTTOM TRIP INFO PANEL - Glassmorphic floating */}
                 <div className="nav-bottom-panel">
                     <div className="nav-trip-stats">
                         <div className="trip-stat">
@@ -628,82 +620,56 @@ const routePreviewStyles = `
 `;
 
 const navigationActiveStyles = `
-/* TOP DIRECTION BANNER - Premium Floating Design */
-.nav-top-banner {
+/* PHASE 29: MINIMAL TURN PILL - Floating top-left, glassmorphism */
+.nav-turn-pill {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: max(16px, env(safe-area-inset-top));
+    left: 16px;
     z-index: 1001;
-    background: linear-gradient(145deg, #22c55e 0%, #16a34a 60%, #15803d 100%);
-    padding: 16px 20px;
-    padding-top: max(20px, env(safe-area-inset-top));
-    margin: 12px;
-    margin-top: max(12px, env(safe-area-inset-top));
-    border-radius: 20px;
-    box-shadow: 
-        0 8px 32px rgba(0,0,0,0.35),
-        0 4px 12px rgba(22, 163, 74, 0.3),
-        inset 0 1px 0 rgba(255,255,255,0.2);
-    border: 1px solid rgba(255,255,255,0.15);
-}
-.nav-direction-card {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 10px;
+    padding: 12px 18px;
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.nav-arrow {
-    font-size: 48px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+.nav-turn-pill:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
-.nav-direction-info {
-    flex: 1;
-}
-.nav-distance-big {
+.pill-arrow {
     font-size: 28px;
-    font-weight: 800;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+}
+.pill-distance {
+    font-size: 18px;
+    font-weight: 700;
     color: white;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
-}
-.nav-instruction-text {
-    font-size: 15px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.95);
-    margin-top: 4px;
-}
-.nav-road-name {
-    font-size: 13px;
-    color: rgba(255,255,255,0.8);
-    margin-top: 2px;
-}
-.nav-step-indicator {
-    font-size: 12px;
-    color: rgba(255,255,255,0.7);
-    background: rgba(0,0,0,0.2);
-    padding: 6px 10px;
-    border-radius: 12px;
+    letter-spacing: -0.5px;
 }
 
-/* BOTTOM TRIP INFO PANEL - Premium Floating Design */
+/* BOTTOM TRIP INFO PANEL - Deep Glassmorphism for muted look */
 .nav-bottom-panel {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 1001;
-    background: linear-gradient(180deg, rgba(30,41,59,0.96) 0%, rgba(15,23,42,0.98) 100%);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     padding: 18px 20px;
     padding-bottom: max(18px, env(safe-area-inset-bottom));
     margin: 0 12px 12px 12px;
-    border-radius: 24px;
-    box-shadow: 
-        0 -8px 32px rgba(0,0,0,0.35),
-        0 -2px 8px rgba(0,0,0,0.2),
-        inset 0 1px 0 rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 .nav-trip-stats {
     display: flex;
