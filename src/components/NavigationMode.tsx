@@ -331,9 +331,21 @@ export function NavigationMode({
         return (
             <>
                 {/* MINIMAL TURN PILL - Floating top-left, glassmorphism */}
-                <div className="nav-turn-pill" onClick={handleNextStep}>
-                    <span className="pill-arrow">{getManeuverIcon(step?.maneuver)}</span>
-                    <span className="pill-distance">{formatDistance(distanceToTurn)}</span>
+                <div
+                    className={`nav-turn-pill ${isRerouting ? 'rerouting' : ''}`}
+                    onClick={handleNextStep}
+                >
+                    {isRerouting ? (
+                        <>
+                            <span className="pill-arrow rerouting-icon">🔄</span>
+                            <span className="pill-distance rerouting-text">Rerouting...</span>
+                        </>
+                    ) : (
+                        <>
+                            <span className="pill-arrow">{getManeuverIcon(step?.maneuver)}</span>
+                            <span className="pill-distance">{formatDistance(distanceToTurn)}</span>
+                        </>
+                    )}
                 </div>
 
                 {/* BOTTOM TRIP INFO PANEL - Glassmorphic floating */}
@@ -685,6 +697,23 @@ const navigationActiveStyles = `
     font-weight: 700;
     color: white;
     letter-spacing: -0.5px;
+}
+
+/* REROUTING STATE - Amber/Orange styling */
+.nav-turn-pill.rerouting {
+    background: rgba(245, 158, 11, 0.9);
+    border-color: rgba(255, 200, 100, 0.3);
+}
+.rerouting-icon {
+    animation: spin 1s linear infinite;
+}
+.rerouting-text {
+    color: #1a1a1a;
+    font-weight: 600;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 /* BOTTOM TRIP INFO PANEL - Deep Glassmorphism for muted look */
