@@ -1,8 +1,9 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import { autocomplete, parseCoordinates, geocode } from '../services/PlacesService';
 import { getDirections, formatDistance, formatDuration, isDirectionsAvailable } from '../services/DirectionsService';
 import type { RouteInfo } from '../services/DirectionsService';
 import { useGpsStore } from '../stores/gpsStore';
+import { calculateDistance } from '../hooks/useGPS';
 
 interface Suggestion {
     place_id: string;
@@ -49,6 +50,37 @@ export function NavigationMode({
     const [showReroutingToast, setShowReroutingToast] = useState(false);
 
     const { latitude, longitude } = useGpsStore();
+
+    // === PHASE 33: LIVE DISTANCE TO NEXT TURN ===
+    // Calculate real distance from user GPS to next step's start location
+    const liveDistanceToTurn = useMemo(() => {
+        if (!routeInfo || !latitude || !longitude) return null;
+
+        const step = routeInfo.steps[currentStepIndex];
+        if (!step?.startLat || !step?.startLng) {
+            // Fallback to static distance if no coordinates
+            return step?.distance || 0;
+        }
+
+        // Calculate Haversine distance from user to step start
+        const distanceInMeters = calculateDistance(
+            latitude, longitude,
+            step.startLat, step.startLng
+        );
+
+        return Math.round(distanceInMeters);
+    }, [routeInfo, currentStepIndex, latitude, longitude]);
+
+    // Auto-advance to next step when within 30m of current step
+    useEffect(() => {
+        if (!isNavigating || !routeInfo || liveDistanceToTurn === null) return;
+
+        // If within 30 meters of the turn, advance to next step
+        if (liveDistanceToTurn < 30 && currentStepIndex < routeInfo.steps.length - 1) {
+            console.log(`[Navigation] Reached step ${currentStepIndex + 1}, advancing...`);
+            setCurrentStepIndex(prev => prev + 1);
+        }
+    }, [liveDistanceToTurn, isNavigating, routeInfo, currentStepIndex]);
 
     // Debounced search
     useEffect(() => {
@@ -293,7 +325,8 @@ export function NavigationMode({
     // NAVIGATION ACTIVE UI - PHASE 29: Minimalist Silent Co-Pilot
     if (isNavigating && routeInfo) {
         const step = routeInfo.steps[currentStepIndex];
-        const distanceToTurn = step?.distance || 0;
+        // Use live distance if available, otherwise fall back to static
+        const distanceToTurn = liveDistanceToTurn ?? step?.distance ?? 0;
 
         return (
             <>

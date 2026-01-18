@@ -13,6 +13,8 @@ export interface RouteStep {
     duration: number; // seconds
     maneuver: string;
     name: string;
+    startLat?: number; // Step start location for live distance calc
+    startLng?: number;
 }
 
 export interface RouteInfo {
@@ -269,6 +271,8 @@ function parseSteps(legs: Array<{
         duration?: { value: number };
         maneuver?: string;
         name?: string;
+        start_location?: { lat: number; lng: number };
+        end_location?: { lat: number; lng: number };
     }>
 }>): RouteStep[] {
     const steps: RouteStep[] = [];
@@ -282,6 +286,8 @@ function parseSteps(legs: Array<{
                     duration: step.duration?.value || 0,
                     maneuver: step.maneuver || 'straight',
                     name: step.name || '',
+                    startLat: step.start_location?.lat,
+                    startLng: step.start_location?.lng,
                 });
             }
         }
