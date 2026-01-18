@@ -3,7 +3,7 @@
  * Auto-fetches road speed limit from OSM API, allows user to edit
  */
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { useGpsStore } from '../stores/gpsStore';
 import { addNewCamera, getUserCameraCount } from '../services/OverrideService';
 import { fetchRoadLimit } from '../hooks/useSpeedLimit';
@@ -25,6 +25,9 @@ export function AddCameraButton({ isNavigating = false }: AddCameraButtonProps) 
     const [speedLimit, setSpeedLimit] = useState('60');
     const [cameraType, setCameraType] = useState<'SPEED_CAM' | 'RED_LIGHT_CAM'>('SPEED_CAM');
     const [autoFetched, setAutoFetched] = useState(false);
+
+    // Rate limiting: prevent spamming
+    const lastAddedTime = useRef<number>(0);
 
     const handleOpenModal = useCallback(async () => {
         if (latitude === null || longitude === null) {
@@ -60,6 +63,15 @@ export function AddCameraButton({ isNavigating = false }: AddCameraButtonProps) 
     const handleAddCamera = useCallback(() => {
         if (latitude === null || longitude === null) return;
 
+        // Rate Limiting: 5-second cooldown
+        const now = Date.now();
+        if (now - lastAddedTime.current < 5000) {
+            setToastMessage('⚠️ Please wait a few seconds before reporting again.');
+            setShowToast(true);
+            setTimeout(() => setShowToast(false), 3000);
+            return;
+        }
+
         setIsAdding(true);
         setShowModal(false);
 
@@ -67,6 +79,7 @@ export function AddCameraButton({ isNavigating = false }: AddCameraButtonProps) 
 
         // Add the camera with speed limit
         const id = addNewCamera(latitude, longitude, limit, cameraType);
+        lastAddedTime.current = Date.now(); // Update timestamp
         console.log(`[AddCameraButton] Added camera ${id} with limit ${limit}`);
 
         // Dispatch event to refresh map markers

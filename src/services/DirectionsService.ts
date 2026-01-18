@@ -55,14 +55,43 @@ export async function getDirections(
             waypointsParam +
             `&api_key=${OLA_API_KEY}`;
 
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-Request-Id': crypto.randomUUID(),
-            },
-        });
+        // RETRY LOGIC: Attempt 3 times with backoff
+        // Fixes "Medium" audit issue: Network resilience
+        let response: Response | undefined;
+        let lastError: any;
+
+        for (let attempt = 0; attempt < 3; attempt++) {
+            try {
+                if (attempt > 0) {
+                    await new Promise(r => setTimeout(r, 500 * Math.pow(2, attempt - 1)));
+                }
+
+                response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'X-Request-Id': crypto.randomUUID(),
+                    },
+                });
+
+                // If success or client error (4xx), stop retrying
+                if (response.ok || (response.status >= 400 && response.status < 500 && response.status !== 429)) {
+                    break;
+                }
+
+                // Continue loop for 5xx or 429
+                console.warn(`[Directions] Retryable error (Status ${response.status}) - Attempt ${attempt + 1}/3`);
+            } catch (err) {
+                lastError = err;
+                console.warn(`[Directions] Network error - Attempt ${attempt + 1}/3`);
+            }
+        }
+
+        if (!response) {
+            if (lastError) throw lastError;
+            throw new Error('Network request failed after 3 attempts');
+        }
 
         if (!response.ok) {
             const errorText = await response.text();
