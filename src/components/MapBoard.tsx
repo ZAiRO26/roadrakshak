@@ -107,46 +107,64 @@ export function MapBoard({ onMapReady, onMapControlsReady, routeGeometry, isNavi
                     setIsMapLoaded(true);
                     setLoading(false);
 
-                    // === PHASE 32: MAP DECLUTTER - AGGRESSIVE APPROACH ===
-                    // Hide ALL label layers EXCEPT essential road labels (whitelist)
-                    try {
-                        const style = map.getStyle();
-                        if (style && style.layers) {
+                    // === PHASE 32: MAP DECLUTTER FUNCTION ===
+                    const declutterMap = () => {
+                        try {
+                            const style = map.getStyle();
+                            if (!style || !style.layers) {
+                                console.warn('[MapDeclutter] No style/layers found');
+                                return 0;
+                            }
+
                             // Only keep these label types (everything else hidden)
                             const keepLabels = ['road', 'street', 'highway', 'motorway',
                                 'trunk', 'primary', 'secondary', 'tertiary',
-                                'path', 'route', 'bridge', 'tunnel'];
+                                'path', 'route', 'bridge', 'tunnel', 'place-city',
+                                'place-town', 'place-village', 'country', 'state'];
 
                             let hiddenCount = 0;
-                            let keptCount = 0;
-
-                            console.log('[MapDeclutter] Scanning', style.layers.length, 'layers...');
 
                             style.layers.forEach((layer: any) => {
                                 // Only target symbol layers (text labels and icons)
                                 if (layer.type === 'symbol') {
                                     const layerId = layer.id.toLowerCase();
 
-                                    // Check if this is an essential road label
-                                    const isRoadLabel = keepLabels.some(keyword => layerId.includes(keyword));
+                                    // Check if this is an essential label to keep
+                                    const isEssential = keepLabels.some(keyword => layerId.includes(keyword));
 
-                                    if (!isRoadLabel) {
-                                        // Hide this non-road label
+                                    if (!isEssential) {
                                         map.setLayoutProperty(layer.id, 'visibility', 'none');
                                         hiddenCount++;
-                                        console.log('[MapDeclutter] HIDDEN:', layer.id);
-                                    } else {
-                                        keptCount++;
-                                        console.log('[MapDeclutter] KEPT:', layer.id);
                                     }
                                 }
                             });
 
-                            console.log(`[MapDeclutter] DONE: Hidden ${hiddenCount} labels, Kept ${keptCount} road labels`);
+                            console.log(`[MapDeclutter] Hidden ${hiddenCount} non-essential labels`);
+                            return hiddenCount;
+                        } catch (err) {
+                            console.warn('[MapDeclutter] Error:', err);
+                            return 0;
                         }
-                    } catch (err) {
-                        console.warn('[MapDeclutter] Failed to filter layers:', err);
-                    }
+                    };
+
+                    // Run declutter on 'idle' event (when map fully rendered)
+                    map.once('idle', () => {
+                        console.log('[MapDeclutter] Map idle, running declutter...');
+                        const hidden = declutterMap();
+
+                        // If no layers hidden, retry after delay (style might still be loading)
+                        if (hidden === 0) {
+                            console.log('[MapDeclutter] No layers hidden, retrying in 2s...');
+                            setTimeout(() => {
+                                declutterMap();
+                            }, 2000);
+                        }
+                    });
+
+                    // Also run after style data changes (when tiles load new data)
+                    map.on('styledata', () => {
+                        setTimeout(() => declutterMap(), 500);
+                    });
 
                     onMapReady?.(map);
 
