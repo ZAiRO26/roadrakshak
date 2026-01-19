@@ -51,8 +51,8 @@ export function Speedometer({ isNavigating = false }: SpeedometerProps) {
                 <span className="speed-unit">km/h</span>
             </div>
 
-            {/* Road name - HIDE during navigation (trip panel shows destination) */}
-            {currentRoadName && !isNavigating && (
+            {/* Road name - Show current location */}
+            {currentRoadName && (
                 <div className="road-name" style={{ marginTop: '-4px' }}>{currentRoadName}</div>
             )}
         </div>
