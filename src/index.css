@@ -329,9 +329,9 @@ body {
   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
 }
 
-/* During navigation, move report button above trip panel */
+/* During navigation, move report button above speedometer */
 .report-btn--navigating {
-  bottom: 210px;
+  bottom: 330px;
 }
 
 /* Alert banner */

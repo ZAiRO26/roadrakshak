@@ -231,9 +231,9 @@ export function AddCameraButton({ isNavigating = false }: AddCameraButtonProps) 
             cursor: not-allowed;
                 }
 
-            /* During navigation, move camera FAB up to clear bottom panel */
+            /* During navigation, move camera FAB up above report button */
             .add-camera-fab--navigating {
-                bottom: 280px;
+                bottom: 400px;
                 }
 
             /* Modal Overlay */

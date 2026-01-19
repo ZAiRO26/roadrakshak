@@ -16,7 +16,7 @@ export function Speedometer({ isNavigating = false }: SpeedometerProps) {
         <div
             className="speedometer"
             style={isNavigating ? {
-                bottom: '160px',
+                bottom: '250px',
                 left: '12px',
                 transform: 'none',
                 alignItems: 'flex-start'
