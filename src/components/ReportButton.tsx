@@ -3,7 +3,11 @@ import { useGpsStore } from '../stores/gpsStore';
 import { useAppStore } from '../stores/appStore';
 import { reportPolice } from '../services/FirebaseService';
 
-export function ReportButton() {
+interface ReportButtonProps {
+    isNavigating?: boolean;
+}
+
+export function ReportButton({ isNavigating = false }: ReportButtonProps) {
     const [isReporting, setIsReporting] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);
     const { latitude, longitude } = useGpsStore();
@@ -34,7 +38,7 @@ export function ReportButton() {
     return (
         <>
             <button
-                className="report-btn"
+                className={`report-btn ${isNavigating ? 'report-btn--navigating' : ''}`}
                 onClick={handleReport}
                 disabled={isReporting}
                 title="Report police checkpoint"

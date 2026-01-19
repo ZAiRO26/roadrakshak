@@ -192,7 +192,7 @@ function App() {
       <Speedometer isNavigating={isNavigating} />
 
       {/* Report button */}
-      <ReportButton />
+      <ReportButton isNavigating={isNavigating} />
     </div>
   );
 }

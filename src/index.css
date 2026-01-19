@@ -329,6 +329,11 @@ body {
   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
 }
 
+/* During navigation, move report button above trip panel */
+.report-btn--navigating {
+  bottom: 210px;
+}
+
 /* Alert banner */
 .alert-banner {
   position: fixed;
